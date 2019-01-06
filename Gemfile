@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+ruby "2.4.5"
+
 gem 'rails', '4.2.11'
 
 gem 'acts-as-taggable-on', '~> 5.0.0'
