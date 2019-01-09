@@ -63,21 +63,22 @@ Rails.application.configure do
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   config.action_mailer.raise_delivery_errors = true
-  #config.action_mailer.asset_host = "https://#{Rails.application.secrets.server_name}"
+  config.action_mailer.asset_host = "https://#{Rails.application.secrets.server_name}"
 
   config.action_mailer.default_url_options = { host: 'https://consul-sanpedro.herokuapp.com' }
 
-
-  # Using Mailjet to set emails
-  config.action_mailer.delivery_method = :mailjet_api
+ # TODO comprar dominio
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.perform_deliveries = true
   config.action_mailer.smtp_settings = {
-    :user_name => '71451952a81dd37c286c6ea50a683592',
-    :password => '0233df8f6af7f6e8768b2eddaffc5606',
-    :domain => 'heroku.com',
-    :authentication => "login",
-    :address => 'in-v3.mailjet.com',
-    :port => 587,
-    :require_ssl => true
+      :address              => 'smtp.mailgun.org',
+      :port                 => 587,
+      :domain               => 'sandbox5ea3bc60b2a34c7594e5fe76a27cf809.mailgun.org',
+      :user_name            => 'postmaster@sandbox5ea3bc60b2a34c7594e5fe76a27cf809.mailgun.org',
+      :password             => '9bbd96cfb3c670bf12f85bfe5a90666a-060550c6-7048017f',
+      :authentication => :plain,
+      :enable_starttls_auto => true,
+      :ssl => false
   }
 
   # SMTP configuration to deliver emails
