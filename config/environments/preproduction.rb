@@ -59,22 +59,22 @@ Rails.application.configure do
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
   # config.action_controller.asset_host = 'http://assets.example.com'
+  config.action_mailer.default_url_options = { host: 'https://consul-sanpedro.herokuapp.com' }
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   config.action_mailer.raise_delivery_errors = true
   # Using Mailjet to set emails
-  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.delivery_method = :mailjet
   config.action_mailer.smtp_settings = {
-  :user_name => '71451952a81dd37c286c6ea50a683592',
-  :password => '0233df8f6af7f6e8768b2eddaffc5606',
-  :domain => 'heroku.com',
-  :address => 'in-v3.mailjet.com',
-  :port => 587,
-  :authentication => :plain,
-  :enable_starttls_auto => true
+    :user_name => '71451952a81dd37c286c6ea50a683592',
+    :password => '0233df8f6af7f6e8768b2eddaffc5606',
+    :domain => 'heroku.com',
+    :authentication => "login",
+    :address => 'in-v3.mailjet.com',
+    :port => 587,
+    :require_ssl => true
   }
-
 
   # SMTP configuration to deliver emails
   # Uncomment the following block of code and add your SMTP service credentials

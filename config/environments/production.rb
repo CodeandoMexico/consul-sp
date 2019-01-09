@@ -69,15 +69,15 @@ Rails.application.configure do
 
 
   # Using Mailjet to set emails
-  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.delivery_method = :mailjet
   config.action_mailer.smtp_settings = {
-  :user_name => '71451952a81dd37c286c6ea50a683592',
-  :password => '0233df8f6af7f6e8768b2eddaffc5606',
-  :domain => 'heroku.com',
-  :address => 'in-v3.mailjet.com',
-  :port => 587,
-  :authentication => :plain,
-  :enable_starttls_auto => true
+    :user_name => '71451952a81dd37c286c6ea50a683592',
+    :password => '0233df8f6af7f6e8768b2eddaffc5606',
+    :domain => 'heroku.com',
+    :authentication => "login",
+    :address => 'in-v3.mailjet.com',
+    :port => 587,
+    :require_ssl => true
   }
 
   # SMTP configuration to deliver emails
