@@ -18,8 +18,11 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
   config.action_mailer.asset_host = "http://localhost:3000"
 
-  # Deliver emails to a development mailbox at /letter_opener
-  config.action_mailer.delivery_method = :mailjet_api
+  config.action_mailer.delivery_method = :mailgun
+  config.action_mailer.mailgun_settings = {
+      api_key: 'b42c30ab6ed36bfd78c669a2426fc528-060550c6-ebbd27d5',
+      domain: 'sandbox5ea3bc60b2a34c7594e5fe76a27cf809.mailgun.org'
+  }
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
