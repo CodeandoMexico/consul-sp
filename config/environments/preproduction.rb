@@ -63,8 +63,18 @@ Rails.application.configure do
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   config.action_mailer.raise_delivery_errors = true
-  config.action_mailer.default_url_options = { host: Rails.application.secrets.server_name }
-  config.action_mailer.asset_host = "https://#{Rails.application.secrets.server_name}"
+  # Using Mailjet to set emails
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+  :user_name => '71451952a81dd37c286c6ea50a683592',
+  :password => '0233df8f6af7f6e8768b2eddaffc5606',
+  :domain => 'heroku.com',
+  :address => 'in-v3.mailjet.com',
+  :port => 587,
+  :authentication => :plain,
+  :enable_starttls_auto => true
+  }
+
 
   # SMTP configuration to deliver emails
   # Uncomment the following block of code and add your SMTP service credentials
