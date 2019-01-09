@@ -69,7 +69,7 @@ Rails.application.configure do
 
 
   # Using Mailjet to set emails
-  config.action_mailer.delivery_method = :mailjet
+  config.action_mailer.delivery_method = :mailjet_api
   config.action_mailer.smtp_settings = {
     :user_name => '71451952a81dd37c286c6ea50a683592',
     :password => '0233df8f6af7f6e8768b2eddaffc5606',

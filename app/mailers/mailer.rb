@@ -34,9 +34,13 @@ class Mailer < ApplicationMailer
     @token = token
     @document_type = document_type
     @document_number = document_number
-
+    puts "QUE SE VEA"
     with_user(user) do
-      mail(to: @email_to, subject: t('mailers.email_verification.subject'))
+      mail(
+        to: @email_to,
+        delivery_method_options: { api_key: '71451952a81dd37c286c6ea50a683592', secret_key: '0233df8f6af7f6e8768b2eddaffc5606' },
+        subject: t('mailers.email_verification.subject')
+      )
     end
   end
 
