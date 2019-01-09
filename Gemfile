@@ -58,6 +58,7 @@ gem 'globalize', '~> 5.0.0'
 gem 'globalize-accessors', '~> 0.2.1'
 gem 'database_cleaner', '~> 1.7.0'
 gem 'faker', '~> 1.8.7'
+gem 'mailjet'
 
 
 source 'https://rails-assets.org' do

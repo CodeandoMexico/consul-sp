@@ -11,19 +11,23 @@ class Verification::Residence
   end
 
   def residence_in_madrid
-    return if errors.any?
+    return true
 
-    unless residency_valid?
-      errors.add(:residence_in_madrid, false)
-      store_failed_attempt
-      Lock.increase_tries(user)
-    end
+    # TODO aqui vamos a buscar la carta catastral
+    # aqui vas a validar la carta catastral
+    # return if errors.any?
+    #
+    # unless residency_valid?
+    #   errors.add(:residence_in_madrid, false)
+    #   store_failed_attempt
+    #   Lock.increase_tries(user)
+    # end
   end
 
   private
 
     def valid_postal_code?
-      postal_code =~ /^280/
+      postal_code =~ /^662/ # TODO prefijo de san pedro
     end
 
 end

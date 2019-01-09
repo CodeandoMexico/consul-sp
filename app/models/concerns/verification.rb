@@ -20,8 +20,10 @@ module Verification
   end
 
   def verification_sms_sent?
-    return true if skip_verification?
-    unconfirmed_phone.present? && sms_confirmation_code.present?
+    return true
+    # TODO personalizar verificacion
+    # return true if skip_verification?
+    # unconfirmed_phone.present? && sms_confirmation_code.present?
   end
 
   def verification_letter_sent?

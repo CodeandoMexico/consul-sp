@@ -18,9 +18,9 @@ class VerificationController < ApplicationController
       elsif user.verification_letter_sent?
         { path: edit_letter_path }
       elsif user.level_two_verified?
-        { path: new_letter_path }
+        { path: new_letter_path } # TODO es el paso del telofono, personalizar verificacion
       elsif user.verification_sms_sent?
-        { path: edit_sms_path }
+        { path: new_letter_path }
       elsif user.verification_email_sent?
         { path: verified_user_path, notice: t('verification.redirect_notices.email_already_sent') }
       elsif user.residence_verified?
