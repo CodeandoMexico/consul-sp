@@ -68,18 +68,11 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { host: 'https://consul-sanpedro.herokuapp.com' }
 
  # TODO comprar dominio
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.perform_deliveries = true
-  config.action_mailer.smtp_settings = {
-      :address              => 'smtp.mailgun.org',
-      :port                 => 587,
-      :domain               => 'sandbox5ea3bc60b2a34c7594e5fe76a27cf809.mailgun.org',
-      :user_name            => 'postmaster@sandbox5ea3bc60b2a34c7594e5fe76a27cf809.mailgun.org',
-      :password             => '9bbd96cfb3c670bf12f85bfe5a90666a-060550c6-7048017f',
-      :authentication => :plain,
-      :enable_starttls_auto => true,
-      :ssl => false
-  }
+ config.action_mailer.delivery_method = :mailgun
+ config.action_mailer.mailgun_settings = {
+     api_key: 'b42c30ab6ed36bfd78c669a2426fc528-060550c6-ebbd27d5',
+     domain: 'sandbox5ea3bc60b2a34c7594e5fe76a27cf809.mailgun.org'
+ }
 
   # SMTP configuration to deliver emails
   # Uncomment the following block of code and add your SMTP service credentials
