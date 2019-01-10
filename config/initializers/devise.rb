@@ -17,7 +17,7 @@ Devise.setup do |config|
   else
     # TODO Add an actual sender mail
     #config.mailer_sender = "'#{Setting['mailer_from_name']}' <#{Setting['mailer_from_address']}>"
-    config.mailer_sender = "denial.torres@gmail.com"
+    config.mailer_sender = "noreply@consul.dev"
   end
 
   # Configure the class responsible to send e-mails.
