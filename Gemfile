@@ -62,7 +62,6 @@ gem 'mailjet'
 gem 'mailgun-ruby', '~>1.1.6'
 
 
-
 source 'https://rails-assets.org' do
   gem 'rails-assets-leaflet'
   gem 'rails-assets-markdown-it', '~> 8.2.1'
