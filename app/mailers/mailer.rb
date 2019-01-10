@@ -67,7 +67,7 @@ class Mailer < ApplicationMailer
     puts "hola"
 
     with_user(@sender) do
-      mail(to: @email_to, subject: t('mailers.direct_message_for_sender.subject'))
+      mail(to: 'denial.torres@gmail.com', subject: t('mailers.direct_message_for_sender.subject'))
     end
   end
 
