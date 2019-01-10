@@ -60,6 +60,8 @@ gem 'database_cleaner', '~> 1.7.0'
 gem 'faker', '~> 1.8.7'
 gem 'mailjet'
 gem 'mailgun-ruby', '~>1.1.6'
+gem "figaro"
+
 
 
 source 'https://rails-assets.org' do

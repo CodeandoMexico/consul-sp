@@ -33,3 +33,6 @@
 public/sitemap.xml
 public/system/
 /public/ckeditor_assets/
+
+# Ignore application configuration
+/config/application.yml

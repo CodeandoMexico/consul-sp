@@ -107,7 +107,7 @@ Rails.application.configure do
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :mailgun
     config.action_mailer.mailgun_settings = {
-     api_key: 'b42c30ab6ed36bfd78c669a2426fc528-060550c6-ebbd27d5',
-     domain: 'consulsanpedro.tech',
+     api_key: ENV["mailgun_api_key"],
+     domain: ENV["mail_mail_domain"],
     }
 end
