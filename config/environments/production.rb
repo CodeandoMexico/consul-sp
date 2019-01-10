@@ -62,20 +62,20 @@ Rails.application.configure do
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
-  config.action_mailer.default_url_options = {:host => 'consul-sanpedro.herokuapp.com'}
-  config.action_mailer.raise_delivery_errors = true
-  config.action_mailer.perform_deliveries = true
-  #config.action_mailer.asset_host = "https://#{Rails.application.secrets.server_name}"
-
-  ActionMailer::Base.smtp_settings = {
-  :port => '587',
-  :address => 'smtp.mailgun.org',
-  :user_name => 'postmaster@sandbox5ea3bc60b2a34c7594e5fe76a27cf809.mailgun.org',
-  :password => '9bbd96cfb3c670bf12f85bfe5a90666a-060550c6-7048017f',
-  :domain => 'consul-sanpedro.herokuapp.com',
-  :authentication => :plain,
-  }
-  ActionMailer::Base.delivery_method = :smtp
+  # config.action_mailer.default_url_options = {:host => 'consul-sanpedro.herokuapp.com'}
+  # config.action_mailer.raise_delivery_errors = true
+  # config.action_mailer.perform_deliveries = true
+  # #config.action_mailer.asset_host = "https://#{Rails.application.secrets.server_name}"
+  #
+  # ActionMailer::Base.smtp_settings = {
+  # :port => '587',
+  # :address => 'smtp.mailgun.org',
+  # :user_name => 'postmaster@sandbox5ea3bc60b2a34c7594e5fe76a27cf809.mailgun.org',
+  # :password => '9bbd96cfb3c670bf12f85bfe5a90666a-060550c6-7048017f',
+  # :domain => 'consul-sanpedro.herokuapp.com',
+  # :authentication => :plain,
+  # }
+  # ActionMailer::Base.delivery_method = :smtp
   # SMTP configuration to deliver emails
   # Uncomment the following block of code and add your SMTP service credentials
   # config.action_mailer.delivery_method = :smtp
@@ -100,4 +100,19 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+
+  ############################### ACTION MAILER ###############################
+  API_KEY = ENV['MAILGUN_API_KEY']
+  MAILGUN_DOMAIN = ENV['MAILGUN_DOMAIN']
+  API_URL = "https://api:#{API_KEY}@api.mailgun.net/v2/#{MAILGUN_DOMAIN}"
+
+  config.action_mailer.delivery_method = :mailgun
+  config.action_mailer.mailgun_settings = {
+        api_key: API_KEY,
+        domain: MAILGUN_DOMAIN
+  }
+
+config.action_mailer.default_url_options = { :host => "consul-sanpedro.herokuapp.com" }
+
 end
