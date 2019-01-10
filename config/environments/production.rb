@@ -103,16 +103,15 @@ Rails.application.configure do
 
 
   ############################### ACTION MAILER ###############################
-  API_KEY = ENV['MAILGUN_API_KEY']
-  MAILGUN_DOMAIN = ENV['MAILGUN_DOMAIN']
-  API_URL = "https://api:#{API_KEY}@api.mailgun.net/v2/#{MAILGUN_DOMAIN}"
+  ActionMailer::Base.smtp_settings = {
+  :port           => ENV['MAILGUN_SMTP_PORT'],
+  :address        => ENV['MAILGUN_SMTP_SERVER'],
+  :user_name      => ENV['MAILGUN_SMTP_LOGIN'],
+  :password       => ENV['MAILGUN_SMTP_PASSWORD'],
+  :domain         => 'consul-sanpedro.herokuapp.com',
+  :authentication => :plain,
+}
+ActionMailer::Base.delivery_method = :smtp
 
-  config.action_mailer.delivery_method = :mailgun
-  config.action_mailer.mailgun_settings = {
-        api_key: API_KEY,
-        domain: MAILGUN_DOMAIN
-  }
-
-config.action_mailer.default_url_options = { :host => "consul-sanpedro.herokuapp.com" }
 
 end
