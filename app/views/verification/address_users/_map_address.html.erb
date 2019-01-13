@@ -1,0 +1,20 @@
+<%= form.label :map_location, label %>
+<p class="help-text" id="tag-list-help-text"><%= help %></p>
+
+<%= render_map_address(address_user, parent_class, editable = true, remove_marker_label) %>
+
+<%= form.fields_for :address_user, address_user do |m_l_fields| %>
+  <%= m_l_fields.hidden_field :id,
+                              value: address_user.id,
+                              id: map_location_input_id(parent_class, 'id') %>
+  <%= m_l_fields.hidden_field :latitude,
+                              value: address_user.latitude,
+                              id: map_location_input_id(parent_class, 'latitude') %>
+  <%= m_l_fields.hidden_field :longitude,
+                              value: address_user.longitude,
+                              id: map_location_input_id(parent_class, 'longitude') %>
+  <%= m_l_fields.hidden_field :zoom,
+                              value: address_user.zoom,
+                              id: map_location_input_id(parent_class, 'zoom') %>
+
+<% end %>
