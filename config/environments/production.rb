@@ -110,7 +110,7 @@ Rails.application.configure do
      api_key: ENV["mailgun_api_key"],
      domain: ENV["mail_mail_domain"],
     }
-  ############################### ACTION MAILER ###############################
+  ############################### paperclip ###############################
   config.paperclip_defaults = {
       storage: :s3,
       s3_credentials: {

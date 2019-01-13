@@ -48,7 +48,7 @@ module Verification
 
   def level_three_verified?
     return true if skip_verification?
-    verified_at.present?
+    survey.present?
   end
 
   def level_two_or_three_verified?

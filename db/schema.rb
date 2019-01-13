@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190109212648) do
+ActiveRecord::Schema.define(version: 20190113030710) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,6 +29,18 @@ ActiveRecord::Schema.define(version: 20190109212648) do
 
   add_index "activities", ["actionable_id", "actionable_type"], name: "index_activities_on_actionable_id_and_actionable_type", using: :btree
   add_index "activities", ["user_id"], name: "index_activities_on_user_id", using: :btree
+
+  create_table "address_users", force: :cascade do |t|
+    t.integer  "user_id"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.text     "full_address"
+    t.integer  "zoom"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "address_users", ["user_id"], name: "index_address_users_on_user_id", using: :btree
 
   create_table "admin_notification_translations", force: :cascade do |t|
     t.integer  "admin_notification_id", null: false
@@ -1275,6 +1287,26 @@ ActiveRecord::Schema.define(version: 20190109212648) do
   add_index "spending_proposals", ["geozone_id"], name: "index_spending_proposals_on_geozone_id", using: :btree
   add_index "spending_proposals", ["tsv"], name: "index_spending_proposals_on_tsv", using: :gin
 
+  create_table "surveys", force: :cascade do |t|
+    t.integer  "user_id"
+    t.date     "birth_date"
+    t.integer  "genre"
+    t.integer  "school_grade"
+    t.integer  "job"
+    t.integer  "salary"
+    t.integer  "recently_vote"
+    t.integer  "social_work"
+    t.integer  "attend_event"
+    t.integer  "participate_last_year"
+    t.integer  "how_discover"
+    t.string   "promotion_text"
+    t.string   "other_text"
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+  end
+
+  add_index "surveys", ["user_id"], name: "index_surveys_on_user_id", using: :btree
+
   create_table "taggings", force: :cascade do |t|
     t.integer  "tag_id"
     t.integer  "taggable_id"
@@ -1512,6 +1544,7 @@ ActiveRecord::Schema.define(version: 20190109212648) do
     t.datetime "updated_at",             null: false
   end
 
+  add_foreign_key "address_users", "users"
   add_foreign_key "administrators", "users"
   add_foreign_key "annotations", "legacy_legislations"
   add_foreign_key "annotations", "users"
@@ -1550,6 +1583,7 @@ ActiveRecord::Schema.define(version: 20190109212648) do
   add_foreign_key "proposals", "communities"
   add_foreign_key "related_content_scores", "related_contents"
   add_foreign_key "related_content_scores", "users"
+  add_foreign_key "surveys", "users"
   add_foreign_key "users", "geozones"
   add_foreign_key "valuators", "users"
 end

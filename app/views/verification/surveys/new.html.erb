@@ -1,0 +1,87 @@
+<div class="verification account row">
+  <%track_event(category: "verification", action: "success_census" )%>
+  <div class="small-12 column">
+    <div class="text-center">
+
+      <div class="small-4 column verification-step completed">
+        <span class="number">1</span> <%= t("verification.step_1") %>
+      </div>
+      <div class="small-4 column verification-step completed">
+        <span class="number">2</span> <%= t("verification.step_2_confirm_address") %>
+      </div>
+      <div class="small-4 column verification-step is-active">
+        <span class="number">3</span> <%= t("verification.step_2_survey") %>
+      </div>
+    </div>
+
+    <div class="progress small-12 success">
+      <span class="meter" style="width: 66%"></span>
+    </div>
+
+    <%= back_link_to account_path, t("verification.back") %>
+
+    <h4><%= t("verification.survey.new.title") %></h4>
+
+    <%= form_for @survey, as: "survey", url: survey_path do |f| %>
+      <%= render "shared/errors", resource: @survey %>
+
+      <div class="small-12 medium-6">
+        <%= f.date_field :birth_date, class: 'form-control', label: t("verification.survey.new.birth_date") %>
+
+        <%= label_tag "survey[genre]", t("verification.survey.new.genre") %>
+        <%= select_tag "survey[genre]", options_for_select(@genres.collect {|p| [ p['name'], p['value']]}) %>
+
+        <%= label_tag "survey[school_grade]", t("verification.survey.new.school") %>
+        <%= select_tag "survey[school_grade]", options_for_select(@grades.collect {|p| [ p['name'], p['value']]}) %>
+
+        <%= label_tag "survey[job]", t("verification.survey.new.job") %>
+        <%= select_tag "survey[job]", options_for_select(@jobs.collect {|p| [ p['name'], p['value']]}) %>
+
+        <%= label_tag "survey[salary]", t("verification.survey.new.salary") %>
+        <%= select_tag "survey[salary]", options_for_select(@salaries.collect {|p| [ p['name'], p['value']]}) %>
+
+        <%= label_tag "survey[recently_vote]", t("verification.survey.new.recently_vote") %>
+        <%= select_tag "survey[recently_vote]", options_for_select(@votes.collect {|p| [ p['name'], p['value']]}) %>
+
+        <%= label_tag "survey[social_work]", t("verification.survey.new.social_work") %>
+        <%= select_tag "survey[social_work]", options_for_select(@social_work.collect {|p| [ p['name'], p['value']]}) %>
+
+        <%= label_tag "survey[attend_event]", t("verification.survey.new.attend_event") %>
+        <%= select_tag "survey[attend_event]", options_for_select(@attend_event.collect {|p| [ p['name'], p['value']]}) %>
+
+        <%= label_tag "survey[participate_last_year]", t("verification.survey.new.participate_last_year") %>
+        <%= select_tag "survey[participate_last_year]", options_for_select(@participate_last_year.collect {|p| [ p['name'], p['value']]}) %>
+
+        <%= label_tag "survey[how_discover]", t("verification.survey.new.how_discover") %>
+        <%= select_tag "survey[how_discover]", options_for_select(@how_discover.collect {|p| [ p['name'], p['value']]}) %>
+
+        <div class="wich_promotion" style="display:none">
+          <%= f.text_field :promotion_text, label: t("verification.survey.new.promotion_text") %>
+        </div>
+
+        <div class="wich_other" style="display:none">
+          <%= f.text_field :other_text, label: t("verification.survey.new.other_text") %>
+        </div>
+      </div>
+
+      <%= f.submit t("verification.sms.new.submit_button"), class: "button success" %>
+    <% end %>
+  </div>
+</div>
+
+<script type="text/javascript">
+  $('#survey_how_discover').change(function() {
+        // $(this).val() will work here
+        if ($(this).val() == "promotion") {
+          $('.wich_other').hide()
+          $('.wich_promotion').show()
+
+        } else if  ($(this).val() == "other_medium") {
+          $('.wich_other').show()
+          $('.wich_promotion').hide()
+        } else {
+          $('.wich_other').hide()
+          $('.wich_promotion').hide()
+        }
+    });
+</script>
