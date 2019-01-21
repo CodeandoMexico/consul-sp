@@ -94,6 +94,8 @@ es:
             success: Código correcto
     step_1: Residencia
     step_2: SMS de confirmación
+    step_2_survey: Datos Estadísticos
+    step_2_confirm_address: Confirmar Domicilio
     step_3: Verificación final
     user_permission_debates: Participar en debates
     user_permission_info: Al verificar tus datos podrás...
@@ -109,3 +111,22 @@ es:
         phone_title: Teléfonos
         title: Información disponible
         use_another_phone: Utilizar otro teléfono
+    user_address:
+      new:
+        instruction: Si tu dirección aparece en el mapa da click en siguiente, si no aparece, selecciónalo en el mapa y luego da click en siguiente
+        submit_button: Siguiente
+    survey:
+      new:
+        title: Los datos que proporcionen son opcionales y serán utilizados con el fin de medir y evaluar los objetivos del proceso de presupuesto participativo. Los datos generados serán estrictamente confidenciales y en ninguna circunstancia podrán utilizarse para otro fin que no sea estadístico
+        birth_date: Fecha de Nacimiento
+        genre: Género
+        school: Último grado aprobado en la escuela
+        job: Ocupación
+        salary: Promedio de Ingreso Mensual
+        recently_vote: ¿Votaste en las últimas elecciones municipales?
+        social_work: ¿En los últimos doce meses, trabajaste con alguna organización o grupo de vecinos para resolver un problema o mejorar algún aspecto de tu comunidad?
+        attend_event: ¿En los últimos doce meses, participaste en algún evento convocado por la sociedad civil o el gobierno municipal?
+        participate_last_year: ¿Participaste el año pasado en el proceso de presupuesto participativo?
+        how_discover: ¿Cómo te enteraste del presupuesto participativo?
+        promotion_text: Cuál
+        other_text: Cuál
