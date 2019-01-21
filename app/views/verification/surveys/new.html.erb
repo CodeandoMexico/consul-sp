@@ -29,31 +29,31 @@
         <%= f.date_field :birth_date, class: 'form-control', label: t("verification.survey.new.birth_date") %>
 
         <%= label_tag "survey[genre]", t("verification.survey.new.genre") %>
-        <%= select_tag "survey[genre]", options_for_select(@genres.collect {|p| [ p['name'], p['value']]}) %>
+        <%= select_tag "survey[genre]", options_for_select(@genres.collect {|p| [ p['name'], p['value']]}), prompt: "Selecciona" %>
 
         <%= label_tag "survey[school_grade]", t("verification.survey.new.school") %>
-        <%= select_tag "survey[school_grade]", options_for_select(@grades.collect {|p| [ p['name'], p['value']]}) %>
+        <%= select_tag "survey[school_grade]", options_for_select(@grades.collect {|p| [ p['name'], p['value']]}), prompt: "Selecciona" %>
 
         <%= label_tag "survey[job]", t("verification.survey.new.job") %>
-        <%= select_tag "survey[job]", options_for_select(@jobs.collect {|p| [ p['name'], p['value']]}) %>
+        <%= select_tag "survey[job]", options_for_select(@jobs.collect {|p| [ p['name'], p['value']]}), prompt: "Selecciona" %>
 
         <%= label_tag "survey[salary]", t("verification.survey.new.salary") %>
-        <%= select_tag "survey[salary]", options_for_select(@salaries.collect {|p| [ p['name'], p['value']]}) %>
+        <%= select_tag "survey[salary]", options_for_select(@salaries.collect {|p| [ p['name'], p['value']]}), prompt: "Selecciona" %>
 
         <%= label_tag "survey[recently_vote]", t("verification.survey.new.recently_vote") %>
-        <%= select_tag "survey[recently_vote]", options_for_select(@votes.collect {|p| [ p['name'], p['value']]}) %>
+        <%= select_tag "survey[recently_vote]", options_for_select(@votes.collect {|p| [ p['name'], p['value']]}), prompt: "Selecciona" %>
 
         <%= label_tag "survey[social_work]", t("verification.survey.new.social_work") %>
-        <%= select_tag "survey[social_work]", options_for_select(@social_work.collect {|p| [ p['name'], p['value']]}) %>
+        <%= select_tag "survey[social_work]", options_for_select(@social_work.collect {|p| [ p['name'], p['value']]}), prompt: "Selecciona" %>
 
         <%= label_tag "survey[attend_event]", t("verification.survey.new.attend_event") %>
-        <%= select_tag "survey[attend_event]", options_for_select(@attend_event.collect {|p| [ p['name'], p['value']]}) %>
+        <%= select_tag "survey[attend_event]", options_for_select(@attend_event.collect {|p| [ p['name'], p['value']]}), prompt: "Selecciona" %>
 
         <%= label_tag "survey[participate_last_year]", t("verification.survey.new.participate_last_year") %>
-        <%= select_tag "survey[participate_last_year]", options_for_select(@participate_last_year.collect {|p| [ p['name'], p['value']]}) %>
+        <%= select_tag "survey[participate_last_year]", options_for_select(@participate_last_year.collect {|p| [ p['name'], p['value']]}), prompt: "Selecciona" %>
 
         <%= label_tag "survey[how_discover]", t("verification.survey.new.how_discover") %>
-        <%= select_tag "survey[how_discover]", options_for_select(@how_discover.collect {|p| [ p['name'], p['value']]}) %>
+        <%= select_tag "survey[how_discover]", options_for_select(@how_discover.collect {|p| [ p['name'], p['value']]}), prompt: "Selecciona" %>
 
         <div class="wich_promotion" style="display:none">
           <%= f.text_field :promotion_text, label: t("verification.survey.new.promotion_text") %>

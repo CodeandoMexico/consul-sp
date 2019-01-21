@@ -16,7 +16,8 @@ class Verification::AddressUsersController < ApplicationController
     @address_user.user = current_user
     if @address_user.save
       # TODO: mensajes nuevos
-      redirect_to verified_user_path, notice: t('verification.sms.create.flash.success')
+      # redirect_to verified_user_path, notice: t('verification.sms.create.flash.success')
+      redirect_to verified_user_path
     else
       render :new
     end
