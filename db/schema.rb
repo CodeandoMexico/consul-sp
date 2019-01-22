@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190113030710) do
+ActiveRecord::Schema.define(version: 20190121222404) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -329,6 +329,18 @@ ActiveRecord::Schema.define(version: 20190113030710) do
     t.string   "track_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "catastrals", force: :cascade do |t|
+    t.integer  "exped"
+    t.text     "ubic"
+    t.string   "numextubi"
+    t.string   "numintubi"
+    t.string   "colubi"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.float    "latitude"
+    t.float    "longitude"
   end
 
   create_table "ckeditor_assets", force: :cascade do |t|
