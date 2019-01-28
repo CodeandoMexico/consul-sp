@@ -1,7 +1,7 @@
 # catastral = Catastral.find(7665)
 # point = Geokit::LatLng.new(catastral.latitude, catastral.longitude)
 # SECTOR_K1.contains?(point)
-# 
+#
 # Catastral.where(longitude: nil).all.each do |catastro|
 #   begin
 #     catastro.geocode
