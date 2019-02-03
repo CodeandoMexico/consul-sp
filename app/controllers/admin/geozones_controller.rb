@@ -5,6 +5,7 @@ class Admin::GeozonesController < Admin::BaseController
   load_and_authorize_resource
 
   def index
+    @image_map = SiteCustomization::Image.where(name: "map_image").first
     @geozones = Geozone.all.order("LOWER(name)")
   end
 

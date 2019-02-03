@@ -9,6 +9,7 @@ class ProposalsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show, :map, :summary]
   before_action :destroy_map_location_association, only: :update
   before_action :set_view, only: :index
+  before_action :set_image_map, only: [:index, :map]
   before_action :proposals_recommendations, only: :index, if: :current_user
 
   feature_flag :proposals
@@ -142,6 +143,10 @@ class ProposalsController < ApplicationController
 
     def set_view
       @view = (params[:view] == "minimal") ? "minimal" : "default"
+    end
+
+    def set_image_map
+      @image_map = SiteCustomization::Image.where(name: "map_image").first
     end
 
     def destroy_map_location_association

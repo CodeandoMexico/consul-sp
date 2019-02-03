@@ -1,6 +1,15 @@
 <%= form.label :map_location, label %>
 <p class="help-text" id="tag-list-help-text"><%= help %></p>
 
+
+<% coords = Catastral.where(exped: current_user.document_number).first %>
+
+<% if coords.present? && current_user.sector != "MANUAL"%>
+  <% address_user.latitude = coords.latitude %>
+  <% address_user.longitude = coords.longitude %>
+  <% address_user.zoom = 17 %>
+<% end %>
+
 <%= render_map_address(address_user, parent_class, editable = true, remove_marker_label) %>
 
 <%= form.fields_for :address_user, address_user do |m_l_fields| %>

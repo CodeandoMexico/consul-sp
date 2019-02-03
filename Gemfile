@@ -64,6 +64,7 @@ gem "figaro"
 gem 'aws-sdk'
 gem 'geocoder'
 gem 'geokit'
+gem 'enumerize'
 
 
 

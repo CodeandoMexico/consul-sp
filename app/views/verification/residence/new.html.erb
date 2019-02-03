@@ -7,10 +7,10 @@
         <span class="number">1</span> <%= t("verification.step_1") %>
       </div>
       <div class="small-4 column verification-step">
-        <span class="number">2</span> <%= t("verification.step_2") %>
+        <span class="number">2</span> <%= t("verification.step_2_confirm_address") %>
       </div>
       <div class="small-4 column verification-step">
-        <span class="number">3</span> <%= t("verification.step_3") %>
+        <span class="number">3</span> <%= t("verification.step_2_survey") %>
       </div>
     </div>
 
@@ -38,10 +38,6 @@
 
       <div class="row">
         <div class="small-12 medium-8">
-          <div class="small-12 medium-3 column">
-          <%= f.label t("verification.residence.new.document_type_label") %>
-          <%= f.select :document_type, document_types, prompt: "", label: false %>
-          </div>
           <div class="small-12 medium-5 column end">
 
           <div class="inline-block">

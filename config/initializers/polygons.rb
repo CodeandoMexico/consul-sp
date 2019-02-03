@@ -1,5 +1,5 @@
 # catastral = Catastral.find(7665)
-# point = Geokit::LatLng.new(catastral.latitude, catastral.longitude)
+# point = Geokit::LatLng.new(record.latitude, record.longitude)
 # SECTOR_K1.contains?(point)
 #
 # Catastral.where(longitude: nil).all.each do |catastro|
@@ -888,3 +888,21 @@ SECTOR_K6 = Geokit::Polygon.new([
           Geokit::LatLng.new(25.634208, -100.320653),
           Geokit::LatLng.new(25.627272, -100.3207),
           Geokit::LatLng.new(25.627286, -100.320946)])
+
+
+
+  # if SECTOR_K1.contains?(point)
+  #   return "K1"
+  # elsif SECTOR_K2.contains?(point)
+  #   return "K2"
+  # elsif SECTOR_K3.contains?(point)
+  #   return "K3"
+  # elsif SECTOR_K4.contains?(point)
+  #   return "K4"
+  # elsif SECTOR_K5.contains?(point)
+  #   return "K5"
+  # elsif SECTOR_K6.contains?(point)
+  #   return "K6"
+  # else
+  #   return "MANUAL"
+  # end

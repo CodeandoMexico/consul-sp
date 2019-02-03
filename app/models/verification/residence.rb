@@ -8,7 +8,7 @@ class Verification::Residence
   before_validation :retrieve_census_data
 
   validates :document_number, presence: true
-  validates :document_type, presence: true
+  #validates :document_type, presence: true
   validates :date_of_birth, presence: true
   validates :postal_code, presence: true
   validates :terms_of_service, acceptance: { allow_nil: false }
@@ -16,6 +16,7 @@ class Verification::Residence
 
   validate :allowed_age
   validate :document_number_uniqueness
+  validate  :exped_exist
 
   def initialize(attrs = {})
     self.date_of_birth = parse_date('date_of_birth', attrs)
@@ -29,11 +30,12 @@ class Verification::Residence
 
     user.take_votes_if_erased_document(document_number, document_type)
 
+
     user.update(document_number:       document_number,
-                document_type:         document_type,
+                document_type:         '1', #document_type
                 geozone:               geozone,
                 date_of_birth:         date_of_birth.in_time_zone.to_datetime,
-                gender:                gender,
+                sector:                district_code,
                 residence_verified_at: Time.current)
   end
 
@@ -64,20 +66,18 @@ class Verification::Residence
     @census_data.district_code
   end
 
-  def gender
-    @census_data.gender
+  def exped_exist
+    self.errors.add(:document_number, "Este Numero No Existe") unless @census_data.present?
   end
 
   private
 
     def retrieve_census_data
-      @census_data = CensusCaller.new.call(document_type, document_number)
+      @census_data = Catastral.where(exped: document_number).first
     end
 
     def residency_valid?
-      @census_data.valid? &&
-        @census_data.postal_code == postal_code &&
-        @census_data.date_of_birth == date_of_birth
+      @census_data.present?
     end
 
     def clean_document_number

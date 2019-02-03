@@ -11,9 +11,12 @@
           <% end %>
         </ul>
       </div>
-
       <div class="show-for-medium medium-9 column text-center">
-        <%= image_tag("map.jpg", usemap: "#map") %>
+        <% if @image_map.image.exists? %>
+          <%= image_tag @image_map.image.url ,usemap: "#map" %>
+        <% else %>
+          <%= image_tag("map.jpg", usemap: "#map") %>
+        <% end %>
       </div>
 
       <map name="map" id="html_map">

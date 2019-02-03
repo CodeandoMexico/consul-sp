@@ -1,10 +1,19 @@
 class User < ActiveRecord::Base
+  extend Enumerize
 
   include Verification
 
   devise :database_authenticatable, :registerable, :confirmable, :recoverable, :rememberable,
          :trackable, :validatable, :omniauthable, :async, :password_expirable, :secure_validatable,
          authentication_keys: [:login]
+
+  enumerize :sector, in: { K1: 1,
+                           K2: 2,
+                           K3: 3,
+                           K4: 4,
+                           K5: 5,
+                           K6: 6,
+                           MANUAL: 7 }, scope: true
 
   acts_as_voter
   acts_as_paranoid column: :hidden_at
