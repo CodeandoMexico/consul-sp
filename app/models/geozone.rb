@@ -1,11 +1,11 @@
 class Geozone < ActiveRecord::Base
-
+  acts_as_paranoid
   include Graphqlable
 
-  has_many :proposals
-  has_many :spending_proposals
-  has_many :debates
-  has_many :users
+  has_many :proposals, dependent: :destroy
+  has_many :spending_proposals, dependent: :destroy
+  has_many :debates, dependent: :destroy
+  has_many :users, dependent: :destroy
   validates :name, presence: true
 
   scope :public_for_api, -> { all }
@@ -24,3 +24,8 @@ class Geozone < ActiveRecord::Base
     end
   end
 end
+
+
+user = User.where(email: 'user2@consul.dev').first
+
+["user2@consul.dev", "user11@consul.dev", "user18@consul.dev", "user19@consul.dev", "user23@consul.dev"]
