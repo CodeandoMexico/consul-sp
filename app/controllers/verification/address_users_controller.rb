@@ -1,9 +1,12 @@
 # frozen_string_literal: true
 
 class Verification::AddressUsersController < ApplicationController
+  include CustomMethods
+
   before_action :authenticate_user!
   before_action :verify_resident!
   before_action :verify_verified!
+  before_action :set_polygon, only: %i[create]
   before_action :verify_lock, only: %i[new create]
   skip_authorization_check
 
@@ -24,6 +27,31 @@ class Verification::AddressUsersController < ApplicationController
   end
 
   private
+
+  def set_polygon
+    catastral = Catastral.where(exped: current_user.document_number).first
+    latitude = params[:address_user_confirm][:address_user][:latitude]
+    longitude = params[:address_user_confirm][:address_user][:longitude]
+
+    current_location = Geokit::LatLng.new(latitude,longitude)
+    destination = "#{catastral.latitude},#{catastral.longitude}"
+
+    distance = current_location.distance_to(destination)
+
+    return if current_user.sector != 'MANUAL' && distance < 1
+
+    sector = get_polygon(latitude, longitude)
+    current_user.update_column(:sector, sector)
+
+    current_user.geozone = Geozone.where(census_code: sector).first
+    current_user.save!
+    # update catastral info
+    catastral.update_column(:latitude, latitude)
+    catastral.update_column(:longitude, longitude)
+    catastral.update_column(:district_code, sector)
+    catastral.update_column(:registers, (catastral.registers + 1))
+
+  end
 
   def user_address_params
     # params.require(:address_user_confirm).permit(address_user: [:latitude, :longitude, :zoom])

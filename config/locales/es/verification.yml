@@ -50,9 +50,9 @@ es:
         accept_terms_text: Acepto %{terms_url} al Padrón
         accept_terms_text_title: Acepto los términos de acceso al Padrón
         date_of_birth: Fecha de nacimiento
-        document_number: DNI/Pasaporte/Tarjeta de residencia
+        document_number: Numero de expediente catastral
         document_number_help_title: Ayuda
-        document_number_help_text_html: '<strong>DNI</strong>: 12345678A<br> <strong>Pasaporte</strong>: AAA000001<br> <strong>Tarjeta de residencia</strong>: X1234567P'
+        document_number_help_text_html: '<strong>Exped</strong>: 1004004'
         document_type:
           passport: Pasaporte
           residence_card: Tarjeta de residencia
@@ -114,6 +114,7 @@ es:
     user_address:
       new:
         instruction: Si tu dirección aparece en el mapa da click en siguiente, si no aparece, selecciónalo en el mapa y luego da click en siguiente
+        fail_address: No encontramos tu dirección, por favor selecciona en el mapa donde vives y despues presiona siguiente
         submit_button: Siguiente
     survey:
       new:

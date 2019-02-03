@@ -27,6 +27,7 @@ class Verification::Residence
   private
 
     def valid_postal_code?
+      # Zipcode.where(postal_code: postal_code).exists?
       postal_code =~ /^662/ # TODO prefijo de san pedro
     end
 

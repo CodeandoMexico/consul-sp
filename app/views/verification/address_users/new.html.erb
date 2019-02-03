@@ -20,7 +20,11 @@
 
     <%= back_link_to account_path, t("verification.back") %>
     <div class="small-12 column">
-      <h4><%= t("verification.user_address.new.instruction") %></h4>
+      <% if current_user.sector == 'MANUAL' %>
+        <h4 style="color:red"><%= t("verification.user_address.new.fail_address") %></h4>
+      <% else %>
+        <h4><%= t("verification.user_address.new.instruction") %></h4>
+      <% end %>
     </div>
 
     <div class="small-12 column">

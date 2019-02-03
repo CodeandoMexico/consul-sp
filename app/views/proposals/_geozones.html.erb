@@ -2,5 +2,9 @@
 <h2 class="sidebar-title"><%= t("shared.tags_cloud.districts") %></h2>
 <br>
 <%= link_to map_proposals_path, id: 'map', title: t("shared.tags_cloud.districts_list") do %>
-  <%= image_tag("map.jpg", alt: t("shared.tags_cloud.districts_list")) %>
+  <% if @image_map.image.exists? %>
+    <%= image_tag  @image_map.image.url, alt: t("shared.tags_cloud.districts_list") %>
+  <% else %>
+    <%= image_tag("map.jpg", alt: t("shared.tags_cloud.districts_list")) %>
+  <% end %>
 <% end %>
