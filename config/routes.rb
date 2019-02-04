@@ -34,6 +34,7 @@ Rails.application.routes.draw do
   draw :verification
 
   root 'welcome#index'
+
   get '/welcome', to: 'welcome#welcome'
   get '/consul.json', to: "installation#details"
 
