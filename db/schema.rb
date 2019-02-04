@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190203002247) do
+ActiveRecord::Schema.define(version: 20190203032209) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -520,7 +520,10 @@ ActiveRecord::Schema.define(version: 20190203002247) do
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
     t.string   "census_code"
+    t.datetime "deleted_at"
   end
+
+  add_index "geozones", ["deleted_at"], name: "index_geozones_on_deleted_at", using: :btree
 
   create_table "geozones_polls", force: :cascade do |t|
     t.integer "geozone_id"

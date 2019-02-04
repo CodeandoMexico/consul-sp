@@ -22,7 +22,11 @@
     <h1 class="show-for-sr"><%= setting['org_name'] %></h1>
 
     <div class="wrapper <%= yield (:wrapper_class) %>">
-      <%= render 'layouts/header' %>
+      <% if current_user == nil && controller_name == 'welcome' && action_name == 'index' %>
+        <%= render 'layouts/new_user_header' %>
+      <% else %>
+        <%= render 'layouts/header' %>
+      <% end %>
 
       <!--[if lt IE 9]>
       <% if browser.ie? && cookies['ie_alert_closed'] != 'true' %>
@@ -47,11 +51,21 @@
       <%= render 'layouts/flash' %>
 
       <%= yield %>
-      <div class="push"></div>
+      <% if controller_name != 'welcome' %>
+        <div class="push"></div>
+      <% elsif current_user != nil%>
+        <div class="push"></div>
+      <% end %>
     </div>
-    <div class="footer">
-      <%= render 'layouts/footer' %>
-    </div>
+    <% if controller_name != 'welcome' %>
+      <div class="footer">
+        <%= render 'layouts/footer' %>
+      </div>
+    <% elsif current_user != nil%>
+      <div class="footer">
+        <%= render 'layouts/footer' %>
+      </div>
+    <% end %>
   </body>
   <!--[if lt IE 9]>
     <%= javascript_include_tag "ie_lt9" %>
