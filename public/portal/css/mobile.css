@@ -1,0 +1,16 @@
+@media screen and (min-width: 320px) and (max-width:580px) {
+  nav#header {
+      width: -webkit-fill-available;
+  }
+  html,body
+ {
+     width: 100%;
+     height: 100%;
+     margin: 0px;
+     padding: 0px;
+     overflow-x: hidden;
+ }
+  .navbar-ontop {
+      background-color: black !important;
+  }
+}
