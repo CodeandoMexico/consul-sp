@@ -1,4 +1,11 @@
 @media screen and (min-width: 320px) and (max-width:580px) {
+  .aqua.ml-5 {
+    margin-left: 0rem !important;
+  }
+  .animate-in-left.out-of-viewport {
+    opacity: 1;
+    left: 0%;
+  }
   nav#header {
       width: -webkit-fill-available;
   }
@@ -9,6 +16,7 @@
      margin: 0px;
      padding: 0px;
      overflow-x: hidden;
+     position: absolute;
  }
   .navbar-ontop {
       background-color: black !important;
