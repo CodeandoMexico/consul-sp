@@ -462,7 +462,8 @@ pre {
   margin-left: auto; }
   @media (min-width: 576px) {
     .aqua {
-      max-width: 540px; } }
+      max-width: 540px; }
+  }
   @media (min-width: 768px) {
     .aqua {
       max-width: 720px; } }
