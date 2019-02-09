@@ -825,6 +825,7 @@ GEM
     daemons (1.2.6)
     dalli (2.7.9)
     database_cleaner (1.7.0)
+    dbf (3.1.3)
     debug_inspector (0.0.3)
     delayed_job (4.1.5)
       activesupport (>= 3.0, < 5.3)
@@ -1105,6 +1106,11 @@ GEM
     rgeo-activerecord (4.0.5)
       activerecord (~> 4.2)
       rgeo (~> 0.3)
+    rgeo-geojson (0.4.3)
+      rgeo (~> 0.5)
+    rgeo-shapefile (0.4.2)
+      dbf (~> 3.0)
+      rgeo (~> 0.3)
     rinku (2.0.4)
     rollbar (2.18.2)
       multi_json
@@ -1314,6 +1320,8 @@ DEPENDENCIES
   redcarpet (~> 3.4.0)
   responders (~> 2.4.0)
   rgeo
+  rgeo-geojson
+  rgeo-shapefile
   rinku (~> 2.0.2)
   rollbar (~> 2.18.0)
   rspec-rails (~> 3.8)

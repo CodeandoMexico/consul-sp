@@ -373,9 +373,9 @@ ActiveRecord::Schema.define(version: 20190209060446) do
     t.string   "clave"
     t.string   "celular"
     t.string   "apellidos"
-    t.geometry "the_geom",   limit: {:srid=>4326, :type=>"multi_polygon"}
-    t.datetime "created_at",                                               null: false
-    t.datetime "updated_at",                                               null: false
+    t.geometry "the_geom",   limit: {:srid=>0, :type=>"multi_polygon"}
+    t.datetime "created_at",                                            null: false
+    t.datetime "updated_at",                                            null: false
   end
 
   add_index "colonia", ["the_geom"], name: "index_colonia_on_the_geom", using: :gist

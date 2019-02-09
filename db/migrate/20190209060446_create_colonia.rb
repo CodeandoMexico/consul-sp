@@ -13,7 +13,7 @@ class CreateColonia < ActiveRecord::Migration
       t.string :clave
       t.string :celular
       t.string :apellidos
-      t.multi_polygon :the_geom, :srid => 4326
+      t.multi_polygon :the_geom, :srid => 0
 
       t.timestamps null: false
     end
