@@ -66,6 +66,8 @@ gem 'geocoder'
 gem 'geokit'
 gem 'enumerize'
 gem 'rgeo'
+gem 'activerecord-postgis-adapter'
+
 
 
 
