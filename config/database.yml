@@ -1,0 +1,21 @@
+default: &default
+  adapter: postgis
+  encoding: unicode
+  username: <%= ENV['DB_USERNAME'] %>
+  password: <%= ENV['DB_PASSWORD'] %>
+  host: localhost
+  pool: 25
+
+development:
+  <<: *default
+  database: consul_dev
+
+test:
+  <<: *default
+  database: consul_test
+
+production:
+  database: consul_production
+  url: <%= ENV.fetch('DATABASE_URL', '').sub(/^postgres/, "postgis") %>
+  pool: 5
+  timeout: 5000
