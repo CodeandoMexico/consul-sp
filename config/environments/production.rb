@@ -122,4 +122,10 @@ Rails.application.configure do
         s3_host_name: ENV['S3_HOST_NAME']
       }
   }
+
+  ########## CONECTOR DE LA BASE DE DATOS
+  def config.database_configuration
+    parsed = super
+    parsed.each_value { |config| config['adapter'] = 'postgis' }
+  end
 end
