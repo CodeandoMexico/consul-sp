@@ -11,12 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190203032209) do
+ActiveRecord::Schema.define(version: 20190209060446) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "unaccent"
   enable_extension "pg_trgm"
+  enable_extension "postgis"
 
   create_table "activities", force: :cascade do |t|
     t.integer  "user_id"
@@ -358,6 +359,26 @@ ActiveRecord::Schema.define(version: 20190203032209) do
   end
 
   add_index "ckeditor_assets", ["type"], name: "index_ckeditor_assets_on_type", using: :btree
+
+  create_table "colonia", force: :cascade do |t|
+    t.string   "junta_nom"
+    t.string   "nombre_12"
+    t.string   "sector"
+    t.string   "telefono"
+    t.string   "tipo_1"
+    t.string   "forma_de_c"
+    t.string   "distrito"
+    t.string   "direccion"
+    t.string   "correo_ele"
+    t.string   "clave"
+    t.string   "celular"
+    t.string   "apellidos"
+    t.geometry "the_geom",   limit: {:srid=>4326, :type=>"multi_polygon"}
+    t.datetime "created_at",                                               null: false
+    t.datetime "updated_at",                                               null: false
+  end
+
+  add_index "colonia", ["the_geom"], name: "index_colonia_on_the_geom", using: :gist
 
   create_table "comments", force: :cascade do |t|
     t.integer  "commentable_id"
