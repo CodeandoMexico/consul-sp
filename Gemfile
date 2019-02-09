@@ -65,6 +65,7 @@ gem 'aws-sdk'
 gem 'geocoder'
 gem 'geokit'
 gem 'enumerize'
+gem 'rgeo'
 
 
 
