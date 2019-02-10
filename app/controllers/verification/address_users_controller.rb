@@ -7,6 +7,7 @@ class Verification::AddressUsersController < ApplicationController
   before_action :verify_resident!
   before_action :verify_verified!
   before_action :set_polygon, only: %i[create]
+  before_action :set_junta_vecinal, only: %i[create]
   before_action :verify_lock, only: %i[new create]
   skip_authorization_check
 
@@ -51,6 +52,15 @@ class Verification::AddressUsersController < ApplicationController
     catastral.update_column(:district_code, sector)
     catastral.update_column(:registers, (catastral.registers + 1))
 
+  end
+
+  def set_junta_vecinal
+    latitude = params[:address_user_confirm][:address_user][:latitude]
+    longitude = params[:address_user_confirm][:address_user][:longitude]
+    junta_vecinal = Colonium.where("ST_DWithin(the_geom, 'POINT(#{longitude} #{latitude})',0.0000621371)").first
+    user = current_user
+    user.colonium_ids = junta_vecinal.id
+    user.save!
   end
 
   def user_address_params

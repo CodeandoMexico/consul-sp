@@ -13,14 +13,12 @@ class VerificationController < ApplicationController
     def next_step_path(user = current_user)
       if user.organization?
         { path: account_path }
-      elsif user.level_three_verified?
+      elsif user.level_three_verified? # survey completo
         { path: account_path, notice: t('verification.redirect_notices.already_verified') }
-      elsif user.verification_letter_sent?
-        { path: edit_letter_path }
-      elsif user.level_two_verified?
-        { path: new_letter_path } # TODO es el paso del telofono, personalizar verificacion
-      elsif user.verification_sms_sent?
-        { path: new_letter_path }
+      elsif user.level_two_verified? # direccion asignada con catastral
+        { path: new_survey_path } # TODO es el paso del telofono, personalizar verificacion
+      elsif user.residence_verified? #numero de registro lleno
+        { path: new_address_user_path }
       elsif user.verification_email_sent?
         { path: verified_user_path, notice: t('verification.redirect_notices.email_already_sent') }
       elsif user.residence_verified?

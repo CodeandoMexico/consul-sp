@@ -45,7 +45,11 @@ class Verification::Residence
   end
 
   def document_number_uniqueness
-    errors.add(:document_number, I18n.t('errors.messages.taken')) if User.active.where(document_number: document_number).any?
+    if(User.active.where(document_number: document_number).count >= 4)
+      errors.add(:document_number, "No pueden existir mas de 4 registros con este numero")
+    else
+      return true
+    end
   end
 
   def store_failed_attempt

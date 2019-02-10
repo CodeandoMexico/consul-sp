@@ -9,8 +9,8 @@ class Catastral < ActiveRecord::Base
   end
 
   def registers_exceded
-    if self.registers > 5
-      self.errors.add(:registers, "No pueden existir mas de 5 registros con este numero")
+    if self.registers > 4
+      self.errors.add(:registers, "No pueden existir mas de 4 registros con este numero")
     end
   end
 end

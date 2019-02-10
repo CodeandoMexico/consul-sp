@@ -79,6 +79,7 @@ source 'https://rails-assets.org' do
 end
 
 group :development, :test do
+  gem 'meta_request'
   gem 'bullet', '~> 5.7.0'
   gem 'byebug', '~> 10.0.0'
   gem 'factory_bot_rails', '~> 4.8.2'
