@@ -142,8 +142,12 @@
         </div>
 
         <div class="user-permissions small-12 medium-5 column">
+          <% if current_user.colonium.present? %>
+          <h2>Junta Vecinal</h2>
+          <p><%= current_user.colonium.first.junta_nom %></p>
+          <p><h4>Sector: </h4><%= current_user.colonium.first.sector %></p>
           <h2><%= t("account.show.user_permission_title") %></h2>
-
+          <% end %>
           <p><%= t("account.show.user_permission_info") %></p>
 
           <ul>

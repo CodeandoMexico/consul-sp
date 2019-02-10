@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190209060446) do
+ActiveRecord::Schema.define(version: 20190209233943) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -379,6 +379,13 @@ ActiveRecord::Schema.define(version: 20190209060446) do
   end
 
   add_index "colonia", ["the_geom"], name: "index_colonia_on_the_geom", using: :gist
+
+  create_table "colonia_users", id: false, force: :cascade do |t|
+    t.integer "user_id",     null: false
+    t.integer "colonium_id", null: false
+  end
+
+  add_index "colonia_users", ["user_id", "colonium_id"], name: "index_colonia_users_on_user_id_and_colonium_id", using: :btree
 
   create_table "comments", force: :cascade do |t|
     t.integer  "commentable_id"
