@@ -1,5 +1,5 @@
 #rake db:seed:single SEED=presupuesto_2019
-
+# rake db:seed:single SEED=presupuesto_2019
 # K1: 3861861.19
 #
 # K2: 5309576.72

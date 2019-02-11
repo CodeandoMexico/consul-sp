@@ -1,3 +1,9 @@
+<style media="screen">
+    .groups-and-headings .heading {
+      display: inline-flex;
+  }
+</style>
+
 <ul class="no-bullet budget-timeline">
   <% current_budget.published_phases.each do |phase| %>
     <li class="phase <%= 'is-active' if phase == current_budget.current_phase %>">
