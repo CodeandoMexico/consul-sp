@@ -103,7 +103,9 @@
             <li class="my-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit</li>
             <li class="my-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit</li>
             <li class="my-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit</li>
-          </ol> <a class="btn btn-outline-primary mt-4" href="#">PARTICIPA<br></a>
+          </ol>
+          <%= link_to t("devise_views.menu.login_items.signup"),
+              new_user_registration_path, rel: "nofollow", class: "btn btn-outline-primary mt-4" %>
         </div>
       </div>
     </div>
