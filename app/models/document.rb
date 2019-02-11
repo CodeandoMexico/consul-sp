@@ -36,7 +36,7 @@ class Document < ActiveRecord::Base
     self.attachment = if Paperclip::Attachment.default_options[:storage] == :filesystem
                         File.open(cached_attachment)
                       else
-                        URI.parse(cached_attachment)
+                        open("https:#{cached_attachment}")
                       end
   end
 
