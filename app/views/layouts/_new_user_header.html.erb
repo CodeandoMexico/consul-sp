@@ -1,3 +1,20 @@
+<style>
+  @media only screen and (max-width: 768px) {
+    img#logo-nav {
+      max-height: 50px;
+      max-width: 100%;
+      width: auto;
+      height: auto;
+    }
+
+    a.nav-link {
+      color: black;
+      font-size: large;
+      padding: initial
+    }
+  }
+</style>
+
 <head>
   <!-- CSS dependencies -->
   <link rel="stylesheet" href="/portal/css/aquamarine.css">
@@ -13,14 +30,14 @@
 <body class="text-center">
   <nav id=header class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark justify-content-between">
     <div class="navbar-header">
-      <a class="navbar-brand ml-4" href="#" style="">
-        <i class="fa d-inline fa-lg fa-stop-circle"></i>
-        <b> DECIDE SAN PEDRO</b>
-      </a>
+      <%= link_to root_path, accesskey: "0" do %>
+        <%= image_tag(image_path_for('logo_header.png'), id: 'logo-nav', class: 'float-left', alt: t("layouts.header.logo")) %>
+      <% end %>
     </div>
     <div>
-      <button class="navbar-toggler navbar-toggler-right border-0" type="button" data-toggle="collapse" data-target="#navbar10" style="">
-        <span class="navbar-toggler-icon"></span>
+      <button class="btn navbar-btn ml-md-2 btn-light text-dark rounded-0" type="button">
+        <%= link_to t("devise_views.menu.login_items.login"),
+                    new_user_session_path, rel: "nofollow", class: 'nav-link' %>
       </button>
       <div class="collapse navbar-collapse" id="navbar10">
         <ul class="navbar-nav ml-auto">

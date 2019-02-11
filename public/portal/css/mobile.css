@@ -1,4 +1,22 @@
+
+
+@media only screen and (max-width: 768px) {
+  img#logo-nav {
+    max-height: 50px;
+    max-width: 100%;
+    width: auto;
+    height: auto;
+  }
+ }
+
 @media screen and (min-width: 320px) and (max-width:580px) {
+    img#logo-nav {
+      max-height: 50px;
+      max-width: 100%;
+      width: auto;
+      height: auto;
+    }
+
   .aqua.ml-5 {
     margin-left: 0rem !important;
   }
@@ -21,4 +39,5 @@
   .navbar-ontop {
       background-color: black !important;
   }
+
 }
