@@ -12,6 +12,8 @@
 #
 # K6: 4234555.60
 
+require 'csv'
+
 budget = Budget.where(name: "San Pedro 2019").first
 budget.groups.destroy_all
 
@@ -98,3 +100,19 @@ puts "Sector K6 agregado"
 
 # Obtener sectores
 # Optener Juntas Vecinales
+puts "================================================"
+puts "Crear Juntas Vecinales"
+juntas = Budget::Group.where(name: "Juntas Vecinales").first
+CSV.foreach("db/junta_vecinal.csv", headers: true) do |line|
+  junta = juntas.headings.new
+  junta.name = line["Junta__nom"]
+  junta.price = line["Presupuesto"].to_i
+  junta.allow_custom_content = true
+  region = Colonium.where(junta_nom: line["Junta__nom"]).first
+  result = ActiveRecord::Base.connection.execute "select ST_Y(ST_Centroid(the_geom)) AS lat, ST_X(ST_Centroid(the_geom)) AS lon from colonia where id=#{region.id}"
+  junta.latitude = result.first["lat"]
+  junta.longitude = result.first["lon"]
+  junta.save!
+end
+
+puts "JUNTAS TERMINADAS!!"
