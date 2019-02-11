@@ -9,7 +9,6 @@ class VerificationController < ApplicationController
   end
 
   private
-
     def next_step_path(user = current_user)
       if user.organization?
         { path: account_path }

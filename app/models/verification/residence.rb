@@ -26,10 +26,10 @@ class Verification::Residence
   end
 
   def save
+
     return false unless valid?
 
     user.take_votes_if_erased_document(document_number, document_type)
-
 
     user.update(document_number:       document_number,
                 document_type:         '1', #document_type
