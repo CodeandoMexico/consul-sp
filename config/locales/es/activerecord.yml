@@ -119,7 +119,7 @@ es:
         phase: "Fase"
         currency_symbol: "Divisa"
       budget/investment:
-        heading_id: "Partida presupuestaria"
+        heading_id: "Selecciona tu colonia o Sector"
         title: "Título"
         description: "Descripción"
         external_url: "Enlace a documentación adicional"
