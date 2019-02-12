@@ -93,3 +93,32 @@
   font-weight: bold;
   font-style: normal;
 }
+
+@font-face {
+  font-family: 'HKGrotesk';
+  src: font-url('HKGrotesk-Bold.otf');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'HKGrotesk-BoldLegacy';
+  src: font-url('HKGrotesk-BoldLegacy.otf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'HKGrotesk-Light';
+  src: font-url('HKGrotesk-Light.otf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+@font-face {
+  font-family: 'HKGrotesk-MediumLegacy';
+  src: font-url('HKGrotesk-MediumLegacy.otf');
+  font-weight: normal;
+  font-style: normal;
+}
