@@ -118,7 +118,7 @@ es:
         submit_button: Siguiente
     survey:
       new:
-        title: Los datos que proporcionen son opcionales y serán utilizados con el fin de medir y evaluar los objetivos del proceso de presupuesto participativo. Los datos generados serán estrictamente confidenciales y en ninguna circunstancia podrán utilizarse para otro fin que no sea estadístico
+        title: Los datos que proporcionen serán utilizados con el fin de medir y evaluar los objetivos del proceso de presupuesto participativo. Los datos generados serán estrictamente confidenciales y en ninguna circunstancia podrán utilizarse para otro fin que no sea estadístico
         birth_date: Fecha de Nacimiento
         genre: Género
         school: Último grado aprobado en la escuela
