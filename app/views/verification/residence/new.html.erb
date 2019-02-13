@@ -3,6 +3,26 @@
       padding: 5px;
       color: green;
   }
+
+  #error-mensaje .flash_message {
+    padding: 5px;
+    color: red;
+}
+
+div#error-mensaje {
+    color: red;
+    background: #f2dede;
+    color: #a94442;
+    display: inline-block;
+    margin: 0 0.375rem;
+}
+
+div#ine-exist {
+    background: #7bca7d;
+    color: #green;
+    display: inline-block;
+    margin: 0 0.375rem;
+}
 </style>
 
 <div class="verification account row">
@@ -46,6 +66,14 @@
       <H3> Agrega tu INE </H3>
       <%= file_field_tag :image,  accept: 'image/png,image/gif,image/jpeg' %>
       <div id="status-area"></div>
+      <% if @residence.user.errors.messages[:ife].present? %>
+        <div id="error-mensaje">
+          <%= @residence.user.errors.messages[:ife].first %></div>
+      <% else %>
+      <div id="ine-exist">
+        La INE ya fue agregada no es necesario voverla a subir.
+      </div>
+      <% end %>
 
       <div class="row">
         <div class="small-12 medium-8">
@@ -160,4 +188,5 @@
        }
      });
    })
+
 </script>

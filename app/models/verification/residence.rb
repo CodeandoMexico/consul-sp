@@ -17,6 +17,7 @@ class Verification::Residence
   validate :allowed_age
   validate :document_number_uniqueness
   validate  :exped_exist
+  validate  :ife_exist
 
   def initialize(attrs = {})
     self.date_of_birth = parse_date('date_of_birth', attrs)
@@ -74,6 +75,10 @@ class Verification::Residence
     self.errors.add(:document_number, "Este Numero No Existe") unless @census_data.present?
   end
 
+  def ife_exist
+    #self.user.ife.present?
+    self.user.errors.add(:ife, "Tienes que subir tu INE") unless self.user.ife.present?
+  end
   private
 
     def retrieve_census_data
