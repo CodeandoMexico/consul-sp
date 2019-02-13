@@ -1,3 +1,10 @@
+<style media="screen">
+    #status-area .flash_message {
+      padding: 5px;
+      color: green;
+  }
+</style>
+
 <div class="verification account row">
   <%track_event(category: "verification", action: "start_census" )%>
   <div class="small-12 column">
@@ -35,6 +42,10 @@
 
     <%= form_for @residence, as: "residence", url: residence_path do |f| %>
       <%= render "errors" %>
+
+      <H3> Agrega tu INE </H3>
+      <%= file_field_tag :image,  accept: 'image/png,image/gif,image/jpeg' %>
+      <div id="status-area"></div>
 
       <div class="row">
         <div class="small-12 medium-8">
@@ -96,3 +107,57 @@
     <% end %>
   </div>
 </div>
+
+<script type="text/javascript">
+  (function($) {
+    $.fn.flash_message = function(options) {
+
+      options = $.extend({
+        text: 'Done',
+        time: 1000,
+        how: 'before',
+        class_name: ''
+      }, options);
+
+      return $(this).each(function() {
+        if( $(this).parent().find('.flash_message').get(0) )
+          return;
+
+        var message = $('<span />', {
+          'class': 'flash_message ' + options.class_name,
+          text: options.text
+        }).hide().fadeIn('fast');
+
+        $(this)[options.how](message);
+
+        message.delay(options.time).fadeOut('normal', function() {
+          $(this).remove();
+        });
+
+      });
+    };
+})(jQuery);
+
+
+  $('#image').change(function(){
+     var formData = new FormData(),
+         $input = $(this);
+     formData.append('image[image]', $input[0].files[0]);
+     formData.append('user_id',<%= current_user.id %>);
+
+     $.ajax({
+       url: '<%= image_upload_path %>',
+       data: formData,
+       type: 'PUT',
+       cache:false,
+       contentType: false,
+       processData: false,
+       success: function(data){
+         $('#status-area').flash_message({
+             text: 'Se agrego la INE con exito',
+             how: 'append'
+         });
+       }
+     });
+   })
+</script>
