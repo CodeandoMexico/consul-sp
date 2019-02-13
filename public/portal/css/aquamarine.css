@@ -6503,7 +6503,7 @@ body > * {
   transition: background-color .5s ease-out; }
 
 .navbar-ontop {
-  background-color: transparent !important; }
+  background-color: white !important; }
 
 /* Animate on entrance */
 .animate-in-down {

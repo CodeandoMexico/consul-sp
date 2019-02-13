@@ -1,6 +1,6 @@
 <style>
   @media only screen and (max-width: 768px) {
-    img#logo-nav {
+    img#logo-sp {
       max-height: 50px;
       max-width: 100%;
       width: auto;
@@ -13,6 +13,19 @@
       padding: initial
     }
   }
+
+  img#logo-sp {
+    width: 300px;
+  }
+
+  img#municipio {
+    width: 100px;
+    margin-left: 40px
+  }
+
+  .navbar-ontop {
+    background-color: white !important;
+}
 </style>
 
 <head>
@@ -21,21 +34,28 @@
   <link rel="stylesheet" media="(max-width: 600px)" href="/portal/css/mobile.css" />
   <script src="/portal/js/bootstrap.min.js"></script>
   <!-- Script: Make my navbar transparent when the document is scrolled to top -->
-  <script src="/portal/js/navbar-ontop.js"></script>
+  <!--script src="/portal/js/navbar-ontop.js"></script>
   <!-- Script: Animated entrance -->
   <script src="/portal/js/animate-in.js"></script>
 
 </head>
 
 <body class="text-center">
-  <nav id=header class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark justify-content-between">
+  <div class="aqua-fluid py-3 pb-5" style="	height: 110px; background: #eee7e0">
+    <div class="rowo">
+      <div class="col-md-12">
+        <%= image_tag(image_path_for('municipio.png'), id: 'municipio', class: 'float-left', alt: t("layouts.header.logo")) %>
+      </div>
+    </div>
+  </div>
+  <nav id=header class="navbar navbar-expand-lg navbar-dark justify-content-between">
     <div class="navbar-header">
       <%= link_to root_path, accesskey: "0" do %>
-        <%= image_tag(image_path_for('logo_header.png'), id: 'logo-nav', class: 'float-left', alt: t("layouts.header.logo")) %>
+        <%= image_tag(image_path_for('logo-sp.png'), id: 'logo-sp', class: 'float-left', alt: t("layouts.header.logo")) %>
       <% end %>
     </div>
     <div>
-      <button class="btn navbar-btn ml-md-2 btn-light text-dark rounded-0" type="button">
+      <button class="btn rounded-0" type="button" style="font-size: 20px;">
         <%= link_to t("devise_views.menu.login_items.login"),
                     new_user_session_path, rel: "nofollow", class: 'nav-link' %>
       </button>

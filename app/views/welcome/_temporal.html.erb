@@ -21,6 +21,33 @@
   .mb-5.flex-center {
     padding-top: 40px;
   }
+
+  .owl-carousel .item {
+    height: 15rem;
+    padding: 1rem;
+    text-align: -webkit-left;
+
+}
+.owl-carousel .item h4 {
+    color: #FFF;
+    font-weight: 400;
+    margin-top: 1rem;
+    font-family: HKGrotesk-Light !important;
+}
+
+.owl-prev, .owl-next {
+      width: 15px;
+      height: 100px;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      display: block !important;
+      border:0px solid black;
+  }
+  .owl-prev { left: -20px; }
+  .owl-next { right: -20px; }
+  .owl-prev i, .owl-next i {transform : scale(2,5); color: #ccc;}
+
 </style>
 <head>
   <meta charset="utf-8">
@@ -37,10 +64,46 @@
   <script src="/portal/js/navbar-ontop.js"></script>
   <!-- Script: Animated entrance -->
   <script src="/portal/js/animate-in.js"></script>
-</head>
+  <!--Carrousel -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.0/owl.carousel.min.js"></script>
+  <script src="/portal/js/tworows.js"></script>
 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.0/assets/owl.theme.default.min.css" type="text/css">
+  <link rel="stylesheet" href="/portal/css/owl.carousel.min.css" type="text/css">
+</head>
+<style media="screen">
+  .owl-theme .owl-nav [class*=owl-] {
+    background: none;
+    margin: -10px;
+    color: #67bbc0;
+  }
+  .owl-theme .owl-nav [class*=owl-]:hover {
+    color: #67bbc0;
+    background: none;
+}
+  i.fa.fa-angle-left {
+      font-size: x-large;
+  }
+
+  i.fa.fa-angle-right {
+      font-size: x-large;
+  }
+
+  .owl-prev i, .owl-next i {
+    transform: scale(2,5);
+    color: #67bbc0;
+  }
+
+  a.btn.btn-lg.mt-4.btn-outline-light {
+    background: white;
+    color: #55c8cb;
+    font-family: HKGrotesk-Light;
+    border-radius: inherit;
+    font-size: x-large;
+}
+</style>
   <!-- Cover -->
-  <div class="d-flex align-items-center text-center section-aquamarine py-5 cover" style="background-image: url(&quot;custom_images/cover.jpg&quot;);">
+  <div class="d-flex align-items-center text-center py-5 cover" style="background-position: center;background-size: cover; background-image: url(&quot;custom_images/cover1.jpg&quot;);">
     <div class="aqua">
       <div class="rowo">
         <div class="col-lg-12 text-white mt-5">
@@ -66,7 +129,7 @@
                   /* margin-right: 100px; */
               ">Que tus buenas ideas no se queden en buenas intenciones. </p>
           </div>
-          <a href="#instrucciones" class="btn btn-lg mt-4 btn-outline-light">PARTICIPA</a><i class="d-block fa fa-angle-down pt-5 fa-3x"></i>
+          <a href="#instrucciones" class="btn btn-lg mt-4 btn-outline-light">PARTICIPA</a>
         </div>
       </div>
     </div>
@@ -84,27 +147,43 @@
     <div class="aqua-fluid">
       <div class="rowo">
         <div class="col-md-12 m-0 mx-0">
-          <p contenteditable="true" class="lead m-4 mx-5">El Programa de Presupuesto Participativo del Municipio es el instrumento de participación ciudadana a través del cual los ciudadanos del Municipio, de manera organizada y corresponsable, deciden el destino de una parte del Presupuesto de Egresos del Municipio.</p>
+          <p contenteditable="true" class="lead m-4 mx-5">San Pedro Decide 2019 es la nueva plataforma del Programa de Presupuesto Participativo
+
+municipal, donde tú propones y decides qué proyectos se van a llevar a cabo
+
+en tu comunidad.</p>
         </div>
       </div>
       <div class="rowo">
         <div class="col-6 col-lg-4 animate-in-left">
           <a href="#">
-            <img src="custom_images/people_1.jpg" class="center-block img-fluid my-3 rounded-circle" width="300">
+            <h3 class="mb-0"><b>&lt;Conoce&gt;</b></h3>
+            <span class="icona-lupa my-3" style="
+                font-size: 300px;
+                color: #ffa81e;
+            "></span>
             <h3 class="mb-0"><b>&lt;PROPUESTAS&gt;</b></h3>
             <p class="m-2 mx-5 text-center">&lt;Lorem ipsum dolor sit amet, consectetur adipiscing eli consectetur adipiscing eli.t&gt;</p>
           </a>
         </div>
         <div class="col-6 col-lg-4 animate-in-left">
           <a href="#">
-            <img src="custom_images/people_1.jpg" class="center-block img-fluid my-3 rounded-circle" width="300">
-            <h3 class="mb-0"><b>&lt;APOYO&gt;</b></h3>
+            <h3 class="mb-0"><b>&lt;Registra&gt;</b></h3>
+            <span class="icona-papel my-3" style="
+                font-size: 300px;
+                color: #00ae56;
+            "></span>
+            <h3 class="mb-0"><b>&lt;Decide&gt;</b></h3>
             <p class="m-2 mx-5 text-center">&lt;Lorem ipsum dolor sit amet, consectetur adipiscing eli consectetur adipiscing eli.t&gt;</p>
           </a>
         </div>
         <div class="col-6 col-lg-4 animate-in-left">
           <a href="#">
-            <img src="custom_images/people_1.jpg" class="center-block img-fluid my-3 rounded-circle" width="300">
+            <h3 class="mb-0"><b>&lt;Decide&gt;</b></h3>
+            <span class="icona-dedo my-3" style="
+                font-size: 300px;
+                color: #67bbc0;
+            "></span>
             <h3 class="mb-0"><b>&lt;DECIDE&gt;</b></h3>
             <p class="m-2 mx-5 text-center">&lt;Lorem ipsum dolor sit amet, consectetur adipiscing eli consectetur adipiscing eli.t&gt;</p>
           </a>
@@ -117,27 +196,25 @@
     <div class="aqua">
       <div class="row">
         <div class="bg-white p-5 mx-auto col-md-8 col-10">
+          <style media="screen">
+            i.icona-libro, i.icona-calendario, i.icona-salvavidas{
+                font-size: 100px;
+                position: relative;
+                top: 30px;
+            }
+
+            li.list-group-item {
+                text-align: -webkit-auto;
+            }
+          </style>
           <h1>¿CÓMO PARTICIPAR?</h1>
-          <ol class="" type="I">
-            <li class="my-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit</li>
-            <li class="my-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit</li>
-            <li class="my-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit</li>
-          </ol>
+          <ul class="list-group list-group-flush" >
+             <li class="list-group-item"><i class="icona-libro text-primary mr-2"></i><a style="font-size: 20px;">Descarga la guía práctica</a></li>
+             <li class="list-group-item"><i class="icona-calendario text-primary mr-2"></i><a style="font-size:  20px;">Conoce nuestro calendario de eventos</a></li>
+             <li class="list-group-item"><i class="icona-salvavidas text-primary mr-2"></i><a style="font-size:  20px;">Solicita el apoyo de un asesor urbano</a></li>
+           </ul>
           <%= link_to t("devise_views.menu.login_items.signup"),
               new_user_registration_path, rel: "nofollow", class: "btn btn-outline-primary mt-4" %>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- Sponsor logos -->
-  <div class="py-5 text-center text-white" style="background-image: linear-gradient(to bottom, rgba(0, 0, 0, .75), rgba(0, 0, 0, .75)), url(https://static.pingendo.com/cover-bubble-dark.svg);  background-position: center center, center center;  background-size: cover, cover;  background-repeat: repeat, repeat;">
-    <div class="aqua">
-      <div class="row">
-        <div class="col-md-8 mx-auto">
-          <h1 class="mb-3">GUÍA PARA EL CIUDADANO</h1>
-          <div class="embed-responsive embed-responsive-16by9">
-            <iframe src="https://www.youtube.com/embed/bAX4sckx5l0?controls=0" allowfullscreen="" class="embed-responsive-item"></iframe>
-          </div>
         </div>
       </div>
     </div>
@@ -153,14 +230,15 @@
   <div class="py-5 section bg-faded bg-light text-center">
     <div class="aqua">
       <div class="rowo">
-        <div class="col-md-3 col-6">
-          <img class="center-block img-fluid d-block" src="custom_images/logo_1.png"> </div>
-        <div class="col-md-3 col-6">
-          <img class="center-block img-fluid d-block" src="custom_images/logo_1.png"> </div>
-        <div class="col-md-3 col-6">
-          <img class="center-block img-fluid d-block" src="custom_images/logo_1.png"> </div>
-        <div class="col-md-3 col-6">
-          <img class="center-block img-fluid d-block" src="custom_images/logo_1.png"> </div>
+        <div class="owl-carousel owl-theme">
+            <div class="item" style="background: #00ae56;"><h4>Datos sobre tu colonia, sector y el municipio.</h4></div>
+            <div class="item" style="background: #fdb14b;"><h4>Historias de Presupuestos participativos en el mundo</h4></div>
+            <div class="item" style="background: #79c3c6;"><h4>Reglamento de PC de SPGG</h4></div>
+            <div class="item" style="background: #79c3c6;"><h4>Casos complicados de San Pedro</h4></div>
+            <div class="item" style="background: #fdb14b;"><h4>Mapa de quioscos para la votación el 7 de abril</h4></div>
+            <div class="item" style="background: #00ae56;"><h4>Casos exitosos de San Pedro</h4></div>
+            <div class="item" style="background: #79c3c6;"><h4>Información sobre las ediciones anteriores de presupuesto participativo</h4></div>
+        </div>
       </div>
     </div>
   </div>
@@ -206,3 +284,28 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
   <!-- Script: Smooth scrolling between anchors in the same page -->
   <script src="/portal/js/smooth-scroll.js" style=""></script>
+  <script type="text/javascript">
+    $('.owl-carousel').owlCarousel({
+        margin:10,
+        loop:true,
+        dots: false,
+        navText: [
+        "<i class='fa fa-angle-left'></i>",
+        "<i class='fa fa-angle-right'></i>"
+        ],
+        owl2row: true,
+        nav: true,
+        responsive:{
+            0:{
+                items:1,
+                dots: true
+            },
+            600:{
+                items:2
+            },
+            1000:{
+                items:4
+            }
+        }
+    })
+  </script>
