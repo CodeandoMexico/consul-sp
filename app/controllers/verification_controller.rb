@@ -16,7 +16,7 @@ class VerificationController < ApplicationController
         { path: account_path, notice: t('verification.redirect_notices.already_verified') }
       elsif user.level_two_verified? # direccion asignada con catastral
         { path: new_survey_path } # TODO es el paso del telofono, personalizar verificacion
-      elsif user.residence_verified? #numero de registro lleno
+      elsif user.residence_verified? && user.ife.present? #numero de registro lleno
         { path: new_address_user_path }
       elsif user.verification_email_sent?
         { path: verified_user_path, notice: t('verification.redirect_notices.email_already_sent') }
