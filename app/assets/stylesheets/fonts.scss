@@ -122,3 +122,60 @@
   font-weight: normal;
   font-style: normal;
 }
+
+@font-face {
+  font-family: 'HKGrotesk-MediumLegacy';
+  src: font-url('HKGrotesk-MediumLegacy.otf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'icomoon';
+  src:  url('icomoon.eot?yd1vww');
+  src:  url('icomoon.eot?yd1vww#iefix') format('embedded-opentype'),
+    url('icomoon.ttf?yd1vww') format('truetype'),
+    url('icomoon.woff?yd1vww') format('woff'),
+    url('icomoon.svg?yd1vww#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icona-"],  [class*="icona-"]{
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icona-lupa:before {
+  content: "\e900";
+}
+
+.icona-papel:before {
+  content: "\e901";
+}
+
+.icona-dedo:before {
+  content: "\e902";
+}
+
+.icona-libro:before {
+  content: "\e903";
+}
+
+.icona-calendario:before {
+  content: "\e904";
+}
+
+.icona-salvavidas:before {
+  content: "\e905";
+}
