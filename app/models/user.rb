@@ -46,7 +46,7 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :colonium
   belongs_to :geozone
   has_attached_file :ife, styles: { medium: "300x300>" }, default_url: "/images/:style/missing.png"
-  validates_attachment_content_type :ife, content_type: /\Aimage\/.*\z/
+  #validates_attachment_content_type :ife, content_type: /\Aimage\/.*\z/
 
 
   validates :username, presence: true, if: :username_required?
