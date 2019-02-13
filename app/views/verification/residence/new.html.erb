@@ -66,14 +66,16 @@ div#ine-exist {
       <H3> Agrega tu INE </H3>
       <%= file_field_tag :image,  accept: 'image/png,image/gif,image/jpeg' %>
       <div id="status-area"></div>
-      <% if @residence.user.try.errors.messages[:ife].present? %>
+    <%if @residence.user.present? %>
+      <% if @residence.user.errors.messages[:ife].present? %>
         <div id="error-mensaje">
-          <%= @residence.user.try.errors.messages[:ife].first %></div>
+          <%= @residence.user.errors.messages[:ife].first %></div>
       <% else %>
       <div id="ine-exist">
         La INE ya fue agregada no es necesario voverla a subir.
       </div>
       <% end %>
+    <% end %>
 
       <div class="row">
         <div class="small-12 medium-8">
