@@ -36,8 +36,13 @@
      overflow-x: hidden;
      position: absolute;
  }
-  .navbar-ontop {
-      background-color: black !important;
+ button.btn.rounded-0 {
+   background: #3cc1c6;
   }
-
+  a.nav-link {
+    color: white;
+}
+img#logo-sp {
+    width: unset;
+}
 }
