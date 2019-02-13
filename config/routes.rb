@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'api/image_upload'
+
   mount Ckeditor::Engine => '/ckeditor'
 
   if Rails.env.development? || Rails.env.staging?
@@ -37,6 +39,10 @@ Rails.application.routes.draw do
 
   get '/welcome', to: 'welcome#welcome'
   get '/consul.json', to: "installation#details"
+
+
+  #API TO UPLOAD THE IFE
+  put 'api/image_upload' => 'api#image_upload', as: :image_upload
 
   resources :stats, only: [:index]
   resources :images, only: [:destroy]
