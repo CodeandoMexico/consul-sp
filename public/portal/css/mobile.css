@@ -45,4 +45,11 @@
 img#logo-sp {
     width: unset;
 }
+
+
+span.icona-lupa.my-3 {
+    font-size: 200px !important;
+    /* font-size: 300px; */
+    color: #ffa81e;
+}
 }
