@@ -52,6 +52,9 @@ class Budget
     validates :description, length: { maximum: Budget::Investment.description_max_length }
     validates :terms_of_service, acceptance: { allow_nil: false }, on: :create
 
+    validate :limit_sectors_proposals
+    validate :limiter_conlonia_proposals
+
     scope :sort_by_confidence_score, -> { reorder(confidence_score: :desc, id: :desc) }
     scope :sort_by_ballots,          -> { reorder(ballot_lines_count: :desc, id: :desc) }
     scope :sort_by_price,            -> { reorder(price: :desc, confidence_score: :desc, id: :desc) }
@@ -350,6 +353,34 @@ class Budget
 
     def milestone_status_id
       milestones.published.with_status.order_by_publication_date.last&.status_id
+    end
+
+    def limit_sectors_proposals
+      if self.group.slug == 'sectores'
+         group_id = self.group_id
+         user_id = self.author.id
+         all_proposals = []
+
+         self.author.budget_investments.each do |budget|
+             all_proposals << budget.group_id
+         end
+
+         errors.add(:heading_id, "ya creaste una propuesta para este sector") if all_proposals.include? group_id
+       end
+    end
+
+    def limiter_conlonia_proposals
+      if self.group.slug == 'juntas-vecinales'
+         group_id = self.group_id
+         user_id = self.author.id
+         all_proposals = []
+
+         self.author.budget_investments.each do |budget|
+             all_proposals << budget.group_id
+         end
+
+         errors.add(:heading_id, "ya creaste una propuesta para esta colonia") if all_proposals.include? group_id
+       end
     end
 
     private
