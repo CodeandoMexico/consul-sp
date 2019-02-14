@@ -127,8 +127,9 @@ class Budget < ActiveRecord::Base
 
   def formatted_amount(amount)
     ActionController::Base.helpers.number_to_currency(amount,
-                                                      precision: 0,
-                                                      locale: I18n.locale,
+                                                      separator: '.',
+                                                      delimiter: ",",
+                                                      format: "%u %n",
                                                       unit: currency_symbol)
   end
 
