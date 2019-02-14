@@ -51,4 +51,14 @@ span.icona-lupa.my-3, span.icona-papel.my-3, span.icona-dedo.my-3 {
     font-size: 200px !important;
     /* font-size: 300px; */
 }
+
+.center-table-element {
+    width: 100%;
+    height: fit-content;
+}
+
+p.m-2.mx-5.text-center {
+    margin-left: 14% !important;
+    padding-left: 20%;
+}
 }
