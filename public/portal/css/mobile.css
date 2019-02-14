@@ -53,8 +53,8 @@ span.icona-lupa.my-3, span.icona-papel.my-3, span.icona-dedo.my-3 {
 }
 
 .center-table-element {
-    width: 100%;
-    height: fit-content;
+    width: 110%;
+    height: 240px;
 }
 
 p.m-2.mx-5.text-center {
