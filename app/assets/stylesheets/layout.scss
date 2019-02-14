@@ -85,7 +85,7 @@ a {
 }
 
 .button {
-  background: $brand;
+  background: #6C6E72;
   font-size: $base-font-size;
 
   &:hover {
@@ -482,7 +482,7 @@ header {
 
 .top-bar {
   background: $brand !important;
-  color: #fff;
+  color: #6C6E72;
   padding-bottom: 0;
   padding-top: 0;
 
@@ -499,7 +499,7 @@ header {
     padding: 0;
 
     a {
-      color: #fff;
+      color: #6C6E72;
       display: inline-block;
       font-family: 'Lato' !important;
       font-size: rem-calc(24);
@@ -531,7 +531,7 @@ header {
     }
 
     a {
-      color: #fff;
+      color: #6C6E72;
       padding-left: 0;
 
       @include breakpoint(medium) {
@@ -1262,7 +1262,7 @@ form {
   }
 
   .icon-circle {
-    color: #ecf00b;
+    color: #44c1c6;
     font-size: rem-calc(10);
     position: absolute;
     left: 12px;
