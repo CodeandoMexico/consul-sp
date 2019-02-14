@@ -657,10 +657,12 @@ header {
 }
 
 .subnavigation {
+  color: white !important;
 
   @include breakpoint(medium) {
-    background: #fff;
+    background: #6C6E72;
     padding-bottom: 0;
+    color: white !important;
   }
 
   ul {
@@ -676,7 +678,7 @@ header {
   }
 
   a {
-    color: #fff;
+    color: white !important;
     display: inline-block;
     line-height: $line-height * 2;
     position: relative;
