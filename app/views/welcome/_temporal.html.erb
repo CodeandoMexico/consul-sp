@@ -15,6 +15,10 @@
     margin-left: -15px;
   }
 
+    .bg-dark.aqua-fluid.py-3.pb-5.text-center {
+      background: #6b6e72!important;
+      /* font-family: inherit; */
+  }
   .col-md-9.col-lg-8.align-items-start.d-flex.ml-4 {
     padding: 40px;
   }
@@ -48,6 +52,33 @@
   .owl-next { right: -20px; }
   .owl-prev i, .owl-next i {transform : scale(2,5); color: #ccc;}
 
+  .center-table-element {
+      background: #ec7474;
+      width: 50%;
+      height: 25%;
+      margin-left: auto;
+      margin-right: auto;
+      display: block;
+  }
+
+  #inside-box{
+    text-align: center;
+    vertical-align: middle;
+    line-height: 90px;
+    font-family: HKGrotesk;
+    color: white;
+  }
+
+  h3.mb-0 {
+    height: 60px;
+  }
+
+  p.m-2.mx-5.text-center {
+    font-family: HKGrotesk-MediumLegacy;
+    width: 100p;
+    color: white;
+    /* font-stretch: semi-condensed; */
+}
 </style>
 <head>
   <meta charset="utf-8">
@@ -137,7 +168,9 @@
   <div class="bg-dark aqua-fluid py-3 pb-5 text-center" style="	height: 43px;">
     <div class="rowo">
       <div class="mx-auto col-md-12">
-        <h1>¿QUÉ ES DECIDE SP?</h1>
+        <h1 style="
+    font-family: HKGrotesk !important;
+">¿QUÉ ES DECIDE SP?</h1>
       </div>
     </div>
   </div>
@@ -156,38 +189,50 @@ en tu comunidad.</p>
       </div>
       <div class="rowo">
         <div class="col-6 col-lg-4 animate-in-left">
-          <a href="#">
-            <h3 class="mb-0"><b>&lt;Conoce&gt;</b></h3>
-            <span class="icona-lupa my-3" style="
-                font-size: 300px;
-                color: #ffa81e;
-            "></span>
-            <h3 class="mb-0"><b>&lt;PROPUESTAS&gt;</b></h3>
-            <p class="m-2 mx-5 text-center">&lt;Lorem ipsum dolor sit amet, consectetur adipiscing eli consectetur adipiscing eli.t&gt;</p>
-          </a>
+          <div class="center-table-element" style="
+                background: #ffa81e;
+            ">
+            <h3 class="mb-0"><b id="inside-box">Conoce</b></h3>
+            <p class="m-2 mx-5 text-center">15 Feb - 15 de Marzo</p>
+          </div>
+          <span class="icona-lupa my-3" style="
+              font-size: 300px;
+              color: #ffa81e;
+          "></span>
+          <p class="m-2 mx-5 text-center"  style="color: black;font-family: HKGrotesk-Light">Descarga la guía práctica
+                    con toda la información sobre cómo participar.</p>
         </div>
         <div class="col-6 col-lg-4 animate-in-left">
-          <a href="#">
-            <h3 class="mb-0"><b>&lt;Registra&gt;</b></h3>
-            <span class="icona-papel my-3" style="
-                font-size: 300px;
-                color: #00ae56;
-            "></span>
-            <h3 class="mb-0"><b>&lt;Decide&gt;</b></h3>
-            <p class="m-2 mx-5 text-center">&lt;Lorem ipsum dolor sit amet, consectetur adipiscing eli consectetur adipiscing eli.t&gt;</p>
-          </a>
+          <div class="center-table-element" style="
+                background: #00ae56;
+            ">
+            <h3 class="mb-0"><b id="inside-box">Registra</b></h3>
+            <p class="m-2 mx-5 text-center">16 Marzo - 28 de Abril</p>
+
+          </div>
+          <span class="icona-papel my-3" style="
+              font-size: 300px;
+              color: #00ae56;
+          "></span>
+          <p class="m-2 mx-5 text-center" style="color: black;font-family: HKGrotesk-Light">Regístrate en la plataforma y
+sube tu propuesta o comenta
+en las propuestas de tu
+
+comunidad.</p>
         </div>
         <div class="col-6 col-lg-4 animate-in-left">
-          <a href="#">
-            <h3 class="mb-0"><b>&lt;Decide&gt;</b></h3>
-            <span class="icona-dedo my-3" style="
+          <div class="center-table-element" style="
+                background: #67bbc0;
+            ">
+            <h3 class="mb-0"><b id="inside-box">Decide</b></h3>
+            <p class="m-2 mx-5 text-center">29 Abril - 10 de Mayo</p>
+          </div>
+             <span class="icona-dedo my-3" style="
                 font-size: 300px;
                 color: #67bbc0;
             "></span>
-            <h3 class="mb-0"><b>&lt;DECIDE&gt;</b></h3>
-            <p class="m-2 mx-5 text-center">&lt;Lorem ipsum dolor sit amet, consectetur adipiscing eli consectetur adipiscing eli.t&gt;</p>
-          </a>
-        </div>
+            <p class="m-2 mx-5 text-center"  style="color: black; font-family: HKGrotesk-Light">Vota por tus propuestas favoritas.</p>
+         </div>
       </div>
     </div>
   </div>
@@ -207,7 +252,7 @@ en tu comunidad.</p>
                 text-align: -webkit-auto;
             }
           </style>
-          <h1>¿CÓMO PARTICIPAR?</h1>
+          <h1 >¿CÓMO PARTICIPAR?</h1>
           <ul class="list-group list-group-flush" >
              <li class="list-group-item"><i class="icona-libro text-primary mr-2"></i><a style="font-size: 20px;">Descarga la guía práctica</a></li>
              <li class="list-group-item"><i class="icona-calendario text-primary mr-2"></i><a style="font-size:  20px;">Conoce nuestro calendario de eventos</a></li>
@@ -223,7 +268,9 @@ en tu comunidad.</p>
   <div class="bg-dark aqua-fluid py-3 pb-5 text-center" style="	height: 43px;">
     <div class="rowo">
       <div class="mx-auto col-md-12">
-        <h1 contenteditable="true">CONOCE MÁS</h1>
+        <h1 contenteditable="true" style="
+    font-family: HKGrotesk !important;
+">CONOCE MÁS</h1>
       </div>
     </div>
   </div>
@@ -238,17 +285,6 @@ en tu comunidad.</p>
             <div class="item" style="background: #fdb14b;"><h4>Mapa de quioscos para la votación el 7 de abril</h4></div>
             <div class="item" style="background: #00ae56;"><h4>Casos exitosos de San Pedro</h4></div>
             <div class="item" style="background: #79c3c6;"><h4>Información sobre las ediciones anteriores de presupuesto participativo</h4></div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- Call to action -->
-  <div class="section-aquamarine py-3 mr-auto" id="register">
-    <div class="aqua ml-5">
-      <div class="rowo">
-        <div class="col-md-12 text-md-left text-center">
-          <h3 class="text-white">Sobre Decide San Pedro</h3>
-          <h4>Participa</h4>
         </div>
       </div>
     </div>
