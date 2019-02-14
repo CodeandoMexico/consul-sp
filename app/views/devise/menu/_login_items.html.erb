@@ -1,3 +1,11 @@
+<style media="screen">
+  .top-bar .menu > li .button {
+    background: #fff;
+    color: #312e2b;
+    text-align: center;
+}
+</style>
+
 <% if user_signed_in? %>
   <li>
     <%= layout_menu_link_to t("layouts.header.my_activity_link"),
