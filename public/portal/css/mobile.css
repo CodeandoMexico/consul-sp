@@ -70,5 +70,14 @@ h1#rowo-child{
   height: 50px;
   text-align: center;
 }
+i.icona-libro.text-primary.mr-2 {
+  display: table-cell;
+}
+i.icona-calendario.text-primary.mr-2 {
+    display: table-cell;
+}
 
+i.icona-salvavidas.text-primary.mr-2 {
+    display: table-cell;
+}
 }
