@@ -1,4 +1,15 @@
 <style media="screen">
+  #footer_2{
+    background: #e8e8e8;
+  }
+
+  .footer_img{
+    max-height: 50px !important;
+    max-width: 100% !important;
+    width: auto;
+    height: auto;
+  }
+
   body
     {
         width: 100%;
@@ -289,33 +300,23 @@ comunidad.</p>
       </div>
     </div>
   </div>
-  <!-- Footer -->
-  <footer class="text-md-left text-center bg-dark text-light">
-    <div class="rowo">
-      <div class="col-md-9 col-lg-8 align-items-start d-flex ml-4">
-        <h3>DECIDE SAN PEDRO<br></h3>
-      </div>
-      <div class="ml-0 col-lg-3" >
-        <div class="mb-5 flex-center">
-          <!-- Facebook -->
-          <a class="fb-ic">
-            <i class="icon-facebook white-text mr-md-5 mr-3 fa-2x">
-            </i>
-          </a>
-          <!-- Twitter -->
-          <a class="tw-ic">
-            <i class="icon-twitter white-text mr-md-5 mr-3 fa-2x">
-            </i>
-          </a>
-          <!-- Github -->
-          <a class="tw-ic">
-            <i class="icon-instagram white-text mr-md-5 mr-3 fa-2x">
-            </i>
-          </a>
-        </div>
+  <!-- Footer 2 -->
+  <div class="container text-center" id="footer_2">
+  <div class="row justify-content-center">
+    <%= image_tag('/custom_images/footer.png', :class => "footer_img") %>
+  </div>
+  <div class="row">
+    <div class="mx-auto col-md-8">
+      <p class="mb-4"> Este programa es público, ajeno a cualquier partido político. Queda prohibido el uso para fines distintos a los establecidos en el programa</p>
+      <div class="row text-muted justify-content-center">
+        <div class="col-md-2 col-4 p-2"> <i class="d-block fa fa-twitter fa-3x"></i> </div>
+        <div class="col-md-2 col-4 p-2"> <i class="d-block fa fa-instagram fa-3x"></i> </div>
+        <div class="col-md-2 col-4 p-2"> <i class="d-block fa fa-facebook fa-3x"></i> </div>
       </div>
     </div>
-  </footer>
+  </div>
+</div>
+  <!-- Footer -->
   <!-- JavaScript dependencies -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
   <!-- Script: Smooth scrolling between anchors in the same page -->
