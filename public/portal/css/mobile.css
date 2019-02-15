@@ -61,4 +61,13 @@ p.m-2.mx-5.text-center {
     margin-left: 14% !important;
     padding-left: 20%;
 }
+
+h1#rowo-child{
+  font-size: 100% !important;
+  font-family: HKGrotesk !important;
+  vertical-align: middle;
+  display: table-cell;
+  height: 50px;
+}
+
 }
