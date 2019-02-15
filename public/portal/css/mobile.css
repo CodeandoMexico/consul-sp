@@ -87,4 +87,8 @@ i.icona-calendario.text-primary.mr-2 {
 i.icona-salvavidas.text-primary.mr-2 {
     display: table-cell;
 }
+
+  #inside-box {
+      font-size: medium;
+  }
 }
