@@ -73,9 +73,9 @@ es:
       select_user: Seleccionar usuario
     permissions:
       create_proposals: Crear nuevas propuestas
-      debates: Participar en debates
+      debates: Ver propuestas
       support_proposals: Apoyar propuestas
-      vote_proposals: Participar en las votaciones finales
+      vote_proposals: Votar por propuestas
     print:
       proposals_info: Haz tu propuesta en http://url.consul
       proposals_title: 'Propuestas:'
