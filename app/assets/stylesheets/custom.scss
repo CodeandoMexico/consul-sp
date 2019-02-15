@@ -38,6 +38,14 @@ a {
     color: #2a2b2d;
 }
 
+.expanded.budget {
+    background-image: url(https://i.imgur.com/amTJT5g.jpg);
+}
+
+.expanded.budget .info {
+    background: #0c666b59;
+}
+
 @media (min-width: 576px) {
   .cover {
     height: 356px; }
