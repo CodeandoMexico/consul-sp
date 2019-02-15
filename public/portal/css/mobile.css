@@ -63,11 +63,12 @@ p.m-2.mx-5.text-center {
 }
 
 h1#rowo-child{
-  font-size: 100% !important;
+  font-size: 130% !important;
   font-family: HKGrotesk !important;
   vertical-align: middle;
-  display: table-cell;
+  /* display: table-cell; */
   height: 50px;
+  text-align: center;
 }
 
 }
