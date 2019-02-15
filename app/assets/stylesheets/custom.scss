@@ -17,6 +17,27 @@ a {
 .button.hollow, .button.hollow:hover, .button.hollow:focus {
     background-color: #6b6e72;
 }
+
+.admin table th {
+    background: #2a2b2d;
+    color: #fff;
+}
+
+.submenu h2 {
+    font-size: 17px;
+    color: black;
+}
+
+.categories a, .geozone a {
+    background: #71bbc1;
+    color: #f9f9f9;
+    font-size: initial;
+}
+
+.more-info-content h3 {
+    color: #2a2b2d;
+}
+
 @media (min-width: 576px) {
   .cover {
     height: 356px; }
