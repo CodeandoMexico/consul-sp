@@ -1,4 +1,15 @@
 <style media="screen">
+  #footer_2{
+    background: #e8e8e8;
+  }
+
+  .footer_img{
+    max-height: 50px !important;
+    max-width: 100% !important;
+    width: auto;
+    height: auto;
+  }
+
   body
     {
         width: 100%;
@@ -84,10 +95,12 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- PAGE settings -->
+  <meta id="ogimage" property="og:image" content="<%= root_url + ('voting_image.png') %>"/>
+
   <link rel="icon" href="https://templates.pingendo.com/assets/Pingendo_favicon.ico">
-  <title>Conference Aquamarine - Pingendo template</title>
-  <meta name="description" content="Free Bootstrap 4 Pingendo Aquamarine template for unique events.">
-  <meta name="keywords" content="Pingendo conference event aquamarine free template bootstrap 4">
+  <title>Decide San Pedro</title>
+  <meta name="description" content="San Pedro Decide 2019 es la nueva plataforma del Programa de Presupuesto Participativo municipal, donde tú propones y decides qué proyectos se van a llevar a cabo en tu comunidad">
+  <meta name="keywords" content="decode san pedro garza participacion votacion gobierno presupuesto participativo">
   <!-- CSS dependencies -->
   <!-- link rel="stylesheet" href="/portal/css/aquamarine.css" -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
@@ -168,9 +181,9 @@
   <div class="bg-dark aqua-fluid py-3 pb-5 text-center" style="	height: 43px;">
     <div class="rowo">
       <div class="mx-auto col-md-12">
-        <h1 style="
-    font-family: HKGrotesk !important;
-">¿QUÉ ES DECIDE SP?</h1>
+        <h1 id="rowo-child" style="
+        font-family: HKGrotesk !important;
+">¡Hay 100 millones de pesos disponibles!</h1>
       </div>
     </div>
   </div>
@@ -252,7 +265,7 @@ comunidad.</p>
                 text-align: -webkit-auto;
             }
           </style>
-          <h1 >¿CÓMO PARTICIPAR?</h1>
+          <h1 >Nunca ha sido TAN fácil participar.</h1>
           <ul class="list-group list-group-flush" >
              <li class="list-group-item"><i class="icona-libro text-primary mr-2"></i><a style="font-size: 20px;">Descarga la guía práctica</a></li>
              <li class="list-group-item"><i class="icona-calendario text-primary mr-2"></i><a style="font-size:  20px;">Conoce nuestro calendario de eventos</a></li>
@@ -268,9 +281,9 @@ comunidad.</p>
   <div class="bg-dark aqua-fluid py-3 pb-5 text-center" style="	height: 43px;">
     <div class="rowo">
       <div class="mx-auto col-md-12">
-        <h1 contenteditable="true" style="
-    font-family: HKGrotesk !important;
-">CONOCE MÁS</h1>
+        <h1 id="rowo-child" style="
+        font-family: HKGrotesk !important;
+        ">Aprende, apóyate e inspírate</h1>
       </div>
     </div>
   </div>
@@ -289,33 +302,35 @@ comunidad.</p>
       </div>
     </div>
   </div>
-  <!-- Footer -->
-  <footer class="text-md-left text-center bg-dark text-light">
-    <div class="rowo">
-      <div class="col-md-9 col-lg-8 align-items-start d-flex ml-4">
-        <h3>DECIDE SAN PEDRO<br></h3>
-      </div>
-      <div class="ml-0 col-lg-3" >
-        <div class="mb-5 flex-center">
-          <!-- Facebook -->
-          <a class="fb-ic">
-            <i class="icon-facebook white-text mr-md-5 mr-3 fa-2x">
-            </i>
-          </a>
-          <!-- Twitter -->
-          <a class="tw-ic">
-            <i class="icon-twitter white-text mr-md-5 mr-3 fa-2x">
-            </i>
-          </a>
-          <!-- Github -->
-          <a class="tw-ic">
-            <i class="icon-instagram white-text mr-md-5 mr-3 fa-2x">
-            </i>
-          </a>
-        </div>
+  <!-- Footer 2 -->
+  <div class="container text-center" id="footer_2">
+    <div class="row justify-content-center" style="
+      display: flex;
+      flex-wrap: wrap;
+      /* margin-left: 0; */
+      margin-right: 9;
+      margin: auto;
+      ">
+    <%= image_tag('/custom_images/footer.png', :class => "footer_img") %>
+  </div>
+  <div class="row" style="
+    display: flex;
+    flex-wrap: wrap;
+    /* margin-left: 0; */
+    margin-right: 9;
+    margin: auto;
+    ">
+    <div class="mx-auto col-md-8">
+      <p class="mb-4"> Este programa es público, ajeno a cualquier partido político. Queda prohibido el uso para fines distintos a los establecidos en el programa</p>
+      <div class="row text-muted justify-content-center">
+        <div class="col-md-2 col-4 p-2"> <i class="d-block fa fa-twitter fa-3x"></i> </div>
+        <div class="col-md-2 col-4 p-2"> <i class="d-block fa fa-instagram fa-3x"></i> </div>
+        <div class="col-md-2 col-4 p-2"> <i class="d-block fa fa-facebook fa-3x"></i> </div>
       </div>
     </div>
-  </footer>
+  </div>
+</div>
+  <!-- Footer -->
   <!-- JavaScript dependencies -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
   <!-- Script: Smooth scrolling between anchors in the same page -->

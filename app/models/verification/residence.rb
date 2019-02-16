@@ -77,7 +77,9 @@ class Verification::Residence
 
   def ife_exist
     #self.user.ife.present?
-    self.user.errors.add(:ife, "Tienes que subir tu INE") unless self.user.ife.present?
+    if self.user.ife.url.include? "missing"
+      self.errors.add(:base, "Tienes que subir tu INE")
+    end
   end
   private
 

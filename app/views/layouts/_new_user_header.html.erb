@@ -26,6 +26,10 @@
   .navbar-ontop {
     background-color: white !important;
 }
+
+a.nav-link {
+    color: currentColor;
+}
 </style>
 
 <head>
@@ -55,6 +59,10 @@
       <% end %>
     </div>
     <div>
+      <button class="btn rounded-0" type="button" style="font-size: 20px;background: #12bbad;">
+        <%= link_to 'Ver Presupuestos',
+                    budgets_path, rel: "nofollow", class: 'nav-link' %>
+      </button>
       <button class="btn rounded-0" type="button" style="font-size: 20px;">
         <%= link_to t("devise_views.menu.login_items.login"),
                     new_user_session_path, rel: "nofollow", class: 'nav-link' %>

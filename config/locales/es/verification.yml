@@ -97,11 +97,11 @@ es:
     step_2_survey: Datos Estadísticos
     step_2_confirm_address: Confirmar Domicilio
     step_3: Verificación final
-    user_permission_debates: Participar en debates
+    user_permission_debates: Ver propuestas
     user_permission_info: Al verificar tus datos podrás...
     user_permission_proposal: Crear nuevas propuestas
     user_permission_support_proposal: Apoyar propuestas
-    user_permission_votes: Participar en las votaciones finales*
+    user_permission_votes: Votar por propuestas*
     verified_user:
       form:
         submit_button: Enviar código

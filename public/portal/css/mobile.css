@@ -7,6 +7,13 @@
     width: auto;
     height: auto;
   }
+
+  .footer_img{
+    max-height: 50px !important;
+    max-width: 100% !important;
+    width: auto;
+    height: auto;
+  }
  }
 
 @media screen and (min-width: 320px) and (max-width:580px) {
@@ -61,4 +68,27 @@ p.m-2.mx-5.text-center {
     margin-left: 14% !important;
     padding-left: 20%;
 }
+
+h1#rowo-child{
+  font-size: 130% !important;
+  font-family: HKGrotesk !important;
+  vertical-align: middle;
+  /* display: table-cell; */
+  height: 50px;
+  text-align: center;
+}
+i.icona-libro.text-primary.mr-2 {
+  display: table-cell;
+}
+i.icona-calendario.text-primary.mr-2 {
+    display: table-cell;
+}
+
+i.icona-salvavidas.text-primary.mr-2 {
+    display: table-cell;
+}
+
+  #inside-box {
+      font-size: medium;
+  }
 }
