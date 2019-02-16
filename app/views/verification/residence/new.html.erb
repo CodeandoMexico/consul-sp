@@ -23,6 +23,60 @@ div#ine-exist {
     display: inline-block;
     margin: 0 0.375rem;
 }
+
+.file-input {
+  display: inline-block;
+  text-align: left;
+  background: #fff;
+  padding: 16px;
+  width: 450px;
+  position: relative;
+  border-radius: 3px;
+  padding-left: inherit;
+}
+
+.file-input > [type='file'] {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  z-index: 10;
+  cursor: pointer;
+  margin: initial;
+}
+
+.file-input > .button {
+  display: inline-block;
+  cursor: pointer;
+  background: #2e8e5d;
+  padding: 8px 16px;
+  border-radius: 2px;
+  margin-right: 8px;
+  margin-bottom: initial;
+}
+
+
+.file-input:hover > .button {
+  background: dodgerblue;
+  color: white;
+}
+
+.file-input > .label {
+  color: #000;
+  white-space: nowrap;
+  opacity: .7;
+  background: transparent;
+  font-size: initial;
+}
+
+.file-input.-chosen > .label {
+  opacity: 1;
+}
+
+
+
 </style>
 
 <div class="verification account row">
@@ -63,20 +117,39 @@ div#ine-exist {
     <%= form_for @residence, as: "residence", url: residence_path do |f| %>
       <%= render "errors" %>
 
-      <H3> Agrega tu INE </H3>
-      <%= file_field_tag :image,  accept: 'image/png,image/gif,image/jpeg' %>
-      <div id="status-area"></div>
-    <%if @residence.user.present? %>
-      <% if @residence.user.errors.messages[:ife].present? %>
-        <div id="error-mensaje">
-          <%= @residence.user.errors.messages[:ife].first %></div>
-      <% else %>
-      <!-- <div id="ine-exist">
-        La INE ya fue agregada no es necesario voverla a subir.
-      </div> -->
-      <% end %>
-    <% end %>
 
+      <div class="row">
+        <div class="small-12 medium-8">
+          <div class="small-12 medium-5 column end">
+
+          <div class="inline-block">
+            <H3> Agrega tu INE </H3>
+          </div>
+
+          <div class="inline-block" data-toggle="info-document-ife">
+            <span class="icon-help"></span>
+            <span class="show-for-sr">Sube una foto de tu credencial para votar.</span>
+          </div>
+
+          <div class="dropdown-pane" id="info-document-ife" data-dropdown
+               data-hover="true" data-hover-pane="true">
+               Sube una foto de tu credencial para votar.
+          </div>
+
+            <div class="file-input">
+              <%= file_field_tag :image,  accept: 'image/png,image/gif,image/jpeg' %>
+              <span class='button'>Subir</span>
+              <span class='label' data-js-label>No hay archivo seleccionado</label>
+
+            </div>
+              <% if @residence.errors.messages[:base].present? %>
+                <div id="error-mensaje">
+                  <%= @residence.errors.messages[:base].first %></div>
+              <% end %>
+          </div>
+        </div>
+      </div>
+      <div id="status-area"></div>
       <div class="row">
         <div class="small-12 medium-8">
           <div class="small-12 medium-5 column end">
@@ -191,4 +264,25 @@ div#ine-exist {
      });
    })
 
+   // Also see: https://www.quirksmode.org/dom/inputfile.html
+
+var inputs = document.querySelectorAll('.file-input')
+
+for (var i = 0, len = inputs.length; i < len; i++) {
+  customInput(inputs[i])
+}
+
+function customInput (el) {
+  const fileInput = el.querySelector('[type="file"]')
+  const label = el.querySelector('[data-js-label]')
+
+  fileInput.onchange =
+  fileInput.onmouseout = function () {
+    if (!fileInput.value) return
+
+    var value = fileInput.value.replace(/^.*[\\\/]/, '')
+    el.className += ' -chosen'
+    label.innerText = value
+  }
+}
 </script>
