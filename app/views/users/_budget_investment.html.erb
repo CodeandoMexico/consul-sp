@@ -1,3 +1,10 @@
+<style media="screen">
+  .button.hollow, .button.hollow:hover, .button.hollow:focus {
+    background-color: #27b598;
+  }
+
+</style>
+
 <tr id="budget_investment_<%= budget_investment.id %>">
   <td>
     <%= link_to budget_investment.title, budget_investment_path(budget_investment.budget, budget_investment) %>
@@ -7,6 +14,10 @@
       <%= link_to t('shared.delete'), budget_investment_path(budget_investment.budget, budget_investment),
                   method: :delete, class: "button hollow alert expanded",
                   data: {confirm: "#{t('users.show.delete_alert')}"} %>
+    <% end %>
+    <% if can? :update, budget_investment %>
+      <%= link_to 'Editar', edit_budget_investment_path(budget_investment.budget, budget_investment),
+                  method: :get, class: "button hollow expanded" %>
     <% end %>
   </td>
 </tr>
