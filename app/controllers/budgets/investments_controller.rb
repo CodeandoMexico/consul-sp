@@ -15,7 +15,7 @@ module Budgets
     before_action :load_ballot, only: [:index, :show]
     before_action :load_heading, only: [:index, :show]
     before_action :set_random_seed, only: :index
-    before_action :load_categories, only: [:index, :new, :create]
+    before_action :load_categories, only: [:index, :new, :create, :edit, :update]
     before_action :set_default_budget_filter, only: :index
     before_action :set_view, only: :index
     before_action :load_content_blocks, only: :index
@@ -59,6 +59,21 @@ module Budgets
       set_comment_flags(@comment_tree.comments)
       load_investment_votes(@investment)
       @investment_ids = [@investment.id]
+    end
+
+    def edit
+      if @investment.author == current_user
+        return true
+      else
+        redirect_to root_path,
+                    notice: 'Tienes que ser el autor original del proyecto para editarlo'
+      end
+    end
+
+    def update
+      @investment.update(investment_params)
+      redirect_to budget_investment_path(@budget, @investment),
+                  notice: 'Se actualizo con exito.'
     end
 
     def create
