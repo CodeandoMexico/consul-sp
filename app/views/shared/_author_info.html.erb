@@ -10,9 +10,7 @@
 <% else %>
   <%= avatar_image(resource.author, seed: resource.author_id, size: 32, class: 'author-photo') %>
   <span>
-      <div class="author">
-        <%= link_to resource.author.name, user_path(resource.author), :class => "color-author" %>
-      </div>
+      <%= link_to resource.author.name, user_path(resource.author), :class => "color-author" %>
   </span>
 
   <% if resource.respond_to?(:association_name) && resource.association_name.present? %>
