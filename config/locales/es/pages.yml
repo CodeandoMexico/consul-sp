@@ -51,8 +51,24 @@ es:
         page:
           title: "Preguntas Frecuentes"
           description: "Utiliza esta página para resolver las Preguntas frecuentes a los usuarios del sitio."
-          faq_1_title: "Pregunta 1"
-          faq_1_description: "Este es un ejemplo para la descripción de la pregunta uno."
+          faq_1_title: "¿Qué es el presupuesto participativo?"
+          faq_1_description: "El programa de presupuesto participativo es el instrumento de participación ciudadana a través del cual los ciudadanos del Municipio, de manera organizada y corresponsable, deciden el destino de una parte del Presupuesto de Egresos del Municipio"
+          faq_2_title: "¿Quién se puede registrar a la plataforma?"
+          faq_2_description: "Todos los ciudadanos mexicanos que sean residentes del Municipio de San Pedro Garza García tienen derecho a registrarse y participar en el programa."
+          faq_3_title: "¿Cómo puedo comprobar mi identidad en la plataforma?"
+          faq_3_description: "Para comprobar tu identidad deberás subir a la plataforma una copia legible de tu credencial para votar."
+          faq_3_title: "¿Cómo puedo comprobar mi residencia?"
+          faq_3_description: "Para comprobar tu residencia deberás subir a la plataforma el número de expediente catastral de la casa o departamento que habita."
+          faq_4_title: "¿Dónde puedo obtener mi número de expediente catastral?"
+          faq_4_description: "La forma más sencilla de consultar el número de expediente catastral es en el recibo de pago del impuesto predial. Se puede reconocer como una cadena de ocho dígitos separados por dos guiones, donde aparece la región, manzana y lote (Ej. 01-001-001). Si no tienes acceso al recibo de pago puedes llamar al Centro de Atención de Presupuesto Participativo en el teléfono 8478-2059 o enviar un correo electrónico a la cuenta de edgar.gutierrez@sanpedro.gob.mx, adjuntando una copia del comprobante de domicilio de no más de 3 meses anteriores e identificación oficial vigente, para que puedas recibir el número de expediente correspondiente."
+          faq_5_title: "¿Cómo sé a cuál sector y junta de vecinos(as) pertenezco?"
+          faq_5_description: Los ciudadanos pueden consultar aquí el sector y la junta de vecinos al que, para efectos del programa de presupuesto participativo, pertenece tu casa o departamento.
+          faq_6_title: ¿Cuántos proyectos puedo proponer?
+          faq_6_description: Cada usuario registrado podrá subir un proyecto para su junta de vecinos y un proyecto para su sector.
+          faq_7_title: ¿Cuáles son los requisitos de las propuestas?
+          faq_7_description: En general, toda propuesta debe estar encaminada a resolver problemas detectados en la colonia o sector, debe beneficiar a la comunidad y no a una persona física o moral particular, y tener un costo aproximado mínimo de $25,347.00 pesos. </br> Los proyectos deben poder implementarse con el presupuesto correspondiente, ser técnicamente viables y estar dentro de las competencias municipales.</br>Algunos proyectos, como los que contemplan la regeneración de banquetas, o los proyectos de impacto sectorial, requieren además del apoyo de vecinos o presidentes de mesas directivas.
+          faq_8_title: ¿Puedo hacer cambios a mi propuesta?
+          faq_8_description: Los proyectos pueden modificarse hasta el 15 de marzo, fecha en que cierra el proceso de propuestas. Sin embargo, si un proyecto ya recabó el apoyo necesario de  presidentes de mesas directivas o vecinos, cualquier modificación sustancial también deberá ser acompañado de una nueva manifestación de apoyo.
       other:
         title: "Otra información de interés"
         how_to_use: "Utiliza %{org_name} en tu municipio"

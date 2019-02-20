@@ -95,7 +95,7 @@ es:
     step_1: Residencia
     step_2: SMS de confirmación
     step_2_survey: Datos Estadísticos
-    step_2_confirm_address: Confirmar Domicilio
+    step_2_confirm_address: Confirma tu residencia
     step_3: Verificación final
     user_permission_debates: Ver propuestas
     user_permission_info: Al verificar tus datos podrás...
@@ -113,7 +113,7 @@ es:
         use_another_phone: Utilizar otro teléfono
     user_address:
       new:
-        instruction: Si tu dirección aparece en el mapa da click en siguiente, si no aparece, selecciónalo en el mapa y luego da click en siguiente
+        instruction: Asegúrate que tu dirección aparece en el mapa en la ubicación correcta y da click en siguiente. En caso de no ser la correcta, por favor coloca el PIN en la ubicación adecuada.
         fail_address: No encontramos tu dirección, por favor selecciona en el mapa donde vives y despues presiona siguiente
         submit_button: Siguiente
     survey:
