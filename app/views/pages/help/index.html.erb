@@ -1,3 +1,9 @@
+<style media="screen">
+  .jumbo.light {
+    background-image: url(https://i.imgur.com/amTJT5g.jpg);
+}
+</style>
+
 <% provide :title do %><%= t("pages.titles.help", org: setting['org_name']) %><% end %>
 <% content_for :canonical do %>
   <%= render "shared/canonical", href: help_url %>
