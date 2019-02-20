@@ -24,7 +24,7 @@ es:
       unconfirmed: "Para continuar, por favor pulsa en el enlace de confirmación que hemos enviado a tu cuenta de correo."
     mailer:
       confirmation_instructions:
-        subject: "Instrucciones de confirmación"
+        subject: "Confirma tu cuenta en Decide San Pedro"
       reset_password_instructions:
         subject: "Instrucciones para restablecer tu contraseña"
       unlock_instructions:
