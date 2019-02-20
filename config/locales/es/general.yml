@@ -170,7 +170,7 @@ es:
   form:
     accept_terms: Acepto la %{policy} y las %{conditions}
     accept_terms_title: Acepto la Política de privacidad y las Condiciones de uso
-    conditions: Condiciones de uso
+    conditions:  Aviso de Privacidad
     debate: el debate
     direct_message: el mensaje privado
     error: error
@@ -201,7 +201,7 @@ es:
       ie_title: Esta web no está optimizada para tu navegador
     footer:
       accessibility: Accesibilidad
-      conditions: Condiciones de uso
+      conditions: Aviso de Privacidad
       consul: aplicación CONSUL
       consul_url: https://github.com/consul/consul
       contact_us: Para asistencia técnica entra en

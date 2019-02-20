@@ -1,8 +1,8 @@
 es:
   pages:
     conditions:
-      title: Condiciones de uso
-      subtitle: AVISO LEGAL SOBRE LAS CONDICIONES DE USO, PRIVACIDAD Y PROTECCIÓN DE DATOS PERSONALES DEL PORTAL DE GOBIERNO ABIERTO
+      title: Aviso de Privacidad
+      subtitle: AVISO LEGAL SOBRE LAS CONDICIONES DE USO, PRIVACIDAD Y PROTECCIÓN DE DATOS PERSONALES DEL PORTAL DECIDE SAN PEDRO
       description: Página de información sobre las condiciones de uso, privacidad y protección de datos personales.
     help:
       title: "%{org} es una plataforma de participación ciudadana"
@@ -59,9 +59,9 @@ es:
       how_to_use:
         text: |-
           Utilízalo en tu municipio libremente o ayúdanos a mejorarlo, es software libre.
-          
+
           Este Portal de Gobierno Abierto usa la [aplicación CONSUL](https://github.com/consul/consul 'github consul') que es software libre, con [licencia AGPLv3](http://www.gnu.org/licenses/agpl-3.0.html 'AGPLv3 gnu' ), esto significa en palabras sencillas, que cualquiera puede libremente usar el código, copiarlo, verlo en detalle, modificarlo, y redistribuirlo al mundo con las modificaciones que quiera (manteniendo el que otros puedan a su vez hacer lo mismo). Porque creemos que la cultura es mejor y más rica cuando se libera.
-          
+
           Si eres programador, puedes ver el código y ayudarnos a mejorarlo en [aplicación CONSUL](https://github.com/consul/consul 'github consul').
       titles:
         how_to_use: Utilízalo en tu municipio
@@ -69,32 +69,32 @@ es:
       title: Política de privacidad
       subtitle: AVISO DE PROTECCIÓN DE DATOS
       info_items:
-        - 
+        -
           text: La navegación por la informacion disponible en el Portal de Gobierno Abierto es anónima.
-        - 
+        -
           text: Para utilizar los servicios contenidos en el Portal de Gobierno Abierto el usuario deberá darse de alta y proporcionar previamente los datos de carácter personal segun la informacion especifica que consta en cada tipo de alta.
-        - 
+        -
           text: 'Los datos aportados serán incorporados y tratados por el Ayuntamiento de acuerdo con la descripción del fichero siguiente:'
-        - 
+        -
           subitems:
-            - 
+            -
               field: 'Nombre del fichero/tratamiento:'
               description: NOMBRE DEL FICHERO
-            - 
+            -
               field: 'Finalidad del fichero/tratamiento:'
               description: Gestionar los procesos participativos para el control de la habilitación de las personas que participan en los mismos y recuento meramente numérico y estadístico de los resultados derivados de los procesos de participación ciudadana.
-            - 
+            -
               field: 'Órgano responsable:'
               description: ÓRGANO RESPONSABLE
-        - 
+        -
           text: El interesado podrá ejercer los derechos de acceso, rectificación, cancelación y oposición, ante el órgano responsable indicado todo lo cual se informa en el cumplimiento del artículo 5 de la Ley Orgánica 15/1999, de 13 de diciembre, de Protección de Datos de Carácter Personal.
-        - 
+        -
           text: Como principio general, este sitio web no comparte ni revela información obtenida, excepto cuando haya sido autorizada por el usuario, o la informacion sea requerida por la autoridad judicial, ministerio fiscal o la policia judicial, o se de alguno de los supuestos regulados en el artículo 11 de la Ley Orgánica 15/1999, de 13 de diciembre, de Protección de Datos de Carácter Personal.
     accessibility:
       title: Accesibilidad
       description: |-
         La accesibilidad web se refiere a la posibilidad de acceso a la web y a sus contenidos por todas las personas, independientemente de las discapacidades (físicas, intelectuales o técnicas) que puedan presentar o de las que se deriven del contexto de uso (tecnológicas o ambientales).
-        
+
         Cuando los sitios web están diseñados pensando en la accesibilidad, todos los usuarios pueden acceder en condiciones de igualdad a los contenidos, por ejemplo:
       examples:
         - Proporcionando un texto alternativo a las imágenes, los usuarios invidentes o con problemas de visión pueden utilizar lectores especiales para acceder a la información.
@@ -109,22 +109,22 @@ es:
           key_header: Tecla
           page_header: Página
           rows:
-            - 
+            -
               key_column: 0
               page_column: Inicio
-            - 
+            -
               key_column: 1
               page_column: Debates
-            - 
+            -
               key_column: 2
               page_column: Propuestas
-            - 
+            -
               key_column: 3
               page_column: Votaciones
-            - 
+            -
               key_column: 4
               page_column: Presupuestos participativos
-            - 
+            -
               key_column: 5
               page_column: Procesos legislativos
         browser_table:
@@ -133,19 +133,19 @@ es:
           browser_header: Navegador
           key_header: Combinación de teclas
           rows:
-            - 
+            -
               browser_column: Explorer
               key_column: ALT + atajo y luego ENTER
-            - 
+            -
               browser_column: Firefox
               key_column: ALT + MAYÚSCULAS + atajo
-            - 
+            -
               browser_column: Chrome
               key_column: ALT + atajo (si es un MAC, CTRL + ALT + atajo)
-            - 
+            -
               browser_column: Safari
               key_column: ALT + atajo (si es un MAC, CMD + atajo)
-            - 
+            -
               browser_column: Opera
               key_column: MAYÚSCULAS + ESC + atajo
       textsize:
@@ -155,28 +155,28 @@ es:
           browser_header: Navegador
           action_header: Acción a realizar
           rows:
-            - 
+            -
               browser_column: Explorer
               action_column: Ver > Tamaño del texto
-            - 
+            -
               browser_column: Firefox
               action_column: Ver > Tamaño
-            - 
+            -
               browser_column: Chrome
               action_column: Ajustes (icono) > Opciones > Avanzada > Contenido web > Tamaño fuente
-            - 
+            -
               browser_column: Safari
               action_column: Visualización > ampliar/reducir
-            - 
+            -
               browser_column: Opera
               action_column: Ver > escala
         browser_shortcuts_table:
           description: 'Otra forma de modificar el tamaño de texto es utilizar los atajos de teclado definidos en los navegadores, en particular la combinación de teclas:'
           rows:
-            - 
+            -
               shortcut_column: CTRL y + (CMD y + en MAC)
               description_column: para aumentar el tamaño del texto
-            - 
+            -
               shortcut_column: CTRL y - (CMD y - en MAC)
               description_column: para reducir el tamaño del texto
       compatibility:
