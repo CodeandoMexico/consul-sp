@@ -14,7 +14,11 @@
     <%= f.invisible_captcha :subtitle %>
 
     <div class="ckeditor small-12 column">
-      <%= f.cktext_area :description, maxlength: SpendingProposal.description_max_length, ckeditor: { language: I18n.locale } %>
+      <label for="budget_investment_description">Descripción de tu proyecto:</label>
+      <p class="help-text">
+        Te recomendamos que la descripción incluya: 1) el problema que quieres resolver o el área de oportunidad que detectaste; 2) el contenido de tu propuesta; y, 3) el presupuesto que calculas para que se lleve a cabo tu proyecto.
+      </p>
+      <%= f.cktext_area :description, maxlength: SpendingProposal.description_max_length, ckeditor: { language: I18n.locale }, label: false %>
     </div>
 
     <% if feature?(:allow_images) %>
