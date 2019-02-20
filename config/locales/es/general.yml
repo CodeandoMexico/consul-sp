@@ -209,8 +209,8 @@ es:
       description: Este portal usa la %{consul} que es %{open_source}.
       open_source: software de código abierto
       open_source_url: http://www.gnu.org/licenses/agpl-3.0.html
-      participation_text: Decide cómo debe ser la ciudad que quieres.
-      participation_title: Participación
+      participation_text: Iniciemos una nueva relación con la ciudad.
+      participation_title: Decide San Pedro
       privacy: Política de privacidad
     header:
       administration_menu: Admin
