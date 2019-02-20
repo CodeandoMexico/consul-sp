@@ -8,8 +8,8 @@ es:
         one: "Presupuesto participativo"
         other: "Presupuestos participativos"
       budget/investment:
-        one: "Proyecto de gasto"
-        other: "Proyectos de gasto"
+        one: "Propuesta"
+        other: "Propuestas"
       milestone:
         one: "hito"
         other: "hitos"

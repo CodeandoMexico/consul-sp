@@ -574,9 +574,9 @@ es:
     followable:
       budget_investment:
         create:
-          notice_html: "¡Ahora estás siguiendo este proyecto de gasto! </br> Te notificaremos los cambios a medida que se produzcan para que estés al día."
+          notice_html: "¡Ahora estás siguiendo esta propuesta! </br> Te notificaremos los cambios a medida que se produzcan para que estés al día."
         destroy:
-          notice_html: "¡Has dejado de seguir este proyecto de gasto! </br> Ya no recibirás más notificaciones relacionadas con este proyecto."
+          notice_html: "¡Has dejado de seguir esta propuesta! </br> Ya no recibirás más notificaciones relacionadas con este proyecto."
       proposal:
         create:
           notice_html: "¡Ahora estás siguiendo esta propuesta ciudadana! </br> Te notificaremos los cambios a medida que se produzcan para que estés al día."
@@ -749,7 +749,7 @@ es:
       no_private_messages: "Este usuario no acepta mensajes privados."
       private_activity: Este usuario ha decidido mantener en privado su lista de actividades.
       send_private_message: "Enviar un mensaje privado"
-      delete_alert: "¿Estás seguro de que deseas borrar tu proyecto de gasto? Esta acción no se puede deshacer"
+      delete_alert: "¿Estás seguro de que deseas borrar tu propuesta? Esta acción no se puede deshacer"
     proposals:
       send_notification: "Enviar notificación"
       retire: "Retirar"
@@ -842,7 +842,7 @@ es:
     content_title:
       proposal: "Propuesta"
       debate: "Debate"
-      budget_investment: "Proyecto de gasto"
+      budget_investment: "Propuesta"
   admin/widget:
     header:
       title: Administración

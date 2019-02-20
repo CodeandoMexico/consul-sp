@@ -39,7 +39,7 @@ es:
         no_investments: "No hay proyectos de gasto."
       show:
         back: Volver
-        title: Proyecto de gasto
+        title: Propuesta
         info: Datos de envío
         by: Enviada por
         sent: Fecha de creación
