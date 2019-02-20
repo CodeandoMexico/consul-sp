@@ -47,7 +47,7 @@ es:
         flash:
           success: Residencia verificada
       new:
-        accept_terms_text: Acepto %{terms_url} al Padrón
+        accept_terms_text: Tus datos personales están protegidos por la Ley de Protección de Datos, del Estado de Nuevo León. Acepto %{terms_url}
         accept_terms_text_title: Acepto los términos de acceso al Padrón
         date_of_birth: Fecha de nacimiento
         document_number: Numero de expediente catastral
@@ -65,9 +65,9 @@ es:
         form_errors: evitaron verificar tu residencia
         postal_code: Código postal
         postal_code_note: Para verificar tus datos debes estar empadronado
-        terms: los términos de acceso
-        title: Verificar residencia
-        verify_residence: Verificar residencia
+        terms: los términos y condiciones.
+        title: Verificar Identidad
+        verify_residence: Verificar Identidad
     sms:
       create:
         flash:
@@ -92,7 +92,7 @@ es:
             success: Código correcto. Tu cuenta ya está verificada
           level_two:
             success: Código correcto
-    step_1: Residencia
+    step_1: Identidad
     step_2: SMS de confirmación
     step_2_survey: Datos Estadísticos
     step_2_confirm_address: Confirma tu residencia
