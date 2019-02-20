@@ -71,7 +71,7 @@
     <div class="row margin-top">
       <div class="small-12 column">
 
-        <div id="groups_and_headings" class="groups-and-headings">
+        <!-- <div id="groups_and_headings" class="groups-and-headings">
           <% current_budget.groups.reverse_order.each do |group| %>
             <h2 id="<%= group.name.parameterize %>"><%= group.name %></h2>
             <ul class="no-bullet" data-equalizer data-equalizer-on="medium">
@@ -90,7 +90,161 @@
               <% end %>
             </ul>
           <% end %>
+        </div> -->
+        <% @sectores = Budget::Group.where(name: "Sectores") %>
+
+        <div id="groups_and_headings" class="groups-and-headings">
+          <% @sectores.reverse_order.each do |group| %>
+            <h2 id="<%= group.name.parameterize %>"><%= group.name %></h2>
+            <ul class="no-bullet" data-equalizer data-equalizer-on="medium">
+              <% group.headings.order_by_group_name.each do |heading| %>
+                <li class="heading small-12 medium-4 large-2" data-equalizer-watch>
+                  <% unless current_budget.informing? %>
+                    <%= link_to budget_investments_path(current_budget.id, heading_id: heading.id) do %>
+                      <%= heading_name_and_price_html(heading, current_budget) %>
+                    <% end %>
+                  <% else %>
+                    <div class="heading-name">
+                      <%= heading_name_and_price_html(heading, current_budget) %>
+                    </div>
+                  <% end %>
+                </li>
+              <% end %>
+            </ul>
+          <% end %>
         </div>
+
+    <% @colonia = Budget::Group.where(name: "Juntas Vecinales") %>
+    <div id="groups_and_headings" class="groups-and-headings">
+      <h2>Juntas Vecinales</h2>
+
+      <% @colonia.reverse_order.each do |group| %>
+        <h3> K1 - Sector Obispo, Industrias y Río </h3>
+        <ul class="no-bullet" data-equalizer data-equalizer-on="medium">
+          <% group.headings.where(sector: "K1").order_by_group_name.each do |heading| %>
+            <li class="heading small-12 medium-4 large-2" data-equalizer-watch>
+              <% unless current_budget.informing? %>
+                <%= link_to budget_investments_path(current_budget.id, heading_id: heading.id) do %>
+                  <%= heading_name_and_price_html(heading, current_budget) %>
+                <% end %>
+              <% else %>
+                <div class="heading-name">
+                  <%= heading_name_and_price_html(heading, current_budget) %>
+                </div>
+              <% end %>
+            </li>
+          <% end %>
+        </ul>
+      <% end %>
+    </div>
+
+    <div id="groups_and_headings" class="groups-and-headings">
+      <% @colonia.reverse_order.each do |group| %>
+        <h3> K2 - Sector Centro de San Pedro </h3>
+        <ul class="no-bullet" data-equalizer data-equalizer-on="medium">
+          <% group.headings.where(sector: "K2").order_by_group_name.each do |heading| %>
+            <li class="heading small-12 medium-4 large-2" data-equalizer-watch>
+              <% unless current_budget.informing? %>
+                <%= link_to budget_investments_path(current_budget.id, heading_id: heading.id) do %>
+                  <%= heading_name_and_price_html(heading, current_budget) %>
+                <% end %>
+              <% else %>
+                <div class="heading-name">
+                  <%= heading_name_and_price_html(heading, current_budget) %>
+                </div>
+              <% end %>
+            </li>
+          <% end %>
+        </ul>
+      <% end %>
+    </div>
+
+    <div id="groups_and_headings" class="groups-and-headings">
+      <% @colonia.reverse_order.each do |group| %>
+        <h3> K3 - Sector Lomas </h3>
+        <ul class="no-bullet" data-equalizer data-equalizer-on="medium">
+          <% group.headings.where(sector: "K3").order_by_group_name.each do |heading| %>
+            <li class="heading small-12 medium-4 large-2" data-equalizer-watch>
+              <% unless current_budget.informing? %>
+                <%= link_to budget_investments_path(current_budget.id, heading_id: heading.id) do %>
+                  <%= heading_name_and_price_html(heading, current_budget) %>
+                <% end %>
+              <% else %>
+                <div class="heading-name">
+                  <%= heading_name_and_price_html(heading, current_budget) %>
+                </div>
+              <% end %>
+            </li>
+          <% end %>
+        </ul>
+      <% end %>
+    </div>
+
+    <div id="groups_and_headings" class="groups-and-headings">
+      <% @colonia.reverse_order.each do |group| %>
+        <h3> K4 - Sector Valle </h3>
+        <ul class="no-bullet" data-equalizer data-equalizer-on="medium">
+          <% group.headings.where(sector: "K4").order_by_group_name.each do |heading| %>
+            <li class="heading small-12 medium-4 large-2" data-equalizer-watch>
+              <% unless current_budget.informing? %>
+                <%= link_to budget_investments_path(current_budget.id, heading_id: heading.id) do %>
+                  <%= heading_name_and_price_html(heading, current_budget) %>
+                <% end %>
+              <% else %>
+                <div class="heading-name">
+                  <%= heading_name_and_price_html(heading, current_budget) %>
+                </div>
+              <% end %>
+            </li>
+          <% end %>
+        </ul>
+      <% end %>
+    </div>
+
+    <div id="groups_and_headings" class="groups-and-headings">
+      <% @colonia.reverse_order.each do |group| %>
+        <h3> K5 - Sector Montaña </h3>
+        <ul class="no-bullet" data-equalizer data-equalizer-on="medium">
+          <% group.headings.where(sector: "K5").order_by_group_name.each do |heading| %>
+            <li class="heading small-12 medium-4 large-2" data-equalizer-watch>
+              <% unless current_budget.informing? %>
+                <%= link_to budget_investments_path(current_budget.id, heading_id: heading.id) do %>
+                  <%= heading_name_and_price_html(heading, current_budget) %>
+                <% end %>
+              <% else %>
+                <div class="heading-name">
+                  <%= heading_name_and_price_html(heading, current_budget) %>
+                </div>
+              <% end %>
+            </li>
+          <% end %>
+        </ul>
+      <% end %>
+    </div>
+
+    <div id="groups_and_headings" class="groups-and-headings">
+      <% @colonia.reverse_order.each do |group| %>
+        <h3> K6 - Sector Valle Oriente </h3>
+        <ul class="no-bullet" data-equalizer data-equalizer-on="medium">
+          <% group.headings.where(sector: "K6").order_by_group_name.each do |heading| %>
+            <li class="heading small-12 medium-4 large-2" data-equalizer-watch>
+              <% unless current_budget.informing? %>
+                <%= link_to budget_investments_path(current_budget.id, heading_id: heading.id) do %>
+                  <%= heading_name_and_price_html(heading, current_budget) %>
+                <% end %>
+              <% else %>
+                <div class="heading-name">
+                  <%= heading_name_and_price_html(heading, current_budget) %>
+                </div>
+              <% end %>
+            </li>
+          <% end %>
+        </ul>
+      <% end %>
+    </div>
+
+
+
 
         <% unless current_budget.informing? %>
           <div class="map">
