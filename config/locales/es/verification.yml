@@ -52,7 +52,7 @@ es:
         date_of_birth: Fecha de nacimiento
         document_number: Numero de expediente catastral
         document_number_help_title: Ayuda
-        document_number_help_text_html: '<strong>Exped</strong>: 1004004'
+        document_number_help_text_html: 'Se encuentra en el recibo de pago de impuesto predial. Si no lo tienes a la mano, llámanos, acredita identidad y comprobante de domicilio, y te decimos cuál es. El número debe tener 7 u 8 dígitos.'
         document_type:
           passport: Pasaporte
           residence_card: Tarjeta de residencia
