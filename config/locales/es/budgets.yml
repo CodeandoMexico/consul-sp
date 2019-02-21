@@ -66,7 +66,7 @@ es:
         tags_placeholder: "Escribe las etiquetas que desees separadas por una coma (',')"
         map_location: "Ubicación en el mapa"
         map_location_instructions: "Navega por el mapa hasta la ubicación y coloca el marcador."
-        map_remove_marker: "Eliminar el marcador"
+        map_remove_marker: "Eliminar el PIN"
         location: "Información adicional de la ubicación"
         map_skip_checkbox: "Este proyecto no tiene una ubicación concreta o no la conozco."
       index:
