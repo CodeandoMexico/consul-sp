@@ -96,6 +96,7 @@
         <div id="groups_and_headings" class="groups-and-headings">
           <% @sectores.reverse_order.each do |group| %>
             <h2 id="<%= group.name.parameterize %>"><%= group.name %></h2>
+            <p>Nuestro Municipio se divide en 6 sectores de participación ciudadana. Aquí el presupuesto que va a recibir cada Sector.</p>
             <ul class="no-bullet" data-equalizer data-equalizer-on="medium">
               <% group.headings.order_by_group_name.each do |heading| %>
                 <li class="heading small-12 medium-4 large-2" data-equalizer-watch>
@@ -116,7 +117,8 @@
 
     <% @colonia = Budget::Group.where(name: "Juntas Vecinales") %>
     <div id="groups_and_headings" class="groups-and-headings">
-      <h2>Juntas Vecinales</h2>
+      <h2>Juntas de Vecinos(as)</h2>
+      <p>Cada Sector cuenta con aproximadamente 35 Juntas de Vecinos(as). ¿No sabes a cuál Junta perteneces? Aquí un mapa que te podría ayudar.</p>
 
       <% @colonia.reverse_order.each do |group| %>
         <h3> K1 - Sector Obispo, Industrias y Río </h3>
