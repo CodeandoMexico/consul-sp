@@ -1,4 +1,8 @@
 <% if @heading.present? %>
+<% if @heading.name.include?("Revoluicion") %>
+  <%  @heading.name.sub! 'Revoluicion', 'Revolución' %>
+<% end %>
+
   <section class="no-margin-top margin-bottom">
     <div class="expanded jumbo-budget budget-heading padding">
 
