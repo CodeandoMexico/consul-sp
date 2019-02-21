@@ -13,11 +13,14 @@
   <%= render "shared/banner" %>
 <% end %>
 
-<div class="jumbo light">
+<div class="jumbo light" style="color: white;">
   <div class="row">
     <div class="small-12 medium-9 column">
       <h2><%= t("pages.help.title", org: setting['org_name']) %></h2>
-      <p><%= t("pages.help.guide", org: setting['org_name']) %></p>
+      <p style="
+    color: white;
+    font-size: x-large;
+    "><%= t("pages.help.guide", org: setting['org_name']) %></p>
     </div>
   </div>
 
