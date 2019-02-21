@@ -42,7 +42,7 @@ es:
           email_label: Email
           organization_name_label: Nombre de la organización
           password_confirmation_label: Repite la contraseña anterior
-          password_label: Contraseña que utilizarás para acceder a este sitio web
+          password_label: Contraseña que utilizarás para acceder a este sitio web (sólo para esta cuenta)
           phone_number_label: Teléfono
           responsible_name_label: Nombre y apellidos de la persona responsable del colectivo
           responsible_name_note: Será la persona representante de la asociación/colectivo en cuyo nombre se presenten las propuestas
@@ -68,7 +68,7 @@ es:
     sessions:
       new:
         login_label: Email o nombre de usuario
-        password_label: Contraseña que utilizarás para acceder a este sitio web
+        password_label: Contraseña que utilizarás para acceder a este sitio web (sólo para esta cuenta)
         remember_me: Recordarme
         submit: Entrar
         title: Iniciar sesión
@@ -110,7 +110,7 @@ es:
           organization_signup: '¿Representas a una organización / colectivo? %{signup_link}'
           organization_signup_link: Regístrate aquí
           password_confirmation_label: Repite la contraseña anterior
-          password_label: Contraseña que utilizarás para acceder a este sitio web
+          password_label: Contraseña que utilizarás para acceder a este sitio web (sólo para esta cuenta)
           redeemable_code: Tu código de verificación (si has recibido una carta con él)
           submit: Registrarse
           terms: Al registrarte aceptas las %{terms}
