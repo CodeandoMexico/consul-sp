@@ -5,6 +5,10 @@ module BudgetsHelper
   end
 
   def heading_name_and_price_html(heading, budget)
+    if heading.name.include?("Revoluicion")
+      heading.name
+      heading.name.sub! 'Revoluicion', 'Revolución'
+    end
     content_tag :div do
       concat(heading.name + ' ')
       concat(content_tag(:span, budget.formatted_heading_price(heading)))
