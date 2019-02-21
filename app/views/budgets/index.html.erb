@@ -32,7 +32,7 @@
           </p>
           <h2><%= t("budgets.phase.#{current_budget.phase}") %></h2>
 
-          <%= link_to t("budgets.index.section_header.all_phases"), "#all_phases" %>
+          <%= link_to t("budgets.index.section_header.all_phases"), "#fases" %>
 
           <% if current_budget.accepting? %>
             <% if current_user %>
@@ -270,7 +270,7 @@
           </p>
         <% end %>
 
-        <div id="all_phases">
+        <div id="fases">
           <h2><%= t("budgets.index.all_phases") %></h2>
           <%= render "phases", budget: current_budget %>
         </div>
