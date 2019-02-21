@@ -1,3 +1,4 @@
+get '/budgets/:budget_id/investments/:id' => 'budgets/investments#show'
 resources :budgets, only: [:show, :index], :path => "presupuestos" do
   resources :groups, controller: "budgets/groups", only: [:show]
   resources :investments, controller: "budgets/investments", only: [:index, :new, :create, :show, :destroy, :edit, :update] do
