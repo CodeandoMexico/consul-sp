@@ -26,7 +26,6 @@
       <%= render "shared/errors", resource: @survey %>
 
       <div class="small-12 medium-6">
-        <%= f.date_field :birth_date, class: 'form-control', label: t("verification.survey.new.birth_date"), required: false %>
 
         <%= label_tag "survey[genre]", t("verification.survey.new.genre") %>
         <%= select_tag "survey[genre]", options_for_select(@genres.collect {|p| [ p['name'], p['value']]}), prompt: "Selecciona", required: false %>
