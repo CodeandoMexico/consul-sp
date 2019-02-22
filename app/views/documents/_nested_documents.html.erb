@@ -1,7 +1,7 @@
 <div class="documents-list">
   <%= f.label :documents, t("documents.form.title") %>
   <p class="help-text"><%= documentables_note(documentable) %></p>
-  <p class="help-text"><b>Recuerda que para subir una propuesta para tu sector, necesitas el respaldo de dos presidentes de Junta de Vecinos de tu sector. <a href="https://docs.google.com/document/d/1o7IYkmtgsPc-R3oYOntEbiz_Wrj61XJtrLAOPVh74EU/edit?ts=5c65f339">Aquí una plantilla</a> que puedes usar para conseguir estos respaldos.<b/></p>
+  <p class="help-text"><b>Recuerda que para subir una propuesta para tu sector, necesitas el respaldo de dos presidentes de Junta de Vecinos de tu sector. <a target="_blank" rel="noopener noreferrer" href="https://docs.google.com/document/d/1o7IYkmtgsPc-R3oYOntEbiz_Wrj61XJtrLAOPVh74EU/edit?ts=5c65f339">Aquí una plantilla</a> que puedes usar para conseguir estos respaldos.<b/></p>
   <div id="nested-documents" data-max-documents-allowed="<%= documentable.class.max_documents_allowed%>">
     <%= f.fields_for :documents do |documents_builder| %>
       <%= render 'documents/document_fields', f: documents_builder %>
