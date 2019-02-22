@@ -29,6 +29,16 @@ a {
     color: #338469 !important;
 }
 
+.callout.primary a {
+    color: #060606 !important;
+}
+
+.tabs .tabs-title>a[aria-selected='true'], .tabs .tabs-title>a.is-active {
+    border-bottom: 0;
+    color: #030806 !important;
+    font-weight: bold;
+}
+
 .color-author{
   color: cadetblue !important;
 }
