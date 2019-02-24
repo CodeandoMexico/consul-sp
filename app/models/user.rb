@@ -31,6 +31,7 @@ class User < ActiveRecord::Base
   has_one :survey
   has_one :address_user
   has_many :flags
+  has_many :likes
   has_many :identities, dependent: :destroy
   has_many :debates, -> { with_hidden }, foreign_key: :author_id
   has_many :proposals, -> { with_hidden }, foreign_key: :author_id
@@ -106,6 +107,10 @@ class User < ActiveRecord::Base
 
   def name
     organization? ? organization.name : username
+  end
+
+  def likes?(investment)
+    investment.likes.where(user_id: id).any?
   end
 
   def debate_votes(debates)

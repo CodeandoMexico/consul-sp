@@ -1,0 +1,36 @@
+<style media="screen">
+  a.btn {
+    border-style: solid;
+    border-width: 1px 1px 1px 1px;
+    text-decoration: none;
+    padding: 4px;
+    border-color: #3a2e2e;
+    background: #5e2e8a;
+    color: white;
+    font-size: larger;
+    /* border: 15px; */
+    border-radius: 2%;
+  }
+</style>
+<% if @investment.present? %>
+  <% investment = @investment %>
+<% end %>
+
+<div class="">
+<h3><%= Like.where(investment_id: investment.id).count %></h3>
+</div>
+
+
+<% if user_signed_in? && current_user.likes?(investment) %>
+  <%= link_to "Dejar de Apoyar",
+      budget_investment_like_path(investment.budget_id, investment),
+      method: :delete,
+      remote: true,
+      class: "btn" %>
+<% elsif  user_signed_in? %>
+  <%= link_to "Apoyar",
+      budget_investment_like_path(investment.budget_id, investment),
+      method: :post,
+      remote: true,
+      class: "btn" %>
+<% end %>

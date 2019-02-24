@@ -31,6 +31,7 @@ class Budget
     belongs_to :group
     belongs_to :budget
     belongs_to :administrator
+    has_many :likes
 
     has_many :valuator_assignments, dependent: :destroy
     has_many :valuators, through: :valuator_assignments
