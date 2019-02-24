@@ -55,15 +55,13 @@
       </div>
 
       <% unless investment.unfeasible? %>
-        <!--
           <div id="<%= dom_id(investment) %>_votes"
                class="small-12 medium-3 column text-center"
                <h3> Apoyos ciudadanos </h3>
-               <div class="likes">
+               <div class="likes" id="<%= dom_id(investment) %>_likes">
                  <%= render partial: "likes", locals: {investment: investment} %>
                </div>
           </div>
-          -->
         <% if investment.should_show_votes? %>
           <div id="<%= dom_id(investment) %>_votes"
                class="small-12 medium-3 column text-center"

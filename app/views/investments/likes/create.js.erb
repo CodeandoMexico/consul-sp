@@ -1,1 +1,1 @@
-$('.likes').html("<%= escape_javascript(render('budgets/investments/likes'))%>")
+$("#<%= dom_id(@investment) %>_likes").html("<%= escape_javascript(render('budgets/investments/likes'))%>")
