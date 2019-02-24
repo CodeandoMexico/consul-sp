@@ -94,7 +94,7 @@ es:
           zero: Todavía no has votado ningúna propuesta en este ámbito del presupuesto.
           verified_only: "Para crear un nueva propuesta %{verify}."
           verify_account: "verifica tu cuenta"
-          create: "Registrar propuesta."
+          create: "Registrar propuesta"
           not_logged_in: "Para registrar una nueva propuesta %{sign_in}."
           sign_in: "verifica tu cuenta"
           sign_up: "registrarte"
