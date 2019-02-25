@@ -69,6 +69,7 @@ gem 'rgeo'
 gem 'activerecord-postgis-adapter'
 gem 'rgeo-shapefile'
 gem 'rgeo-geojson'
+gem "font-awesome-rails"
 
 
 

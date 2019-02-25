@@ -11,26 +11,36 @@
     /* border: 15px; */
     border-radius: 2%;
   }
+
+  i#unlike {
+      color: cadetblue;
+      font-size: -webkit-xxx-large;
+  }
+
+  i#like {
+      color: darkgray;
+      font-size: -webkit-xxx-large;
+  }
+
+
 </style>
 <% if @investment.present? %>
   <% investment = @investment %>
 <% end %>
 
-<div class="">
+<div class="div-container">
 <h3><%= Like.where(investment_id: investment.id).count %></h3>
-</div>
-
-
 <% if user_signed_in? && current_user.likes?(investment) %>
-  <%= link_to "Me Gusta",
+  <%= link_to '<i class="fa fa-thumbs-up" id="unlike"></i>'.html_safe,
       budget_investment_like_path(investment.budget_id, investment),
       method: :delete,
       remote: true,
-      class: "btn" %>
+      class: "" %>
 <% elsif  user_signed_in? %>
-  <%= link_to "Me Gusta",
+  <%= link_to '<i class="fa fa-thumbs-up" id="like"></i>'.html_safe,
       budget_investment_like_path(investment.budget_id, investment),
       method: :post,
       remote: true,
-      class: "btn" %>
+      class: "" %>
 <% end %>
+</div>
