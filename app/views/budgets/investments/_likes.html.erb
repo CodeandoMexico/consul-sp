@@ -22,13 +22,13 @@
 
 
 <% if user_signed_in? && current_user.likes?(investment) %>
-  <%= link_to "Dejar de Apoyar",
+  <%= link_to "Me Gusta",
       budget_investment_like_path(investment.budget_id, investment),
       method: :delete,
       remote: true,
       class: "btn" %>
 <% elsif  user_signed_in? %>
-  <%= link_to "Apoyar",
+  <%= link_to "Me Gusta",
       budget_investment_like_path(investment.budget_id, investment),
       method: :post,
       remote: true,
