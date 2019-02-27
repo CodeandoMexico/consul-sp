@@ -92,10 +92,10 @@ es:
             success: Código correcto. Tu cuenta ya está verificada
           level_two:
             success: Código correcto
-    step_1: Identidad
+    step_1: CONFIRMA TU IDENTIDAD
     step_2: SMS de confirmación
-    step_2_survey: Datos Estadísticos
-    step_2_confirm_address: Confirma tu Identidad
+    step_2_survey: ENCUESTA (OPCIONAL)
+    step_2_confirm_address: CONFIRMA TU RESIDENCIA
     step_3: Verificación final
     user_permission_debates: Ver propuestas
     user_permission_info: Al verificar tus datos podrás...
