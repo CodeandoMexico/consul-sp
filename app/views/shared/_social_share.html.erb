@@ -12,7 +12,8 @@
                               'data-twitter-title': local_assigns[:mobile],
                               'data-telegram-title': local_assigns[:mobile])%>
   <a href="whatsapp://send?text=<%= local_assigns[:mobile]%>&nbsp;<%= url %>"
-     class="show-for-small-only" data-action="share/whatsapp/share">
+     class="show-for-small-only" data-action="share/whatsapp/share" style="
+    margin-left: -20px;">
     <span class="icon-whatsapp whatsapp"></span>
     <span class="show-for-sr"><%= t("social.whatsapp") %></span>
   </a>
