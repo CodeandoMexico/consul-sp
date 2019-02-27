@@ -6,9 +6,11 @@
       <tr>
         <th scope="col"><%= t("admin.users.columns.name") %></th>
         <th scope="col"><%= t("admin.users.columns.email") %></th>
-        <th scope="col"><%= t("admin.users.columns.document_number") %></th>
+        <th scope="col">Num Catastral</th>
         <th scope="col"><%= t("admin.users.columns.roles") %></th>
         <th scope="col">Fecha de Registro</th>
+        <th scope="col">Junta Vecinal</th>
+        <th scope="col">Sector</th>
         <th scope="col"><%= t("admin.users.columns.verification_level") %></th>
       </tr>
     </thead>
@@ -19,6 +21,13 @@
           <td><%= user.email %></td>
           <td><%= user.document_number %></td>
           <td><%= display_user_roles(user) %></td>
+          <% if user.user_type == 'level_3_user' %>
+            <td><%= user.colonium.first.junta_nom %></td>
+            <td><%= user.sector %></td>
+          <% else %>
+            <td>No ha finalizado su registro</td>
+            <td>No ha finalizado su registro</td>
+          <% end %>
           <td><%= user.created_at.strftime("%Y-%m-%d") %></td>
           <td><%= user.user_type %></td>
         </tr>
