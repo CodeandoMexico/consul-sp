@@ -21,7 +21,7 @@
           <td><%= user.email %></td>
           <td><%= user.document_number %></td>
           <td><%= display_user_roles(user) %></td>
-          <% if user.user_type == 'level_3_user' %>
+          <% if user.level_three_verified? %>
             <td><%= user.colonium.first.junta_nom %></td>
             <td><%= user.sector %></td>
           <% else %>
