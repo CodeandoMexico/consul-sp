@@ -12,9 +12,6 @@
         </li>
       <% end %>
       <% if feature?(:budgets) %>
-      <li>
-        <%= link_to t("pages.help.menu.budgets"), "#budgets", class: "button hollow expanded" %>
-      </li>
       <% end %>
       <% if feature?(:polls) %>
       <li>
@@ -27,7 +24,7 @@
       </li>
       <% end %>
       <li>
-        <%= link_to t("pages.help.menu.other"), "#other", class: "button hollow expanded" %>
+        <a class="button hollow expanded" style="font-size: 20px;" target="_blank"  href="https://s3.us-east-2.amazonaws.com/consulspp/guia_practica_pp2019.pdf">Descarga la guía práctica</a>
       </li>
     </ul>
   </div>
