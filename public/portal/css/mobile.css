@@ -111,8 +111,12 @@ i.icona-salvavidas.text-primary.mr-2 {
   }
 
   a.btn.btn-outline-primary.mt-4 {
-    font-size: larger;
+    font-size: larger !important;
     background: #00b3a3;
     color: aliceblue;
+}
+
+#saporo{
+    padding: .5rem !important;
 }
 }
