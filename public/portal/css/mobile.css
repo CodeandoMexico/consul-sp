@@ -119,4 +119,18 @@ i.icona-salvavidas.text-primary.mr-2 {
 #saporo{
     padding: .5rem !important;
 }
+
+li.list-group-item {
+    text-align: -webkit-center !important;
+}
+
+i.icona-libro, i.icona-calendario, i.icona-salvavidas {
+    font-size: 100px;
+    position: initial !important;
+    top: 30px;
+}
+
+ul.list-group.list-group-flush {
+    margin-left: 0rem !important;
+}
 }
