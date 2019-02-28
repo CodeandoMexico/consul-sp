@@ -14,7 +14,7 @@ class Budget
     include Mappable
     include Documentable
     documentable max_documents_allowed: 3,
-                 max_file_size: 3.megabytes,
+                 max_file_size: 100.megabytes,
                  accepted_content_types: [ "application/pdf" ]
 
     acts_as_votable
