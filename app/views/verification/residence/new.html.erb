@@ -3,12 +3,10 @@
       padding: 5px;
       color: green;
   }
-
   #error-mensaje .flash_message {
     padding: 5px;
     color: red;
 }
-
 div#error-mensaje {
     color: red;
     background: #f2dede;
@@ -16,14 +14,12 @@ div#error-mensaje {
     display: inline-block;
     margin: 0 0.375rem;
 }
-
 div#ine-exist {
     background: #7bca7d;
     color: #green;
     display: inline-block;
     margin: 0 0.375rem;
 }
-
 .file-input {
   display: inline-block;
   text-align: left;
@@ -34,7 +30,6 @@ div#ine-exist {
   border-radius: 3px;
   padding-left: inherit;
 }
-
 .file-input > [type='file'] {
   position: absolute;
   top: 0;
@@ -46,7 +41,6 @@ div#ine-exist {
   cursor: pointer;
   margin: initial;
 }
-
 .file-input > .button {
   display: inline-block;
   cursor: pointer;
@@ -56,13 +50,10 @@ div#ine-exist {
   margin-right: 8px;
   margin-bottom: initial;
 }
-
-
 .file-input:hover > .button {
   background: dodgerblue;
   color: white;
 }
-
 .file-input > .label {
   color: #000;
   white-space: nowrap;
@@ -70,13 +61,9 @@ div#ine-exist {
   background: transparent;
   font-size: initial;
 }
-
 .file-input.-chosen > .label {
   opacity: 1;
 }
-
-
-
 </style>
 
 <div class="verification account row">
@@ -127,6 +114,7 @@ div#ine-exist {
           </div>
 
           <div class="inline-block" data-toggle="info-document-ife">
+            <span class="icon-help"></span>
             <span class="show-for-sr">Sube una foto de tu credencial para votar.</span>
           </div>
 
@@ -145,10 +133,6 @@ div#ine-exist {
                 <div id="error-mensaje">
                   <%= @residence.errors.messages[:base].first %></div>
               <% end %>
-              <p style="font-size: small;line-height: unset;font-weight: bold;">
-                Sube una foto del frente de tu credencial de elector. No es necesario que el domicilio de tu credencial esté en San Pedro.
-              </p>
-              </div>
           </div>
         </div>
       </div>
@@ -162,6 +146,7 @@ div#ine-exist {
           </div>
 
           <div class="inline-block" data-toggle="info-document-number">
+            <span class="icon-help"></span>
             <span class="show-for-sr"><%= t("verification.residence.new.document_number_help_title") %></span>
           </div>
 
@@ -171,9 +156,6 @@ div#ine-exist {
           </div>
 
           <%= f.text_field :document_number, label: false %>
-          <p style="font-size: small;line-height: unset;font-weight: bold;"> El número debe tener 7 u 8 dígitos, se encuentra en el recibo de pago del impuesto predial.
-                    Si no lo tienes a la mano, envía tu comprobante de domicilio a edgar.gutierrez@sanpedro.gob.mx o llámanos al 8478-2059 y
-                    te decimos cuál es. Esto es posible para renteros y propietarios.</p>
           </div>
         </div>
       </div>
@@ -219,40 +201,31 @@ div#ine-exist {
 <script type="text/javascript">
   (function($) {
     $.fn.flash_message = function(options) {
-
       options = $.extend({
         text: 'Done',
         time: 1000,
         how: 'before',
         class_name: ''
       }, options);
-
       return $(this).each(function() {
         if( $(this).parent().find('.flash_message').get(0) )
           return;
-
         var message = $('<span />', {
           'class': 'flash_message ' + options.class_name,
           text: options.text
         }).hide().fadeIn('fast');
-
         $(this)[options.how](message);
-
         message.delay(options.time).fadeOut('normal', function() {
           $(this).remove();
         });
-
       });
     };
 })(jQuery);
-
-
   $('#image').change(function(){
      var formData = new FormData(),
          $input = $(this);
      formData.append('image[image]', $input[0].files[0]);
      formData.append('user_id',<%= current_user.id %>);
-
      $.ajax({
        url: '<%= image_upload_path %>',
        data: formData,
@@ -268,23 +241,17 @@ div#ine-exist {
        }
      });
    })
-
    // Also see: https://www.quirksmode.org/dom/inputfile.html
-
 var inputs = document.querySelectorAll('.file-input')
-
 for (var i = 0, len = inputs.length; i < len; i++) {
   customInput(inputs[i])
 }
-
 function customInput (el) {
   const fileInput = el.querySelector('[type="file"]')
   const label = el.querySelector('[data-js-label]')
-
   fileInput.onchange =
   fileInput.onmouseout = function () {
     if (!fileInput.value) return
-
     var value = fileInput.value.replace(/^.*[\\\/]/, '')
     el.className += ' -chosen'
     label.innerText = value
