@@ -4,8 +4,10 @@
   <div class="row">
     <div class="small-12 medium-8 column">
       <%= f.select :heading_id, budget_heading_select_options(@budget), {include_blank: true, } %>
+      <p class="help-text"><b>Recuerda que para subir una propuesta para tu sector, necesitas el respaldo de dos presidentes de Junta de Vecinos de tu sector.
+        <a target="_blank" rel="noopener noreferrer" href="https://docs.google.com/document/d/1o7IYkmtgsPc-R3oYOntEbiz_Wrj61XJtrLAOPVh74EU/edit?ts=5c65f339">Aquí una plantilla</a>
+        que puedes usar para conseguir estos respaldos. Escanea o toma una foto y sube la plantilla llena, en el botón de 'Añadir nuevo documento'.<b/></p>
     </div>
-
     <div class="small-12 column">
       <%= f.text_field :title, maxlength: SpendingProposal.title_max_length, data: { js_suggest_result: "js_suggest_result", js_suggest: "#js-suggest", js_url: suggest_budget_investments_path(@budget) }%>
     </div>
