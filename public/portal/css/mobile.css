@@ -14,9 +14,22 @@
     width: auto;
     height: auto;
   }
+
  }
 
 @media screen and (min-width: 320px) and (max-width:580px) {
+      b#inside-box {
+        font-size: 40px !important;
+    }
+
+    .center-table-element {
+      width: 80% !important;
+    }
+
+    p.m-2.mx-5.text-center {
+    padding-bottom: 50px !important;
+  }
+
     img#logo-nav {
       max-height: 50px;
       max-width: 100%;
@@ -65,8 +78,7 @@ span.icona-lupa.my-3, span.icona-papel.my-3, span.icona-dedo.my-3 {
 }
 
 p.m-2.mx-5.text-center {
-    margin-left: 14% !important;
-    padding-left: 20%;
+
 }
 
 h1#rowo-child{
