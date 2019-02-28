@@ -1,8 +1,6 @@
 <div class="votes">
   <% if user_signed_in? %>
-    <%= t('comments.comment.votes', count: comment.total_votes) %>
-    &nbsp;|&nbsp;
-
+  
     <span class="in_favor">
       <% if can?(:vote, comment) %>
         <%= link_to vote_comment_path(comment, value: 'yes'),
