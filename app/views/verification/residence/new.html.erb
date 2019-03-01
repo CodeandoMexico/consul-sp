@@ -114,7 +114,6 @@ div#ine-exist {
           </div>
 
           <div class="inline-block" data-toggle="info-document-ife">
-            <span class="icon-help"></span>
             <span class="show-for-sr">Sube una foto de tu credencial para votar.</span>
           </div>
 
@@ -133,6 +132,12 @@ div#ine-exist {
                 <div id="error-mensaje">
                   <%= @residence.errors.messages[:base].first %></div>
               <% end %>
+
+              <p style="font-size: small;line-height: unset;font-weight: bold;">
+                  Sube una foto del frente de tu credencial de elector. No es necesario que el domicilio de tu credencial esté en San Pedro.
+              </p>
+
+
           </div>
         </div>
       </div>
@@ -146,7 +151,6 @@ div#ine-exist {
           </div>
 
           <div class="inline-block" data-toggle="info-document-number">
-            <span class="icon-help"></span>
             <span class="show-for-sr"><%= t("verification.residence.new.document_number_help_title") %></span>
           </div>
 
@@ -156,6 +160,11 @@ div#ine-exist {
           </div>
 
           <%= f.text_field :document_number, label: false %>
+
+          <p style="font-size: small;line-height: unset;font-weight: bold;"> El número debe tener 7 u 8 dígitos, se encuentra en el recibo de pago del impuesto predial.
+          Si no lo tienes a la mano, envía tu comprobante de domicilio a edgar.gutierrez@sanpedro.gob.mx o llámanos al 8478-2059 y
+          te decimos cuál es. Esto es posible para renteros y propietarios.</p>
+
           </div>
         </div>
       </div>
