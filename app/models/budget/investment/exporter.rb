@@ -28,7 +28,9 @@ class Budget::Investment::Exporter
       I18n.t("admin.budget_investments.index.list.selected"),
       I18n.t("admin.budget_investments.index.list.visible_to_valuators"),
       I18n.t("admin.budget_investments.index.list.author_username"),
-      'Contenido'
+      'Contenido',
+      'Fecha de Creación',
+      'Fecha de Actualización',
     ]
   end
 
@@ -46,7 +48,9 @@ class Budget::Investment::Exporter
       investment.selected? ? I18n.t('shared.yes') : I18n.t('shared.no'),
       investment.visible_to_valuators? ? I18n.t('shared.yes') : I18n.t('shared.no'),
       investment.author.username,
-      investment.description.strip
+      investment.description.strip,
+      investment.created_at,
+      investment.updated_at
     ]
   end
 
