@@ -223,6 +223,9 @@ es:
           selected: Seleccionado
           visible_to_valuators: Mostrar a evaluadores
           author_username: Usuario autor
+          content: Contenido
+          creation: 'Fecha de Creación'
+          updated: Fecha de Actualización
           incompatible: Incompatible
         cannot_calculate_winners: El presupuesto debe estar en las fases "Votación final", "Votación finalizada" o "Resultados" para poder calcular las propuestas ganadoras
         see_results: "Ver resultados"
