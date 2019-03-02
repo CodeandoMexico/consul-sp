@@ -60,6 +60,10 @@ Rails.application.configure do
 
   config.cache_store = :dalli_store
 
+  ############################### paperclip ###############################
+  ############################### paperclip ###############################
+
+
   config.after_initialize do
     Bullet.enable = true
     Bullet.bullet_logger = true

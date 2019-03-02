@@ -96,8 +96,11 @@ es:
           verify_account: "verifica tu cuenta"
           create: "Registrar propuesta"
           not_logged_in: "Para registrar una nueva propuesta %{sign_in}."
+          sign_in_likes: "inicia sesión"
+          sign_up_likes: "regístrate"
           sign_in: "verifica tu cuenta"
           sign_up: "registrarte"
+          not_likes_for_you: "Para dar 'me gusta' %{sign_up_likes} o %{sign_in_likes}."
           by_feasibility: Por viabilidad
           feasible: Ver los proyectos viables
           unfeasible: Ver los proyectos inviables
