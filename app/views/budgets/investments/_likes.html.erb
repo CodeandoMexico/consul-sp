@@ -22,13 +22,15 @@
       font-size: -webkit-xxx-large;
   }
 
+ #center_hand{
+   text-align: -webkit-center;
+ }
 
 </style>
 <% if @investment.present? %>
   <% investment = @investment %>
 <% end %>
-
-<div class="div-container">
+<div class="div-container" id="center_hand">
 <h3><%= Like.where(investment_id: investment.id).count %></h3>
 <% if user_signed_in? && current_user.likes?(investment) %>
   <%= link_to '<i class="fa fa-thumbs-up" id="unlike"></i>'.html_safe,
@@ -42,5 +44,12 @@
       method: :post,
       remote: true,
       class: "" %>
+<% else %>
+<i class="fa fa-thumbs-up" id="like"></i>
+  <div class="callout primary margin-top">
+    <%= t("budgets.investments.index.sidebar.not_likes_for_you",
+          sign_in_likes: link_to(t("budgets.investments.index.sidebar.sign_in_likes"), new_user_session_path),
+          sign_up_likes: link_to(t("budgets.investments.index.sidebar.sign_up_likes"), new_user_registration_path)).html_safe %>
+  </div>
 <% end %>
 </div>
