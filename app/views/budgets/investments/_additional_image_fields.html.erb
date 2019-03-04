@@ -13,7 +13,7 @@ button{
 
   <img id="mitski" src="<%= image_url 'image-placeholder.png' %>" width="300">
   <p>
-    <%= f.file_field :photo, label: false, :onChange => "readURL(this)", class: "filename" %>
+    <%= f.file_field :photo, label: false, :onChange => "readURL(this)", class: "filename", accept:'image/*' %>
     <button type="button" name="photo-button" onclick="$(this).parent().find('.filename').click();">Añadir Imagen</button></p>
   <span class="file_name"></span>
 

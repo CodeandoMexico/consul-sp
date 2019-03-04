@@ -45,7 +45,7 @@ Rails.application.routes.draw do
   put 'api/image_upload' => 'api#image_upload', as: :image_upload
 
   #TO UPLOAD ADDITIONAL IMAGES
-  resources :additional_images, only: [:index, :create]
+  resources :additional_images, only: [:index, :create, :destroy]
 
 
   resources :stats, only: [:index]

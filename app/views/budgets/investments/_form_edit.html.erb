@@ -1,3 +1,106 @@
+<style media="screen">
+  /* ------------------------------------------
+      Grid
+--------------------------------------------- */
+
+ul#grid {
+  padding: 0;
+  list-style: none;
+  margin: 20px auto 0;
+  width: 700px;
+  }
+
+#grid li {
+  float: left;
+  padding: 0;
+  margin: 0 5px 10px 5px;
+  }
+
+#grid li a {
+  display: block;
+  }
+
+#grid li img {
+  background-color: #64666a;
+  padding: 7px; margin: 0;
+  border: 1px dotted #58595b;
+  width: 128px !important;
+  height: 128px !important;
+  }
+
+#grid li a:hover img {
+opacity:0.3; filter:alpha(opacity=30);
+  }
+
+.grid_display {
+  padding: 20px;
+  margin-left: auto; margin-right: auto;  margin-top:50px; margin-bottom:0;
+  /*background-color: #ffd7ce;*/
+  width: 513px;
+
+  /*these two properties will be inherited by .grid_display h2 and .grid_display p */
+  font-family: 'GraublauWeb', arial, serif;
+  text-align: center;
+  }
+
+div.grid_display h2 {
+  padding: 0; margin: 0;
+  clear: both;
+  font-size: 35px;
+  font-weight: normal;
+  color: #58595b;
+  background: none;
+  font-family: 'GraublauWeb', arial, serif;
+
+  /* reset for cascade effects that are trickling down from other h2's */
+  text-transform: none;
+  letter-spacing: normal;
+  }
+
+.grid_display p {
+  margin:0; padding: 0;
+  font-size: 15px;
+  color: #58595b;
+  }
+
+  .image-area {
+  position: relative;
+  background: #333;
+}
+.image-area img{
+  max-width: 100%;
+  height: auto;
+}
+.remove-image {
+display: none;
+position: absolute;
+top: -10px;
+right: -10px;
+border-radius: 10em;
+padding: 2px 6px 3px;
+text-decoration: none;
+font: 700 21px/20px sans-serif;
+background: #555;
+border: 3px solid #fff;
+color: #FFF;
+box-shadow: 0 2px 6px rgba(0,0,0,0.5), inset 0 2px 4px rgba(0,0,0,0.3);
+  text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+  -webkit-transition: background 0.5s;
+  transition: background 0.5s;
+}
+.remove-image:hover {
+ background: #E54E4E;
+  padding: 3px 7px 5px;
+  top: -11px;
+right: -11px;
+}
+.remove-image:active {
+ background: #E54E4E;
+  top: -10px;
+right: -11px;
+}
+</style>
+
 <%= form_for(@investment, url: budget_investment_path(@budget, @investment), html: { multipart: true }) do |f| %>
   <%= render 'shared/errors', resource: @investment %>
 
@@ -22,6 +125,30 @@
         <%= render 'images/nested_image', imageable: @investment, f: f %>
       </div>
     <% end %>
+
+  <div id="gallery">
+    <ul id="grid">
+      <% @investment.additional_images.each do |image| %>
+       <li>
+        <div class="image-area">
+           <%= image_tag(image.photo.url) %>
+           <a class="remove-image" style="display: inline;" id="<%= "#{image.id}" %>">&#215;</a>
+        </div>
+       </li>
+      <% end %>
+    </ul>
+  </div>
+
+    <div class="small-12 column" id="dragon">
+      <h3>Imagenes Adicionales</h3>
+
+    </div>
+    <p>
+      <div class="small-12 column">
+        <%= link_to_add_association 'Añadir Imagen Adicional', f, :additional_images, class: 'btn btn-primary', data: { association_insertion_node: '#dragon', association_insertion_method: :append} %>
+      </div>
+    </p>
+
 
     <% if feature?(:allow_attached_documents) %>
       <div class="documents small-12 column">
@@ -93,3 +220,25 @@
     </div>
   </div>
 <% end %>
+
+
+<script type="text/javascript">
+  $('.remove-image').click(function (e) {
+    $(this).parent().remove();
+    var photo_id= this.id;
+    $.ajax({
+      url: '/additional_images/' + photo_id,
+      data: {},
+      type: 'DELETE',
+      cache:false,
+      contentType: false,
+      processData: false,
+      success: function(data){
+        console.log("works");
+      }
+    });
+
+    //If you want to remove all images
+    //$(this).parent().find('img').remove();
+  });
+</script>

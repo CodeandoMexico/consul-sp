@@ -1029,6 +1029,7 @@ GEM
       omniauth-oauth (~> 1.1)
       rack
     orm_adapter (0.5.0)
+    owlcarousel-rails (2.2.3.5)
     paperclip (5.2.1)
       activemodel (>= 4.2.0)
       activesupport (>= 4.2.0)
@@ -1321,6 +1322,7 @@ DEPENDENCIES
   omniauth-facebook (~> 4.0.0)
   omniauth-google-oauth2 (~> 0.4.0)
   omniauth-twitter (~> 1.4.0)
+  owlcarousel-rails
   paperclip (~> 5.2.1)
   paranoia (~> 2.4.1)
   pg (~> 0.21.0)
