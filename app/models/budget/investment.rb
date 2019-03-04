@@ -36,6 +36,11 @@ class Budget
     has_many :valuator_assignments, dependent: :destroy
     has_many :valuators, through: :valuator_assignments
 
+    has_many :additional_images, dependent: :destroy
+    accepts_nested_attributes_for :additional_images,
+                                  allow_destroy: true,
+                                  reject_if: proc { |att| att['photo'].blank? }
+
     has_many :valuator_group_assignments, dependent: :destroy
     has_many :valuator_groups, through: :valuator_group_assignments
 

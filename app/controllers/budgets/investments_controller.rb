@@ -50,6 +50,7 @@ module Budgets
     end
 
     def new
+      @investment.additional_images.build
     end
 
     def show
@@ -151,7 +152,8 @@ module Budgets
                       :organization_name, :location, :terms_of_service, :skip_map,
                       image_attributes: [:id, :title, :attachment, :cached_attachment, :user_id, :_destroy],
                       documents_attributes: [:id, :title, :attachment, :cached_attachment, :user_id, :_destroy],
-                      map_location_attributes: [:latitude, :longitude, :zoom])
+                      map_location_attributes: [:latitude, :longitude, :zoom],
+                      additional_images_attributes: AdditionalImage.attribute_names.map(&:to_sym).push(:_destroy, :photo))
       end
 
       def load_ballot

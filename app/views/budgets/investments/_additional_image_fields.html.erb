@@ -1,0 +1,20 @@
+<img id="mitski" src="<%= image_url 'image-placeholder.png' %>" width="300">
+<tr class="nesteds-fields">
+  <td><%= f.file_field :photo, label: false, :onChange => "readURL(this)", class: "filename"%></td>
+</tr>
+
+
+
+
+<script type="text/javascript">
+  function readURL(input) {
+  div_id = "#" + input.id;
+  if (input.files && input.files[0]) {
+    var reader = new FileReader();
+    reader.onload = function (e) {
+      $(input).prev().attr('src', e.target.result);
+    }
+    reader.readAsDataURL(input.files[0]);
+  }
+}
+</script>
