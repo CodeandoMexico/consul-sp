@@ -1,5 +1,11 @@
 module BudgetHeadingsHelper
 
+  def budget_heading_select_options_all(budget)
+   budget.headings.order_by_group_name.map do |heading|
+     [heading.name_scoped_by_group, heading.id]
+   end
+  end
+
   def budget_heading_select_options(budget)
     # TODO: filtro temporal
     if !current_user.colonium.nil?
