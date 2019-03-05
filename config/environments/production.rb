@@ -108,7 +108,7 @@ Rails.application.configure do
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :mailgun
     config.action_mailer.mailgun_settings = {
-     api_key: "keykeykeykey"],
+     api_key: "keykeykeykey",
      domain: ENV["mail_mail_domain"],
     }
 
