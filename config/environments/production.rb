@@ -103,6 +103,14 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
 
+  ############################### ACTION MAILER ###############################
+  config.action_mailer.default_url_options = { :host => "https://consul-sanpedro.herokuapp.com" }
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.delivery_method = :mailgun
+    config.action_mailer.mailgun_settings = {
+     api_key: "keykeykeykey"],
+     domain: ENV["mail_mail_domain"],
+    }
 
   ############################### paperclip ###############################
   config.paperclip_defaults = {
