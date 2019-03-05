@@ -19,20 +19,13 @@ Rails.application.configure do
   config.action_mailer.asset_host = "http://localhost:3000"
 
   # Deliver emails to a development mailbox at /letter_opener
-  # config.action_mailer.delivery_method = :letter_opener
+  config.action_mailer.delivery_method = :letter_opener
 
   # ActionMailer::Base.delivery_method = :smtp
   # SMTP configuration to deliver emails
   # Uncomment the following block of code and add your SMTP service credentials
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {
-    address:              'smtp.gmail.com',
-    port:                 587,
-    domain:               'decide.sanpedro.gob.mx',
-    user_name:            'decide@sanpedro.gob.mx',
-    password:             'Sp3640520#',
-    authentication:       'plain',
-    enable_starttls_auto: true }
+  #config.action_mailer.delivery_method = :smtp
+
 
 
   # Print deprecation notices to the Rails logger.
