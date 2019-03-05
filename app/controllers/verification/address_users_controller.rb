@@ -35,6 +35,11 @@ class Verification::AddressUsersController < ApplicationController
     longitude = params[:address_user_confirm][:address_user][:longitude]
 
     current_location = Geokit::LatLng.new(latitude,longitude)
+
+    #fix fix fix
+    catastral.latitude= 0 if catastral.latitude.nil?
+    catastral.longitude= 0 if catastral.longitude.nil?
+
     destination = "#{catastral.latitude},#{catastral.longitude}"
 
     distance = current_location.distance_to(destination)
