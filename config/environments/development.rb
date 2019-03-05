@@ -24,6 +24,7 @@ Rails.application.configure do
   # ActionMailer::Base.delivery_method = :smtp
   # SMTP configuration to deliver emails
   # Uncomment the following block of code and add your SMTP service credentials
+  #config.action_mailer.delivery_method = :smtp
 
 
 

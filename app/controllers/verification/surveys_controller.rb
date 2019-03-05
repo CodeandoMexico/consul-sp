@@ -15,7 +15,7 @@ class Verification::SurveysController < ApplicationController
     @survey.user = current_user
     if @survey.save
       # redirect_to verified_user_path, notice: t('verification.sms.create.flash.success')
-      redirect_to verified_user_path
+      redirect_to root_path, notice: 'Tu cuenta ha sido verificada con exito.'
     else
       render :new
     end
