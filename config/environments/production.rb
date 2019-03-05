@@ -103,23 +103,7 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
 
-  ############################### ACTION MAILER ###############################
-  config.action_mailer.default_url_options = { :host => "https://consul-sanpedro.herokuapp.com" }
-  config.action_mailer.raise_delivery_errors = true
-  # config.action_mailer.delivery_method = :mailgun
-  #   config.action_mailer.mailgun_settings = {
-  #    api_key: ENV["mailgun_api_key"],
-  #    domain: ENV["mail_mail_domain"],
-  #   }
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {
-    address:              'smtp.gmail.com',
-    port:                 587,
-    domain:               'decide.sanpedro.gob.mx',
-    user_name:            'decide@sanpedro.gob.mx',
-    password:             'Sp3640520#',
-    authentication:       'plain',
-    enable_starttls_auto: true }
+
   ############################### paperclip ###############################
   config.paperclip_defaults = {
       storage: :s3,
