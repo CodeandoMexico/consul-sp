@@ -12,6 +12,10 @@
       font-size: large;
       padding: initial
     }
+
+    .shady{
+      color: white !important;
+    }
   }
 
   img#logo-sp {
@@ -30,6 +34,8 @@
 a.nav-link {
     color: currentColor;
 }
+
+
 </style>
 
 <head>
@@ -61,11 +67,11 @@ a.nav-link {
     <div>
       <button class="btn rounded-0" type="button" style="font-size: 20px;background: #4dc8cc;">
         <%= link_to 'Ver Presupuestos',
-                    budgets_path, rel: "nofollow", class: 'nav-link' %>
+                    budgets_path, {:style=>'font-family: HKGrotesk; color: white;', :class => "nav-link", rel: "nofollow"} %>
       </button>
       <button class="btn rounded-0" type="button" style="font-size: 20px;">
         <%= link_to t("devise_views.menu.login_items.login"),
-                    new_user_session_path, rel: "nofollow", class: 'nav-link' %>
+                    new_user_session_path, {:style=>'font-family: HKGrotesk; color: #46c8cd;', :class => "nav-link shady", rel: "nofollow"} %>
       </button>
     </div>
   </nav>
