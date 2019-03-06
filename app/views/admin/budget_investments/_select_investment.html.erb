@@ -31,6 +31,9 @@
   <%= investment.heading.name %>
 </td>
 <td class="small">
+  <%= investment.author.sector %>
+</td>
+<td class="small">
   <% if investment.documents.present? %>
   <ul>
     <% investment.documents.each do |document| %>
