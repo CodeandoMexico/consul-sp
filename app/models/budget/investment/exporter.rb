@@ -29,6 +29,9 @@ class Budget::Investment::Exporter
       I18n.t("admin.budget_investments.index.list.visible_to_valuators"),
       I18n.t("admin.budget_investments.index.list.author_username"),
       'Sector',
+      'Documento 1',
+      'Documento 2',
+      'Documento 3',
       I18n.t("admin.budget_investments.index.list.content"),
       I18n.t("admin.budget_investments.index.list.creation"),
       I18n.t("admin.budget_investments.index.list.updated")
@@ -50,6 +53,9 @@ class Budget::Investment::Exporter
       investment.visible_to_valuators? ? I18n.t('shared.yes') : I18n.t('shared.no'),
       investment.author.username,
       investment.author.sector,
+      get_documents_url(investment.documents.first),
+      get_documents_url(investment.documents.second),
+      get_documents_url(investment.documents.third),
       ActionView::Base.full_sanitizer.sanitize(investment.description),
       investment.created_at.strftime("%d/%m/%Y"),
       investment.updated_at.strftime("%d/%m/%Y")
@@ -62,6 +68,11 @@ class Budget::Investment::Exporter
     else
       I18n.t("admin.budget_investments.index.no_admin_assigned")
     end
+  end
+
+  def get_documents_url(investment)
+    return "" if investment.nil?
+    investment.attachment.url
   end
 
   def price(investment)

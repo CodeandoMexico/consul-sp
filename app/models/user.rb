@@ -248,9 +248,17 @@ class User < ActiveRecord::Base
   end
 
   def roles_category
-    display_user_roles(user)
+    roles = []
+    roles << :admin if self.administrator?
+    roles << :moderator if self.moderator?
+    roles << :valuator if self.valuator?
+    roles << :manager if self.manager?
+    roles << :poll_officer if self.poll_officer?
+    roles << :official if self.official?
+    roles << :organization if self.organization?
+    roles
   end
-  
+
   def colonia
     return "" if !level_three_verified?
     colonium.first.junta_nom
