@@ -237,7 +237,7 @@ class User < ActiveRecord::Base
   end
 
   def self.to_csv
-    attributes= %w{id name email colonia  sector document_number created_at}
+    attributes= %w{id name email colonia  sector document_number created_at user_type roles_category}
 
     CSV.generate(headers: true) do |csv|
       csv << attributes
@@ -247,6 +247,10 @@ class User < ActiveRecord::Base
     end
   end
 
+  def roles_category
+    display_user_roles(user)
+  end
+  
   def colonia
     return "" if !level_three_verified?
     colonium.first.junta_nom
