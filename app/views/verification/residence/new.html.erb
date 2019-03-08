@@ -64,6 +64,18 @@ div#ine-exist {
 .file-input.-chosen > .label {
   opacity: 1;
 }
+
+.progress {
+    display: block !important;
+    text-align: center;
+    width: 0;
+    height: 10px !important;
+    background: #2e8e5d;
+    transition: width .4s;
+}
+.progress.hide {
+    transition: opacity 1.3s;
+}
 </style>
 
 <div class="verification account row">
@@ -132,6 +144,7 @@ div#ine-exist {
                 <div id="error-mensaje">
                   <%= @residence.errors.messages[:base].first %></div>
               <% end %>
+              <div class="progress"></div>
 
               <p style="font-size: small;line-height: unset;font-weight: bold;">
                   Sube una foto del frente de tu credencial de elector. No es necesario que el domicilio de tu credencial esté en San Pedro.
@@ -212,7 +225,7 @@ div#ine-exist {
     $.fn.flash_message = function(options) {
       options = $.extend({
         text: 'Done',
-        time: 1000,
+        time: 10000000000000000000000,
         how: 'before',
         class_name: ''
       }, options);
@@ -222,11 +235,8 @@ div#ine-exist {
         var message = $('<span />', {
           'class': 'flash_message ' + options.class_name,
           text: options.text
-        }).hide().fadeIn('fast');
-        $(this)[options.how](message);
-        message.delay(options.time).fadeOut('normal', function() {
-          $(this).remove();
         });
+        $(this)[options.how](message);
       });
     };
 })(jQuery);
@@ -235,20 +245,57 @@ div#ine-exist {
          $input = $(this);
      formData.append('image[image]', $input[0].files[0]);
      formData.append('user_id',<%= current_user.id %>);
-     $.ajax({
-       url: '<%= image_upload_path %>',
-       data: formData,
-       type: 'PUT',
-       cache:false,
-       contentType: false,
-       processData: false,
-       success: function(data){
-         $('#status-area').flash_message({
-             text: 'Se agrego la INE con exito',
-             how: 'append'
-         });
-       }
-     });
+
+
+
+     var data = [];
+for (var i = 0; i < 100000; i++) {
+    var tmp = [];
+    for (var i = 0; i < 100000; i++) {
+        tmp[i] = 'hue';
+    }
+    data[i] = tmp;
+};
+$.ajax({
+    xhr: function () {
+        var xhr = new window.XMLHttpRequest();
+        xhr.upload.addEventListener("progress", function (evt) {
+            if (evt.lengthComputable) {
+                var percentComplete = evt.loaded / evt.total;
+                console.log(percentComplete);
+                $('.progress').css({
+                    width: percentComplete * 100 + '%'
+                });
+                if (percentComplete === 1) {
+                    $('.progress').addClass('hide');
+                }
+            }
+        }, false);
+        xhr.addEventListener("progress", function (evt) {
+            if (evt.lengthComputable) {
+                var percentComplete = evt.loaded / evt.total;
+                console.log(percentComplete);
+                $('.progress').css({
+                    width: percentComplete * 100 + '%'
+                });
+            }
+        }, false);
+        return xhr;
+    },
+    url: '<%= image_upload_path %>',
+    data: formData,
+    type: 'PUT',
+    cache:false,
+    contentType: false,
+    processData: false,
+    success: function(data){
+      $('#status-area').flash_message({
+        text: 'Se agrego la INE con exito',
+        how: 'append'
+      });
+    }
+
+});
    })
    // Also see: https://www.quirksmode.org/dom/inputfile.html
 var inputs = document.querySelectorAll('.file-input')
