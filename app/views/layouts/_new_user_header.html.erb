@@ -66,14 +66,17 @@ a.nav-link {
       <% end %>
     </div>
     <div>
-      <button class="btn rounded-0" type="button" style="font-size: 20px;background: #4dc8cc;">
-        <%= link_to 'Ver Presupuestos',
-                    budgets_path, {:style=>'font-family: HKGrotesk; color: white;', :class => "nav-link", rel: "nofollow"} %>
-      </button>
-      <button class="btn rounded-0" type="button" style="font-size: 20px;">
-        <%= link_to t("devise_views.menu.login_items.login"),
-                    new_user_session_path, {:style=>'font-family: HKGrotesk; color: #46c8cd;', :class => "nav-link shady", rel: "nofollow"} %>
-      </button>
+      <%= link_to 'Ver Presupuestos',
+                  budgets_path,
+                  { class: 'btn rounded-0',
+                    rel: 'nofollow',
+                    style:'font-size: 20px; background: #4dc8cc; font-family: HKGrotesk; color: white; padding: 0.7em 1.6em;' } %>
+
+      <%= link_to link_to t("devise_views.menu.login_items.login"),
+                  new_user_session_path,
+                  { class: 'btn rounded-0 shady',
+                    rel: 'nofollow',
+                    style:'font-size: 20px; font-family: HKGrotesk; color: #46c8cd; padding: 0.7em 1.6em' } %>
     </div>
   </nav>
 </body>
