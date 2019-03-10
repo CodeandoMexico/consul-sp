@@ -124,6 +124,6 @@ class ApplicationController < ActionController::Base
     end
 
     def current_budget
-      Budget.current
+      @_current_budget ||= Budget.current
     end
 end

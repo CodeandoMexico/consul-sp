@@ -118,7 +118,7 @@ class Budget < ActiveRecord::Base
   end
 
   def heading_price(heading)
-    heading_ids.include?(heading.id) ? heading.price : -1
+    id == heading.budget_id ? heading.price : -1
   end
 
   def translated_phase
