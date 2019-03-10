@@ -10,6 +10,9 @@ class Budget
     validates :name, presence: true, uniqueness: { scope: :budget }
     validates :slug, presence: true, format: /\A[a-z0-9\-_]+\z/
 
+    scope :sectores, -> { find_by(name: "Sectores") }
+    scope :colonia, -> { find_by(name: "Juntas Vecinales") }
+
     def single_heading_group?
       headings.count == 1
     end

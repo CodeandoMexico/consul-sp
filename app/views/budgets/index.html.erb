@@ -1,8 +1,7 @@
 <style media="screen">
-  a {
-    color: #060606;
-  }
+  a { color: #060606; }
 </style>
+
 <% if has_banners? %>
   <%= render "shared/banner" %>
 <% end %>
@@ -18,50 +17,47 @@
     <div class="row" data-equalizer data-equalizer-on="medium">
       <div class="small-12 medium-9 column padding" data-equalizer-watch>
 
-          <h1><%= current_budget.name %></h1>
-          <div class="description">
-            <%= safe_html_with_links(current_budget.description) %>
-          </div>
-          <!-- <p>
-            <%#= link_to t("budgets.index.section_header.help"), "#section_help" %>
-          </p> -->
+        <h1><%= current_budget.name %></h1>
+        <div class="description">
+          <%= safe_html_with_links(current_budget.description) %>
         </div>
-        <div class="small-12 medium-3 column info padding" data-equalizer-watch>
-          <p>
-            <strong><%= t("budgets.show.phase") %></strong>
-          </p>
-          <h2><%= t("budgets.phase.#{current_budget.phase}") %></h2>
+      </div>
+      <div class="small-12 medium-3 column info padding" data-equalizer-watch>
+        <p>
+          <strong><%= t("budgets.show.phase") %></strong>
+        </p>
+        <h2><%= t("budgets.phase.#{current_budget.phase}") %></h2>
 
-          <%= link_to t("budgets.index.section_header.all_phases"), "#fases" %>
+        <%= link_to t("budgets.index.section_header.all_phases"), "#fases" %>
 
-          <% if current_budget.accepting? %>
-            <% if current_user %>
-              <% if current_user.level_two_or_three_verified? %>
-                <%= link_to t("budgets.investments.index.sidebar.create"),
-                            new_budget_investment_path(current_budget),
-                            class: "button margin-top expanded" %>
-              <% else %>
-                <div class="callout warning margin-top">
-                  <%= t("budgets.investments.index.sidebar.verified_only",
+        <% if current_budget.accepting? %>
+          <% if current_user %>
+            <% if current_user.level_two_or_three_verified? %>
+              <%= link_to t("budgets.investments.index.sidebar.create"),
+                new_budget_investment_path(current_budget),
+                class: "button margin-top expanded" %>
+            <% else %>
+              <div class="callout warning margin-top">
+                <%= t("budgets.investments.index.sidebar.verified_only",
                       verify: link_to(t("budgets.investments.index.sidebar.verify_account"),
                                       verification_path)).html_safe %>
-                </div>
-              <% end %>
-            <% else %>
-              <div class="callout primary margin-top">
-                <%= t("budgets.investments.index.sidebar.not_logged_in",
-                      sign_in: link_to(t("budgets.investments.index.sidebar.sign_in"),
-                      new_user_session_path),
-                      sign_up: link_to(t("budgets.investments.index.sidebar.sign_up"),
-                      new_user_registration_path)).html_safe %>
               </div>
             <% end %>
+          <% else %>
+            <div class="callout primary margin-top">
+              <%= t("budgets.investments.index.sidebar.not_logged_in",
+                    sign_in: link_to(t("budgets.investments.index.sidebar.sign_in"),
+                                     new_user_session_path),
+                                     sign_up: link_to(t("budgets.investments.index.sidebar.sign_up"),
+                                                      new_user_registration_path)).html_safe %>
+            </div>
           <% end %>
+        <% end %>
 
         <% if current_budget.finished? %>
           <%= link_to t("budgets.show.see_results"),
-                      budget_results_path(current_budget, heading_id: current_budget.headings.first),
-                      class: "button margin-top expanded" %>
+            budget_results_path(current_budget, heading_id: current_budget.headings.first),
+            class: "button margin-top expanded" %>
         <% end %>
 
         <p style="
@@ -76,285 +72,119 @@
     <div class="row margin-top">
       <div class="small-12 column">
 
-        <!-- <div id="groups_and_headings" class="groups-and-headings">
-          <% current_budget.groups.reverse_order.each do |group| %>
-            <h2 id="<%= group.name.parameterize %>"><%= group.name %></h2>
-            <ul class="no-bullet" data-equalizer data-equalizer-on="medium">
-              <% group.headings.order_by_group_name.each do |heading| %>
-                <li class="heading small-12 medium-4 large-2" data-equalizer-watch>
-                  <% unless current_budget.informing? %>
-                    <%= link_to budget_investments_path(current_budget.id, heading_id: heading.id) do %>
-                      <%= heading_name_and_price_html(heading, current_budget) %>
-                    <% end %>
-                  <% else %>
-                    <div class="heading-name">
-                      <%= heading_name_and_price_html(heading, current_budget) %>
-                    </div>
-                  <% end %>
-                </li>
-              <% end %>
-            </ul>
-          <% end %>
-        </div> -->
-        <% @sectores = Budget::Group.where(name: "Sectores") %>
+        <div id="groups_and_headings" class="groups-and-headings">
+          <h2 id="<%= @sectores.name.parameterize %>"><%= @sectores.name %></h2>
+          <p>Nuestro Municipio se divide en 6 sectores de participación
+            ciudadana. Aquí el presupuesto que va a recibir cada Sector.</p>
+          <ul class="no-bullet" data-equalizer data-equalizer-on="medium">
+            <%= render partial: 'heading', collection: @sectores.headings.order_by_group_name, as: :heading %>
+          </ul>
+        </div>
 
         <div id="groups_and_headings" class="groups-and-headings">
-          <% @sectores.reverse_order.each do |group| %>
-            <h2 id="<%= group.name.parameterize %>"><%= group.name %></h2>
-            <p>Nuestro Municipio se divide en 6 sectores de participación ciudadana. Aquí el presupuesto que va a recibir cada Sector.</p>
-            <ul class="no-bullet" data-equalizer data-equalizer-on="medium">
-              <% group.headings.order_by_group_name.each do |heading| %>
-                <li class="heading small-12 medium-4 large-2" data-equalizer-watch>
-                  <% unless current_budget.informing? %>
-                    <%= link_to budget_investments_path(current_budget.id, heading_id: heading.id) do %>
-                      <%= heading_name_and_price_html(heading, current_budget) %>
-                    <% end %>
-                  <% else %>
-                    <div class="heading-name">
-                      <%= heading_name_and_price_html(heading, current_budget) %>
-                    </div>
-                  <% end %>
-                </li>
-              <% end %>
-            </ul>
-          <% end %>
-        </div>
-
-    <% @colonia = Budget::Group.where(name: "Juntas Vecinales") %>
-    <div id="groups_and_headings" class="groups-and-headings">
-      <h2>Juntas de Vecinos(as)</h2>
-      <p>Cada Sector cuenta con aproximadamente 35 Juntas de Vecinos(as). ¿No sabes a cuál Junta perteneces? Aquí un mapa que te podría ayudar.</p>
-      <div class="container">
-        <iframe src="https://www.google.com/maps/d/embed?mid=1TuVOjg8Qg3wPqMyBvNZlcg3O24N_hke2" width="640" height="480"></iframe>
-      </div>
-
-      <% @colonia.reverse_order.each do |group| %>
-        <h3> K1 - Sector Obispo, Industrias y Río </h3>
-        <ul class="no-bullet" data-equalizer data-equalizer-on="medium">
-          <% group.headings.where(sector: "K1").order_by_group_name.each do |heading| %>
-            <li class="heading small-12 medium-4 large-2" data-equalizer-watch>
-              <% unless current_budget.informing? %>
-                <%= link_to budget_investments_path(current_budget.id, heading_id: heading.id) do %>
-                  <%= heading_name_and_price_html(heading, current_budget) %>
-                <% end %>
-              <% else %>
-                <div class="heading-name">
-                  <%= heading_name_and_price_html(heading, current_budget) %>
-                </div>
-              <% end %>
-            </li>
-          <% end %>
-        </ul>
-      <% end %>
-    </div>
-
-    <div id="groups_and_headings" class="groups-and-headings">
-      <% @colonia.reverse_order.each do |group| %>
-        <h3> K2 - Sector Centro de San Pedro </h3>
-        <ul class="no-bullet" data-equalizer data-equalizer-on="medium">
-          <% group.headings.where(sector: "K2").order_by_group_name.each do |heading| %>
-            <li class="heading small-12 medium-4 large-2" data-equalizer-watch>
-              <% unless current_budget.informing? %>
-                <%= link_to budget_investments_path(current_budget.id, heading_id: heading.id) do %>
-                  <%= heading_name_and_price_html(heading, current_budget) %>
-                <% end %>
-              <% else %>
-                <div class="heading-name">
-                  <%= heading_name_and_price_html(heading, current_budget) %>
-                </div>
-              <% end %>
-            </li>
-          <% end %>
-        </ul>
-      <% end %>
-    </div>
-
-    <div id="groups_and_headings" class="groups-and-headings">
-      <% @colonia.reverse_order.each do |group| %>
-        <h3> K3 - Sector Lomas </h3>
-        <ul class="no-bullet" data-equalizer data-equalizer-on="medium">
-          <% group.headings.where(sector: "K3").order_by_group_name.each do |heading| %>
-            <li class="heading small-12 medium-4 large-2" data-equalizer-watch>
-              <% unless current_budget.informing? %>
-                <%= link_to budget_investments_path(current_budget.id, heading_id: heading.id) do %>
-                  <%= heading_name_and_price_html(heading, current_budget) %>
-                <% end %>
-              <% else %>
-                <div class="heading-name">
-                  <%= heading_name_and_price_html(heading, current_budget) %>
-                </div>
-              <% end %>
-            </li>
-          <% end %>
-        </ul>
-      <% end %>
-    </div>
-
-    <div id="groups_and_headings" class="groups-and-headings">
-      <% @colonia.reverse_order.each do |group| %>
-        <h3> K4 - Sector Valle </h3>
-        <ul class="no-bullet" data-equalizer data-equalizer-on="medium">
-          <% group.headings.where(sector: "K4").order_by_group_name.each do |heading| %>
-            <li class="heading small-12 medium-4 large-2" data-equalizer-watch>
-              <% unless current_budget.informing? %>
-                <%= link_to budget_investments_path(current_budget.id, heading_id: heading.id) do %>
-                  <%= heading_name_and_price_html(heading, current_budget) %>
-                <% end %>
-              <% else %>
-                <div class="heading-name">
-                  <%= heading_name_and_price_html(heading, current_budget) %>
-                </div>
-              <% end %>
-            </li>
-          <% end %>
-        </ul>
-      <% end %>
-    </div>
-
-    <div id="groups_and_headings" class="groups-and-headings">
-      <% @colonia.reverse_order.each do |group| %>
-        <h3> K5 - Sector Montaña </h3>
-        <ul class="no-bullet" data-equalizer data-equalizer-on="medium">
-          <% group.headings.where(sector: "K5").order_by_group_name.each do |heading| %>
-            <li class="heading small-12 medium-4 large-2" data-equalizer-watch>
-              <% unless current_budget.informing? %>
-                <%= link_to budget_investments_path(current_budget.id, heading_id: heading.id) do %>
-                  <%= heading_name_and_price_html(heading, current_budget) %>
-                <% end %>
-              <% else %>
-                <div class="heading-name">
-                  <%= heading_name_and_price_html(heading, current_budget) %>
-                </div>
-              <% end %>
-            </li>
-          <% end %>
-        </ul>
-      <% end %>
-    </div>
-
-    <div id="groups_and_headings" class="groups-and-headings">
-      <% @colonia.reverse_order.each do |group| %>
-        <h3> K6 - Sector Valle Oriente </h3>
-        <ul class="no-bullet" data-equalizer data-equalizer-on="medium">
-          <% group.headings.where(sector: "K6").order_by_group_name.each do |heading| %>
-            <li class="heading small-12 medium-4 large-2" data-equalizer-watch>
-              <% unless current_budget.informing? %>
-                <%= link_to budget_investments_path(current_budget.id, heading_id: heading.id) do %>
-                  <%= heading_name_and_price_html(heading, current_budget) %>
-                <% end %>
-              <% else %>
-                <div class="heading-name">
-                  <%= heading_name_and_price_html(heading, current_budget) %>
-                </div>
-              <% end %>
-            </li>
-          <% end %>
-        </ul>
-      <% end %>
-    </div>
-
-
-
-
-        <% unless current_budget.informing? %>
-          <div class="map">
-            <h3><%= t("budgets.index.map") %></h3>
-            <%= render_map(nil, "budgets", false, nil, @budgets_coordinates) %>
+          <h2>Juntas de Vecinos(as)</h2>
+          <p>Cada Sector cuenta con aproximadamente 35 Juntas de Vecinos(as).
+            ¿No sabes a cuál Junta perteneces? Aquí un mapa que te podría ayudar.</p>
+          <div class="container">
+            <iframe src="https://www.google.com/maps/d/embed?mid=1TuVOjg8Qg3wPqMyBvNZlcg3O24N_hke2" width="640" height="480"></iframe>
           </div>
 
-          <p>
-            <% show_links = show_links_to_budget_investments(current_budget) %>
-            <% if show_links %>
-              <%= link_to budget_investments_path(current_budget.id) do %>
-                <small><%= t("budgets.index.investment_proyects") %></small>
+          <% @sectors_with_headings.each do |sector, headings| %>
+            <h3><%= sector %></h3>
+            <ul class="no-bullet" data-equalizer data-equalizer-on="medium">
+              <%= render partial: 'heading', collection: headings, as: :heading %>
+            </ul>
+          <% end %>
+
+          <% unless current_budget.informing? %>
+            <div class="map">
+              <h3><%= t("budgets.index.map") %></h3>
+              <%= render_map(nil, "budgets", false, nil, @budgets_coordinates) %>
+            </div>
+
+            <p>
+              <% show_links = show_links_to_budget_investments(current_budget) %>
+              <% if show_links %>
+                <%= link_to budget_investments_path(current_budget.id) do %>
+                  <small><%= t("budgets.index.investment_proyects") %></small>
+                <% end %><br>
+              <% end %>
+              <%= link_to budget_investments_path(budget_id: current_budget.id, filter: 'unfeasible') do %>
+                <small><%= t("budgets.index.unfeasible_investment_proyects") %></small>
               <% end %><br>
-            <% end %>
-            <%= link_to budget_investments_path(budget_id: current_budget.id, filter: 'unfeasible') do %>
-              <small><%= t("budgets.index.unfeasible_investment_proyects") %></small>
-            <% end %><br>
-            <% if show_links %>
-              <%= link_to budget_investments_path(budget_id: current_budget.id, filter: 'unselected') do %>
-                <small><%= t("budgets.index.not_selected_investment_proyects") %></small>
+              <% if show_links %>
+                <%= link_to budget_investments_path(budget_id: current_budget.id, filter: 'unselected') do %>
+                  <small><%= t("budgets.index.not_selected_investment_proyects") %></small>
+                <% end %>
               <% end %>
-            <% end %>
-          </p>
-        <% end %>
+            </p>
+          <% end %>
 
-        <div id="fases">
-          <h2><%= t("budgets.index.all_phases") %></h2>
-          <%= render "phases", budget: current_budget %>
+          <div id="fases">
+            <h2><%= t("budgets.index.all_phases") %></h2>
+            <%= render "phases", budget: current_budget %>
+          </div>
         </div>
+
       </div>
-    </div>
 
-    <% if @finished_budgets.present? %>
-      <div class="row margin-top">
-        <div class="small-12 medium-9 column">
-          <ul class="no-bullet submenu">
-            <li class="inline-block">
-              <%= link_to "#other_budgets", class: "is-active" do %>
-                <h2>
-                  <%= t("budgets.index.finished_budgets") %>
-                </h2>
-              <% end %>
-            </li>
-          </ul>
+      <% if @finished_budgets.present? %>
+        <div class="row margin-top">
+          <div class="small-12 medium-9 column">
+            <ul class="no-bullet submenu">
+              <li class="inline-block">
+                <%= link_to "#other_budgets", class: "is-active" do %>
+                  <h2>
+                    <%= t("budgets.index.finished_budgets") %>
+                  </h2>
+                <% end %>
+              </li>
+            </ul>
 
-          <div id="finished_budgets" class="budget-investments-list">
-            <% @finished_budgets.each do |budget| %>
-              <div class="budget-investment clear">
-                <div class="panel past-budgets">
-                  <div class="row" data-equalizer data-equalizer-on="medium">
-                    <div class="small-12 medium-6 column table" data-equalizer-watch>
-                      <div class="table-cell align-middle">
-                        <h3><%= budget.name %></h3>
+            <div id="finished_budgets" class="budget-investments-list">
+              <% @finished_budgets.each do |budget| %>
+                <div class="budget-investment clear">
+                  <div class="panel past-budgets">
+                    <div class="row" data-equalizer data-equalizer-on="medium">
+                      <div class="small-12 medium-6 column table" data-equalizer-watch>
+                        <div class="table-cell align-middle">
+                          <h3><%= budget.name %></h3>
+                        </div>
                       </div>
-                    </div>
 
-                    <div class="small-12 medium-6 column table" data-equalizer-watch>
-                      <div id="budget_<%= budget.id %>_results" class="table-cell align-middle">
-                        <%= link_to t("budgets.index.see_results"),
-                                    budget_results_path(budget.id),
-                                    class: "button" %>
-                        <%= link_to t("budgets.index.milestones"),
-                                    budget_executions_path(budget.id),
-                                    class: "button" %>
+                      <div class="small-12 medium-6 column table" data-equalizer-watch>
+                        <div id="budget_<%= budget.id %>_results" class="table-cell align-middle">
+                          <%= link_to t("budgets.index.see_results"),
+                            budget_results_path(budget.id),
+                            class: "button" %>
+                          <%= link_to t("budgets.index.milestones"),
+                            budget_executions_path(budget.id),
+                            class: "button" %>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            <% end %>
+              <% end %>
+            </div>
           </div>
         </div>
-      </div>
-    <% end %>
-  </div>
-<% else %>
-  <div class="expanded budget no-margin-top margin-bottom">
-    <div class="row">
-      <div class="small-12 medium-9 column padding">
+      <% end %>
+    </div>
+  <% else %>
+    <div class="expanded budget no-margin-top margin-bottom">
+      <div class="row">
+        <div class="small-12 medium-9 column padding">
           <h1><%= t("budgets.index.title") %></h1>
+        </div>
       </div>
     </div>
-  </div>
 
-  <div class="row">
-    <div class="small-12 column">
-      <div class="callout primary">
-        <%= t("budgets.index.empty_budgets") %>
+    <div class="row">
+      <div class="small-12 column">
+        <div class="callout primary">
+          <%= t("budgets.index.empty_budgets") %>
+        </div>
       </div>
     </div>
-  </div>
-<% end %>
-
-<!-- <div class="row">
-  <div class="small-12 column">
-    <div id="section_help" class="margin" data-magellan-target="section_help">
-      <p class="lead">
-        <strong><%= t("budgets.index.section_footer.title") %></strong>
-      </p>
-      <p><%= t("budgets.index.section_footer.description") %></p>
-    </div>
-  </div>
-</div> -->
+  <% end %>
