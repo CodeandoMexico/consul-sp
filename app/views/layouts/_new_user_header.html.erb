@@ -66,13 +66,19 @@ a.nav-link {
       <% end %>
     </div>
     <div>
-      <%= link_to 'Ver Presupuestos',
+      <%= link_to 'Ver presupuestos',
                   budgets_path,
                   { class: 'btn rounded-0',
                     rel: 'nofollow',
                     style:'font-size: 20px; background: #4dc8cc; font-family: HKGrotesk; color: white; padding: 0.7em 1.6em;' } %>
 
-      <%= link_to link_to t("devise_views.menu.login_items.login"),
+      <%= link_to t("welcome.welcome.user_permission_debates"),
+                  investments_path,
+                  { class: 'btn rounded-0',
+                    rel: 'nofollow',
+                    style:'font-size: 20px; background: #4dc8cc; font-family: HKGrotesk; color: white; padding: 0.7em 1.6em;' } %>
+
+      <%= link_to t("devise_views.menu.login_items.login"),
                   new_user_session_path,
                   { class: 'btn rounded-0 shady',
                     rel: 'nofollow',

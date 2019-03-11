@@ -70,7 +70,7 @@ es:
         location: "Información adicional de la ubicación"
         map_skip_checkbox: "Este proyecto no tiene una ubicación concreta o no la conozco."
       index:
-        title: Presupuestos participativos
+        title: Propuestas de inversión
         unfeasible: Propuestas de inversión no viables
         unfeasible_text: "Los proyectos presentados deben cumplir una serie de criterios (legalidad, concreción, ser competencia del Ayuntamiento, no superar el tope del presupuesto) para ser declarados viables y llegar hasta la fase de votación final. Todos los proyectos que no cumplen estos criterios son marcados como inviables y publicados en la siguiente lista, junto con su informe de inviabilidad."
         by_heading: "Propuestas de inversión con ámbito: %{heading}"
@@ -108,6 +108,7 @@ es:
           random: Aleatorios
           confidence_score: Mejor valorados
           price: Por coste
+          hot_score: Más activas
       share:
         message: "He presentado el proyecto %{title} en %{org}. ¡Presenta un proyecto tú también!"
         message_mobile: "He presentado el proyecto %{title} en %{handle}. ¡Presenta un proyecto tú también!"

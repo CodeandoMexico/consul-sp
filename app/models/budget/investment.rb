@@ -56,14 +56,16 @@ class Budget
     validate :limit_sectors_proposals, on: :create
     validate :limiter_conlonia_proposals, on: :create
 
-    scope :sort_by_confidence_score, -> { reorder(confidence_score: :desc, id: :desc) }
-    scope :sort_by_ballots,          -> { reorder(ballot_lines_count: :desc, id: :desc) }
-    scope :sort_by_price,            -> { reorder(price: :desc, confidence_score: :desc, id: :desc) }
-    scope :sort_by_random,           ->(seed) { reorder("budget_investments.id % #{seed.to_f.nonzero? ? seed.to_f : 1}, budget_investments.id") }
-
-    scope :sort_by_id, -> { order("id DESC") }
-    scope :sort_by_title, -> { order("title ASC") }
-    scope :sort_by_supports, -> { order("cached_votes_up DESC") }
+    scope :sort_by_confidence_score,    -> { reorder(confidence_score: :desc, id: :desc) }
+    scope :sort_by_ballots,             -> { reorder(ballot_lines_count: :desc, id: :desc) }
+    scope :sort_by_price,               -> { reorder(price: :desc, confidence_score: :desc, id: :desc) }
+    scope :sort_by_random,              ->(seed) { reorder("budget_investments.id % #{seed.to_f.nonzero? ? seed.to_f : 1}, budget_investments.id") }
+    scope :sort_by_hot_score,           -> { reorder(hot_score: :desc) }
+    scope :sort_by_id,                  -> { order("id DESC") }
+    scope :sort_by_title,               -> { order("title ASC") }
+    scope :sort_by_supports,            -> { order("cached_votes_up DESC") }
+    scope :sort_by_flags,               -> { order(flags_count: :desc, updated_at: :desc) }
+    scope :sort_by_created_at,          -> { reorder(created_at: :desc) }
 
     scope :valuation_open,              -> { where(valuation_finished: false) }
     scope :without_admin,               -> { valuation_open.where(administrator_id: nil) }
@@ -85,12 +87,11 @@ class Budget
     scope :winners,                     -> { selected.compatible.where(winner: true) }
     scope :unselected,                  -> { not_unfeasible.where(selected: false) }
     scope :last_week,                   -> { where("created_at >= ?", 7.days.ago)}
-    scope :sort_by_flags,               -> { order(flags_count: :desc, updated_at: :desc) }
-    scope :sort_by_created_at,          -> { reorder(created_at: :desc) }
 
     scope :by_budget,         ->(budget)      { where(budget: budget) }
     scope :by_group,          ->(group_id)    { where(group_id: group_id) }
     scope :by_heading,        ->(heading_id)  { where(heading_id: heading_id) }
+    scope :by_sector,         ->(sector)      { joins(:heading).where(budget_headings: { sector: sector }) }
     scope :by_admin,          ->(admin_id)    { where(administrator_id: admin_id) }
     scope :by_tag,            ->(tag_name)    { tagged_with(tag_name) }
     scope :by_valuator,       ->(valuator_id) { where("budget_valuator_assignments.valuator_id = ?", valuator_id).joins(:valuator_assignments) }
@@ -98,7 +99,7 @@ class Budget
 
     scope :for_render, -> { includes(:heading) }
 
-    before_save :calculate_confidence_score
+    before_save :calculate_hot_score, :calculate_confidence_score
     after_save :recalculate_heading_winners if :incompatible_changed?
     before_validation :set_responsible_name
     before_validation :set_denormalized_ids
@@ -281,6 +282,10 @@ class Budget
 
     def register_selection(user)
       vote_by(voter: user, vote: 'yes') if selectable_by?(user)
+    end
+
+    def calculate_hot_score
+      self.hot_score = ScoreCalculator.hot_score(self)
     end
 
     def calculate_confidence_score
