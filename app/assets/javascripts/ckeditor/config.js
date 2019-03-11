@@ -12,6 +12,12 @@ CKEDITOR.editorConfig = function( config )
   config.filebrowserImageBrowseUrl = "/ckeditor/pictures";
   config.filebrowserImageUploadUrl = "/ckeditor/pictures";
   config.filebrowserUploadUrl = "/ckeditor/attachment_files";
+  config.forcePasteAsPlainText = false;
+  config.pasteFromWordRemoveFontStyles = false;
+  config.pasteFromWordRemoveStyles = false;
+  config.allowedContent = true;
+  config.extraAllowedContent = 'p(mso*,Normal)';
+  config.pasteFilter = null;
 
   config.allowedContent = true;
   config.format_tags = "p;h2;h3";
