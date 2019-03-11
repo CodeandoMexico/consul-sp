@@ -55,6 +55,9 @@
         </div>
       <% end %>
 
+      <h2>¡Comenta y comparte tus favoritas!</h2>
+      <br>
+
       <%= render("shared/advanced_search", search_path: budget_investments_url(@budget)) %>
 
       <%= render('shared/order_links', i18n_namespace: "budgets.investments.index") unless @current_filter == "unfeasible" %>

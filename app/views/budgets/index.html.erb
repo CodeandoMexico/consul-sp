@@ -29,6 +29,8 @@
         <h2><%= t("budgets.phase.#{current_budget.phase}") %></h2>
 
         <%= link_to t("budgets.index.section_header.all_phases"), "#fases" %>
+        <br>
+        <%= link_to t("welcome.feed.see_all_proposals"), investments_path %>
 
         <% if current_budget.accepting? %>
           <% if current_user %>
@@ -74,8 +76,16 @@
 
         <div id="groups_and_headings" class="groups-and-headings">
           <h2 id="<%= @sectores.name.parameterize %>"><%= @sectores.name %></h2>
-          <p>Nuestro Municipio se divide en 6 sectores de participación
-            ciudadana. Aquí el presupuesto que va a recibir cada Sector.</p>
+          <p>
+            Nuestro Municipio se divide en 6 sectores de participación ciudadana.
+            Aquí el presupuesto que va a recibir cada Sector.
+          </p>
+          <p>
+            <em>
+              Da <strong>click al recuadro</strong> para conocer las propuestas
+              elaboradas por vecinas y vecinos en cada uno.
+            </em>
+          </p>
           <ul class="no-bullet" data-equalizer data-equalizer-on="medium">
             <%= render partial: 'heading', collection: @sectores.headings.order_by_group_name, as: :heading %>
           </ul>
@@ -83,11 +93,21 @@
 
         <div id="groups_and_headings" class="groups-and-headings">
           <h2>Juntas de Vecinos(as)</h2>
-          <p>Cada Sector cuenta con aproximadamente 35 Juntas de Vecinos(as).
-            ¿No sabes a cuál Junta perteneces? Aquí un mapa que te podría ayudar.</p>
+          <p>
+            Cada Sector cuenta con aproximadamente 35 Juntas de Vecinos(as).
+            ¿No sabes a cuál Junta perteneces? Aquí un mapa que te podría ayudar.
+          </p>
           <div class="container">
             <iframe src="https://www.google.com/maps/d/embed?mid=1TuVOjg8Qg3wPqMyBvNZlcg3O24N_hke2" width="640" height="480"></iframe>
           </div>
+          <br>
+          <p>
+            <em>
+              Da <strong>click a cada recuadro</strong> de
+              junta de vecinos para conocer las propuestas que han hecho sus
+              vecinos y vecinas.
+            </em>
+          </p>
 
           <% @sectors_with_headings.each do |sector, headings| %>
             <h3><%= sector %></h3>
