@@ -1,43 +1,398 @@
-<% if current_user == nil %>
-  <%= render "temporal" %>
-<% else %>
-  <% content_for :body_class, "home-page" %>
+<style media="screen">
 
-  <% content_for :canonical do %>
-    <%= render "shared/canonical", href: root_url %>
-  <% end %>
+  a.btn.btn-outline-primary.mt-4 {
+    font-size: -webkit-xxx-large;
+    background: #00b3a3;
+    color: aliceblue;
+}
 
-  <% if has_banners? %>
-    <%= render "shared/banner" %>
-  <% end %>
+  #footer_2{
+    background: #e8e8e8;
+  }
 
-  <% provide :social_media_meta_tags do %>
-    <%= render "shared/social_media_meta_tags",
-                social_url: root_url %>
-  <% end %>
+  .footer_img{
+    max-height: 50px !important;
+    max-width: 100% !important;
+    width: auto;
+    height: auto;
+  }
 
-  <%= render "header", header: @header %>
+  body
+    {
+        width: 100%;
+        height: 100%;
+        margin: 0px;
+        padding: 0px;
+        overflow-x: hidden;
+    }
 
-  <main>
-    <%= render "feeds" %>
+  .rowo{
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+  }
 
+    .bg-dark.aqua-fluid.py-3.pb-5.text-center {
+      background: #6b6e72!important;
+      /* font-family: inherit; */
+  }
+  .col-md-9.col-lg-8.align-items-start.d-flex.ml-4 {
+    padding: 40px;
+  }
+  .mb-5.flex-center {
+    padding-top: 40px;
+  }
 
-    <div class="row">
-      <% if @cards.any? %>
-        <div class="small-12 column <%= 'large-8' if feed_processes_enabled? %>">
-          <%= render "cards" %>
+  .owl-carousel .item {
+    height: 15rem;
+    padding: 1rem;
+    text-align: -webkit-left;
+
+}
+.owl-carousel .item h4 {
+    color: #FFF;
+    font-weight: 400;
+    margin-top: 1rem;
+    font-family: HKGrotesk-Light !important;
+}
+
+.owl-prev, .owl-next {
+      width: 15px;
+      height: 100px;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      display: block !important;
+      border:0px solid black;
+  }
+  .owl-prev { left: -20px; }
+  .owl-next { right: -20px; }
+  .owl-prev i, .owl-next i {transform : scale(2,5); color: #ccc;}
+
+  .center-table-element {
+      background: #ec7474;
+      width: 50%;
+      height: 25%;
+      margin-left: auto;
+      margin-right: auto;
+      display: block;
+  }
+
+  #inside-box{
+    text-align: center;
+    vertical-align: middle;
+    line-height: 90px;
+    font-family: HKGrotesk;
+    color: white;
+  }
+
+  h3.mb-0 {
+    height: 60px;
+  }
+
+  p.m-2.mx-5.text-center {
+    font-family: HKGrotesk-MediumLegacy;
+    width: 100p;
+    color: white;
+    /* font-stretch: semi-condensed; */
+}
+</style>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- PAGE settings -->
+  <meta id="ogimage" property="og:image" content="<%= root_url + ('voting_image.png') %>"/>
+
+  <link rel="icon" href="https://templates.pingendo.com/assets/Pingendo_favicon.ico">
+  <title>Decide San Pedro</title>
+  <meta name="description" content="San Pedro Decide 2019 es la nueva plataforma del Programa de Presupuesto Participativo municipal, donde tú propones y decides qué proyectos se van a llevar a cabo en tu comunidad">
+  <meta name="keywords" content="decode san pedro garza participacion votacion gobierno presupuesto participativo">
+  <!-- CSS dependencies -->
+  <!-- link rel="stylesheet" href="/portal/css/aquamarine.css" -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
+  <!-- Script: Make my navbar transparent when the document is scrolled to top -->
+  <script src="/portal/js/navbar-ontop.js"></script>
+  <!-- Script: Animated entrance -->
+  <script src="/portal/js/animate-in.js"></script>
+  <!--Carrousel -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.0/owl.carousel.min.js"></script>
+  <script src="/portal/js/tworows.js"></script>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.0/assets/owl.theme.default.min.css" type="text/css">
+  <link rel="stylesheet" href="/portal/css/owl.carousel.min.css" type="text/css">
+</head>
+<style media="screen">
+  .owl-theme .owl-nav [class*=owl-] {
+    background: none;
+    margin: -10px;
+    color: #67bbc0;
+  }
+  .owl-theme .owl-nav [class*=owl-]:hover {
+    color: #67bbc0;
+    background: none;
+}
+  i.fa.fa-angle-left {
+      font-size: x-large;
+  }
+
+  i.fa.fa-angle-right {
+      font-size: x-large;
+  }
+
+  .owl-prev i, .owl-next i {
+    transform: scale(2,5);
+    color: #67bbc0;
+  }
+
+  a.btn.btn-lg.mt-4.btn-outline-light {
+    background: white;
+    color: #55c8cb;
+    font-family: HKGrotesk-Light;
+    border-radius: inherit;
+    font-size: x-large;
+}
+</style>
+  <!-- Cover -->
+  <div class="d-flex align-items-center text-center py-5 cover" style="background-position: center;background-size: cover; background-image: url(&quot;custom_images/cover1.jpg&quot;);">
+    <div class="aqua">
+      <div class="rowo">
+        <div class="col-lg-12 text-white mt-5">
+          <div class="display-2 d-none d-md-block" style="
+                font-family: HKGrotesk;
+                font-weight: bold;
+                font-size: 3.0rem;
+           ">Presupuesto Participativo 2019<br></div>
+          <div class="display-4 d-block d-md-none" style="
+              font-family: HKGrotesk;
+              font-weight: bold;
+              font-size: 3.0rem;
+          ">Presupuesto Participativo 2019</div>
+          <div>
+            <p class="" style="
+                  font-family: HKGrotesk-Light;
+                  font-size: x-large;
+                  /* display: inline-block; */
+                  /* padding-left: 50px; */
+                  /* padding-right: 50px; */
+                  /* margin: 10px; */
+                  /* margin-left: 100px; */
+                  /* margin-right: 100px; */
+              ">Que tus buenas ideas no se queden en buenas intenciones. </p>
+          </div>
+          <a href="#instrucciones" class="btn btn-lg mt-4 btn-outline-light">PARTICIPA</a>
         </div>
-      <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="bg-dark aqua-fluid py-3 pb-5 text-center" style="	height: 43px;">
+    <div class="rowo">
+      <div class="mx-auto col-md-12">
+        <h1 id="rowo-child" style="
+        font-family: HKGrotesk !important;
+">¡Hay 100 millones de pesos disponibles!</h1>
+      </div>
+    </div>
+  </div>
+  <!-- Parallax section -->
+  <!-- Speakers -->
+  <div class="bg-light py-1  text-center" id="speakers">
+    <div class="aqua-fluid">
+      <div class="rowo">
+        <div class="col-md-12 m-0 mx-0">
+          <p contenteditable="true" class="lead m-4 mx-5">San Pedro Decide 2019 es la nueva plataforma del Programa de Presupuesto Participativo
 
-      <div class="small-12 large-4 column">
-        <%= render "processes" %>
+municipal, donde tú propones y decides qué proyectos se van a llevar a cabo
+
+en tu comunidad.</p>
+        </div>
+      </div>
+      <div class="rowo">
+        <div class="col-12 col-lg-4 animate-in-left">
+          <div class="center-table-element" style="
+                background: #ffa81e;
+            ">
+            <h3 class="mb-0"><b id="inside-box">REGÍSTRATE</b></h3>
+            <p class="text-center" style="color:white;">en cualquier momento del proceso.</p>
+          </div>
+          <span class="icona-lupa my-3" style="
+              font-size: 300px;
+              color: #ffa81e;
+          "></span>
+          <p class="m-2 mx-5 text-center"  style="color: black;font-family: HKGrotesk-Light">
+            Regístrate en la plataforma y participa.
+          </p>
+        </div>
+        <div class="col-12 col-lg-4 animate-in-left">
+          <div class="center-table-element" style="
+                background: #00ae56;
+            ">
+            <h3 class="mb-0"><b id="inside-box">SUBE</b></h3>
+            <p class="text-center" style="color:white;">tu propuesta </br> 15 de Febrero al 15 de Marzo</p>
+
+          </div>
+          <span class="icona-papel my-3" style="
+              font-size: 300px;
+              color: #00ae56;
+          "></span>
+          <p class="m-2 mx-5 text-center" style="color: black;font-family: HKGrotesk-Light">Registra tu propuesta, comparte y comenta las propuestas de tu comunidad.</p>
+        </div>
+        <div class="col-12 col-lg-4 animate-in-left">
+          <div class="center-table-element" style="
+                background: #67bbc0;
+            ">
+            <h3 class="mb-0"><b id="inside-box">DECIDE</b></h3>
+            <p class="text-center" style="color:white;">29 Abril - 10 de Mayo</p>
+          </div>
+             <span class="icona-dedo my-3" style="
+                font-size: 300px;
+                color: #67bbc0;
+            "></span>
+            <p class="m-2 mx-5 text-center"  style="color: black; font-family: HKGrotesk-Light">Vota por tus propuestas favoritas.</p>
+         </div>
+      </div>
+    </div>
+  </div>
+
+    <div class="py-5 text-center" >
+      <div class="aqua">
+        <div class="row">
+          <div class="bg-white p-5 mx-auto col-md-8 col-10" id="saporo">
+            <h3 class="text-primary display-4" style="font-family: HKGrotesk !important">Nunca ha sido TAN fácil participar.&nbsp;</h3>
+            <h2 class="my-3" contenteditable="true">Para registrarte solamente necesitas un correo electrónico, tu credencial para votar y tu número de catastro. </h2>
+            <%= link_to "¡REGÍSTRATE!",
+                new_user_registration_path, rel: "nofollow", class: "btn btn-outline-primary mt-4" %>
+          </div>
+        </div>
       </div>
     </div>
 
-    <% if feature?("user.recommendations") && (@recommended_debates.present? || @recommended_proposals.present?) %>
-      <%= render "recommended",
-                  recommended_debates: @recommended_debates,
-                  recommended_proposals: @recommended_proposals %>
-    <% end %>
-  </main>
-<% end %>
+  <!-- Schedule -->
+  <div id="instrucciones" class="py-5 text-center " style="background-image: url('https://static.pingendo.com/cover-bubble-dark.svg');background-size:cover;">
+    <div class="aqua">
+      <div class="row">
+        <div class="bg-white p-5 mx-auto col-md-8 col-10">
+          <style media="screen">
+            i.icona-libro, i.icona-calendario, i.icona-salvavidas{
+                font-size: 100px;
+                position: relative;
+                top: 30px;
+            }
+
+            li.list-group-item {
+                text-align: -webkit-auto;
+            }
+          </style>
+          <ul class="list-group list-group-flush" >
+             <li class="list-group-item"><i class="icona-libro text-primary mr-2"></i><a style="font-size: 20px;" target="_blank"  href="https://s3.us-east-2.amazonaws.com/consulsppp/spgg19_final.pdf">Descarga la guía práctica</a></li>
+             <li class="list-group-item"><i class="icona-calendario text-primary mr-2"></i><a style="font-size:  20px;" href="https://www.google.com/maps/d/u/0/viewer?hl=es&mid=1ioDkO_q_SZVXkiKdBbdQBmAvKgVeQeuZ&ll=25.649479317884236%2C-100.36782299999999&z=13">Conoce nuestro calendario de eventos</a></li>
+             <li class="list-group-item"><i class="icona-salvavidas text-primary mr-2"></i><a style="font-size:  20px;">Solicita el apoyo de un asesor urbano</a></li>
+           </ul>
+            </br>            </br>
+
+            <p class="mb-4">Centro de Atención de Presupuesto Participativo</br>¿Dudas o comentarios? Llámanos al: 8478-2059</p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- CONOCE MAS -->
+  <div class="bg-dark aqua-fluid py-3 pb-5 text-center" style="	height: 43px;">
+    <div class="rowo">
+      <div class="mx-auto col-md-12">
+        <h1 id="rowo-child" style="
+        font-family: HKGrotesk !important;
+        ">Aprende, apóyate e inspírate</h1>
+      </div>
+    </div>
+  </div>
+  <div class="py-5 section bg-faded bg-light text-center">
+    <div class="aqua">
+      <div class="rowo">
+        <div class="owl-carousel owl-theme">
+            <div class="item" style="background: #00ae56;">
+              <a target="_blank" href="https://www.youtube.com/watch?v=S2_VT5eo9PE&feature=youtu.be"><h4>¿Qué es el presupuesto participativo?</h4></a>
+            </div>
+            <div class="item" style="background: #fdb14b;">
+              <!-- <h4>Historias de Presupuestos participativos en el mundo</h4> -->
+            </div>
+            <div class="item" style="background: #79c3c6;">
+              <a target="_blank" href="https://www.sanpedro.gob.mx/gobierno/Reglamentos/PDFs/ReglamentodeParticipacionCiudadana_6FHE0Y0KF6.pdf"><h4>Reglamento de PC de SPGG</h4></a></div>
+            <div class="item" style="background: #79c3c6;">
+              <!-- <h4>Casos complicados de San Pedro</h4> -->
+            </div>
+            <div class="item" style="background: #fdb14b;">
+              <a target="_blank" href="https://www.youtube.com/watch?v=dikMjiwqXxk"><h4>¿Cómo funciona la plataforma?</h4></a>
+            </div>
+            <div class="item" style="background: #00ae56;">
+              <!-- <h4>Casos exitosos de San Pedro</h4> -->
+            </div>
+            <div class="item" style="background: #79c3c6;">
+              <!-- <h4>Información sobre las ediciones anteriores de presupuesto participativo</h4> -->
+            </div>
+            <div class="item" style="background: #79c3c6;">
+              <!-- <h4>Casos exitosos de San Pedro</h4> -->
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Footer 2 -->
+  <div class="container text-center" id="footer_2">
+    <div class="row justify-content-center" style="
+      display: flex;
+      flex-wrap: wrap;
+      /* margin-left: 0; */
+      margin-right: 9;
+      margin: auto;
+      ">
+    <%= image_tag('/custom_images/footer.png', :class => "footer_img") %>
+  </div>
+  <div class="row" style="
+    display: flex;
+    flex-wrap: wrap;
+    /* margin-left: 0; */
+    margin-right: 9;
+    margin: auto;
+    ">
+    <div class="mx-auto col-md-8">
+      <p class="mb-4"> Este programa es público, ajeno a cualquier partido político. Queda prohibido el uso para fines distintos a los establecidos en el programa</p>
+      <div class="row text-muted justify-content-center">
+        <div class="col-md-2 col-4 p-2"> <a href="https://twitter.com/SanPedroNL"> <i class="d-block fa fa-twitter fa-3x"></i></a></div>
+        <div class="col-md-2 col-4 p-2"> <a href="https://www.instagram.com/sanpedronl/"> <i class="d-block fa fa-instagram fa-3x"></i></a></div>
+        <div class="col-md-2 col-4 p-2"> <a href="https://www.facebook.com/SanPedroGGNL/"> <i class="d-block fa fa-facebook fa-3x"></i></a></div>
+      </div>
+        <p class="mb-4">Centro de Atención de Presupuesto Participativo</br>¿Dudas o comentarios? Llámanos al: 8478-2059</p>
+    </div>
+  </div>
+</div>
+  <!-- Footer -->
+  <!-- JavaScript dependencies -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  <!-- Script: Smooth scrolling between anchors in the same page -->
+  <script src="/portal/js/smooth-scroll.js" style=""></script>
+  <script type="text/javascript">
+    $('.owl-carousel').owlCarousel({
+        margin:10,
+        loop:true,
+        dots: false,
+        navText: [
+        "<i class='fa fa-angle-left'></i>",
+        "<i class='fa fa-angle-right'></i>"
+        ],
+        owl2row: true,
+        nav: true,
+        responsive:{
+            0:{
+                items:1,
+                dots: true
+            },
+            600:{
+                items:2
+            },
+            1000:{
+                items:4
+            }
+        }
+    })
+  </script>
