@@ -73,7 +73,7 @@ class Budget::Investment::Exporter
   def get_documents_url(investment)
     return "" if investment.nil?
     url = investment.attachment.url
-    "https#{url}"
+    "https:#{url}"
   end
 
   def price(investment)
