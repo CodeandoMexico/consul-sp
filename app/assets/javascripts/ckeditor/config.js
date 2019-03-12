@@ -5,6 +5,7 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 
 CKEDITOR.editorConfig = function( config )
 {
+  config.extraPlugins = 'wordcount,notification';
   config.filebrowserBrowseUrl = "/ckeditor/attachment_files";
   config.filebrowserFlashBrowseUrl = "/ckeditor/attachment_files";
   config.filebrowserFlashUploadUrl = "/ckeditor/attachment_files";
@@ -21,6 +22,51 @@ CKEDITOR.editorConfig = function( config )
 
   config.allowedContent = true;
   config.format_tags = "p;h2;h3";
+
+  config.wordcount = {
+
+    // Whether or not you want to show the Paragraphs Count
+    showParagraphs: true,
+
+    // Whether or not you want to show the Word Count
+    showWordCount: true,
+
+    // Whether or not you want to show the Char Count
+    showCharCount: true,
+
+    // Whether or not you want to count Spaces as Chars
+    countSpacesAsChars: false,
+
+    // Whether or not to include Html chars in the Char Count
+    countHTML: false,
+
+    // Whether or not to include Line Breaks in the Char Count
+    countLineBreaks: false,
+
+    // Maximum allowed Word Count, -1 is default for unlimited
+    maxWordCount: -1,
+
+    // Maximum allowed Char Count, -1 is default for unlimited
+    maxCharCount: 60000,
+
+    // Maximum allowed Paragraphs Count, -1 is default for unlimited
+    maxParagraphs: -1,
+
+    // How long to show the 'paste' warning, 0 is default for not auto-closing the notification
+    pasteWarningDuration: 0,
+
+
+    // Add filter to add or remove element before counting (see CKEDITOR.htmlParser.filter), Default value : null (no filter)
+    filter: new CKEDITOR.htmlParser.filter({
+        elements: {
+            div: function( element ) {
+                if(element.attributes.class == 'mediaembed') {
+                    return false;
+                }
+            }
+        }
+    })
+};
 
   // Rails CSRF token
   config.filebrowserParams = function(){
