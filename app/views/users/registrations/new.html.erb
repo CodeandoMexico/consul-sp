@@ -21,11 +21,11 @@
                                    label: false,
                                    aria: {describedby: "username-help-text"} %>
 
+      <br>
       <%= f.invisible_captcha :address %>
-
       <%= f.email_field :email,     placeholder: t("devise_views.users.registrations.new.email_label") %>
 
-
+      <br>
       <%= f.password_field :password, autocomplete: "off",
                            placeholder: t("devise_views.users.registrations.new.password_label") %>
 
@@ -47,6 +47,7 @@
         </span>
       <% end %>
       <div class="small-12 medium-6 small-centered">
+        <br>
         <%= f.submit t("devise_views.users.registrations.new.submit"), class: "button expanded" %>
       </div>
     </div>
