@@ -22,7 +22,7 @@
     <h1 class="show-for-sr"><%= setting['org_name'] %></h1>
 
     <div class="wrapper <%= yield (:wrapper_class) %>">
-      <% if current_user == nil && controller_name == 'welcome' && action_name == 'index' %>
+      <% if controller_name == 'welcome' && action_name == 'index' %>
         <%= render 'layouts/new_user_header' %>
       <% else %>
         <%= render 'layouts/header' %>
@@ -53,15 +53,9 @@
       <%= yield %>
       <% if controller_name != 'welcome' %>
         <div class="push"></div>
-      <% elsif current_user != nil%>
-        <div class="push"></div>
       <% end %>
     </div>
     <% if controller_name != 'welcome' %>
-      <div class="footer">
-        <%= render 'layouts/footer' %>
-      </div>
-    <% elsif current_user != nil%>
       <div class="footer">
         <%= render 'layouts/footer' %>
       </div>
