@@ -104,6 +104,7 @@ end
 group :development do
   gem 'awesome_print', require:"ap"
   gem 'pry-rails'
+  gem 'pry-byebug'
   gem 'capistrano', '~> 3.10.1', require: false
   gem 'capistrano-bundler', '~> 1.2', require: false
   gem 'capistrano-rails', '~> 1.4.0', require: false
