@@ -1,12 +1,4 @@
 <style media="screen">
-  #owl-demo .item img{
-    width: auto;
-    height: 100%;
-}
-
-.owl-dots { display: block !important; }
-
-
 @media only screen and (min-width: 959px) {
     .img {
         max-width: 50%;
@@ -16,7 +8,6 @@
                 margin-right: auto;
     }
   }
-
   .flex-direction-nav a {
     text-decoration: none;
     display: block;
@@ -34,7 +25,6 @@
     -webkit-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
 }
-
 .flex-direction-nav a:before {
     font-family: "flexslider-icon";
     font-size: 40px;
@@ -90,8 +80,9 @@
         <%= safe_html_with_links investment.description.html_safe %>
 
         <% if @investment.additional_images.present? %>
-          <hr>
+
           <div id="image" class="small-12 column text-center image-preview">
+          <hr>
             <h2 class="inline-block">
               Imágenes Adicionales
             </h2>
@@ -104,15 +95,10 @@
                 <% end %>
               </ul>
             </div>
-          <hr>
+            <hr>
+          </div>
         <% end %>
 
-        <!-- Place somewhere in the <body> of your page -->
-
-
-
-
-      </div>
         <% if feature?(:map) && map_location_available?(@investment.map_location) %>
           <div class="margin">
             <%= render_map(@investment.map_location, "budget_investment", false, nil) %>
@@ -177,6 +163,7 @@
             <% end %>
           </div>
         <% end %>
+        <!--- DINORAH ESTA BIEN PENDEJA, PERO BIEN PENDEJA -->
         <div class="likes" id="<%= dom_id(@investment) %>_likes">
           <%= render partial: "likes", locals: {investment: @investment} %>
         </div>
