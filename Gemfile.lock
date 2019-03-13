@@ -1029,6 +1029,7 @@ GEM
       omniauth-oauth (~> 1.1)
       rack
     orm_adapter (0.5.0)
+    owlcarousel-rails (2.2.3.5)
     paperclip (5.2.1)
       activemodel (>= 4.2.0)
       activesupport (>= 4.2.0)
@@ -1183,6 +1184,9 @@ GEM
     selenium-webdriver (3.141.0)
       childprocess (~> 0.5)
       rubyzip (~> 1.2, >= 1.2.2)
+    simple_form (3.5.1)
+      actionpack (> 4, < 5.2)
+      activemodel (> 4, < 5.2)
     simplecov (0.16.1)
       docile (~> 1.1)
       json (>= 1.8, < 3)
@@ -1321,6 +1325,7 @@ DEPENDENCIES
   omniauth-facebook (~> 4.0.0)
   omniauth-google-oauth2 (~> 0.4.0)
   omniauth-twitter (~> 1.4.0)
+  owlcarousel-rails
   paperclip (~> 5.2.1)
   paranoia (~> 2.4.1)
   pg (~> 0.21.0)
@@ -1347,6 +1352,7 @@ DEPENDENCIES
   savon (~> 2.12.0)
   scss_lint (~> 0.55.0)
   selenium-webdriver (~> 3.10)
+  simple_form
   sitemap_generator (~> 6.0.1)
   social-share-button (~> 1.1)
   spring (~> 2.0.1)

@@ -44,6 +44,10 @@ Rails.application.routes.draw do
   #API TO UPLOAD THE IFE
   put 'api/image_upload' => 'api#image_upload', as: :image_upload
 
+  #TO UPLOAD ADDITIONAL IMAGES
+  resources :additional_images, only: [:index, :create, :destroy]
+
+
   resources :stats, only: [:index]
   resources :images, only: [:destroy]
   resources :documents, only: [:destroy]

@@ -29,6 +29,17 @@
       </div>
     <% end %>
 
+
+
+    <div class="small-12 column" id="dragon">
+      <h3>Imágenes Adicionales</h3>
+      <p>Aprovecha este espacio para añadir más fotos.</p>
+
+    </div>
+    <div class="small-12 column">
+      <%= link_to_add_association 'Añadir Imagen Adicional', f, :additional_images, class: 'btn btn-primary', data: { association_insertion_node: '#dragon', association_insertion_method: :append} %>
+    </div>
+
     <% if feature?(:allow_attached_documents) %>
       <div class="documents small-12 column">
         <%= render 'documents/nested_documents', documentable: @investment, f: f %>
@@ -58,6 +69,8 @@
     <div class="small-12 column">
       <%= f.text_field :organization_name %>
     </div>
+
+    <div class="block margin_top">
 
     <div class="small-12 column">
       <%= f.label :tag_list, t("budgets.investments.form.tags_label") %>
@@ -94,8 +107,31 @@
 
     <% end %>
 
+
+
+
     <div class="actions small-12 medium-6 large-4 end column">
       <%= f.submit(nil, class: "button expanded") %>
     </div>
   </div>
 <% end %>
+
+  <script>
+    $('#dragon').on('cocoon:after-insert', function() {
+      check_to_hide_or_show_add_link();
+    });
+
+    $('#dragon').on('cocoon:after-remove', function() {
+      check_to_hide_or_show_add_link();
+    });
+
+    check_to_hide_or_show_add_link();
+
+    function check_to_hide_or_show_add_link() {
+      if ($('#dragon .nested-fields').length == 4) {
+        $('a.btn.btn-primary.add_fields').hide();
+      } else {
+        $('#add-category a').show();
+      }
+    }
+  </script>

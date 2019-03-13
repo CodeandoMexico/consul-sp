@@ -8,7 +8,6 @@
     <%= render 'images/image_fields', f: image_builder, imageable: imageable %>
   <% end %>
 </div>
-
 <%= link_to_add_association t('images.form.add_new_image'), f, image_fields,
                             force_non_association_create: true,
                             partial: "images/image_fields",

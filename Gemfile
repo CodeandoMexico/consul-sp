@@ -70,6 +70,8 @@ gem 'activerecord-postgis-adapter'
 gem 'rgeo-shapefile'
 gem 'rgeo-geojson'
 gem "font-awesome-rails"
+gem 'simple_form'
+gem 'owlcarousel-rails'
 
 
 

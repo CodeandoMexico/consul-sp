@@ -80,6 +80,7 @@
 //= require send_newsletter_alert
 //= require managers
 //= require globalize
+//= require owl.carousel
 //= require send_admin_notification_alert
 
 var initialize_modules = function() {
@@ -135,4 +136,5 @@ $(function(){
   $(document).ready(initialize_modules);
   $(document).on('page:load', initialize_modules);
   $(document).on('ajax:complete', initialize_modules);
+
 });

@@ -1,0 +1,38 @@
+<style media="screen">
+  .filename{
+    display: none;
+  }
+
+button{
+  background: #33a767 !important;
+  color: white;
+  width: 200px;
+}
+</style>
+
+
+  <img id="mitski" src="<%= image_url 'image-placeholder.png' %>" width="300">
+  <p>
+    <%= f.file_field :photo, label: false, :onChange => "readURL(this)", class: "filename", accept:'image/*' %>
+    <button type="button" name="photo-button" onclick="$(this).parent().find('.filename').click();">Añadir Imagen</button></p>
+  <span class="file_name"></span>
+
+
+
+
+<script type="text/javascript">
+  function readURL(input) {
+  console.log('hola');
+  div_id = "#" + input.id;
+  if (input.files && input.files[0]) {
+    var reader = new FileReader();
+    reader.onload = function (e) {
+      //debugger;
+      //$(div_id).prev('img').attr('src', e.target.result);
+      console.log(div_id);
+      $(input).parent().prev().attr('src', e.target.result);
+    }
+    reader.readAsDataURL(input.files[0]);
+  }
+}
+</script>

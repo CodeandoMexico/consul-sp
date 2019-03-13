@@ -31,6 +31,18 @@ ActiveRecord::Schema.define(version: 20190311015743) do
   add_index "activities", ["actionable_id", "actionable_type"], name: "index_activities_on_actionable_id_and_actionable_type", using: :btree
   add_index "activities", ["user_id"], name: "index_activities_on_user_id", using: :btree
 
+  create_table "additional_images", force: :cascade do |t|
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
+    t.integer  "investment_id"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+  end
+
+  add_index "additional_images", ["investment_id"], name: "index_additional_images_on_investment_id", using: :btree
+
   create_table "address_users", force: :cascade do |t|
     t.integer  "user_id"
     t.float    "latitude"

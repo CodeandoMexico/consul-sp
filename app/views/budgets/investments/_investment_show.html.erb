@@ -1,3 +1,12 @@
+<style media="screen">
+  #owl-demo .item img{
+    width: auto;
+    height: 100%;
+}
+
+.owl-dots { display: block !important; }
+</style>
+
 <% provide :social_media_meta_tags do %>
 <%= render "shared/social_media_meta_tags",
             social_url: budget_investments_path(investment),
@@ -42,6 +51,22 @@
 
         <%= safe_html_with_links investment.description.html_safe %>
 
+        <% if @investment.additional_images.present? %>
+          <hr>
+          <div id="image" class="small-12 column text-center image-preview">
+            <h2 class="inline-block">
+              Imágenes Adicionales
+            </h2>
+            <div id="owl-demo" class="owl-carousel owl-theme">
+              <% @investment.additional_images.each do |image| %>
+                <div class="item">
+                  <%= image_tag image.photo.url(:medium) %>
+                </div>
+              <% end %>
+          </div>
+          <hr>
+        <% end %>
+      </div>
         <% if feature?(:map) && map_location_available?(@investment.map_location) %>
           <div class="margin">
             <%= render_map(@investment.map_location, "budget_investment", false, nil) %>
@@ -215,3 +240,15 @@
     </div>
   </section>
 <% end %>
+
+<script type="text/javascript">
+  $("#owl-demo").owlCarousel({
+        margin:10,
+        loop:true,
+        autoWidth:true,
+        items:5,
+        singleItem: true,
+        nav:true,
+        dots: true
+       });
+</script>
