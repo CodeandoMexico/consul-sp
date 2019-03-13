@@ -81,6 +81,7 @@
 //= require managers
 //= require globalize
 //= require owl.carousel
+//= require jquery.flexslider-min    
 //= require send_admin_notification_alert
 
 var initialize_modules = function() {

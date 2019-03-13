@@ -5,6 +5,44 @@
 }
 
 .owl-dots { display: block !important; }
+
+
+@media only screen and (min-width: 959px) {
+    .img {
+        max-width: 50%;
+        max-height: 50%;
+        display: block;
+        margin-left: auto;
+                margin-right: auto;
+    }
+  }
+
+  .flex-direction-nav a {
+    text-decoration: none;
+    display: block;
+    width: 50px !important;
+    height: 50px !important;
+    margin: -20px 0 0;
+    position: absolute;
+    top: 50%;
+    z-index: 10;
+    overflow: hidden;
+    opacity: 0;
+    cursor: pointer;
+    color: rgba(20, 181, 121, 0.8) !important;
+    text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.98);
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+.flex-direction-nav a:before {
+    font-family: "flexslider-icon";
+    font-size: 40px;
+    display: inline-block;
+    content: '\f001';
+    color: rgba(29, 185, 163, 0.8) !important;
+    text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.98);
+}
 </style>
 
 <% provide :social_media_meta_tags do %>
@@ -57,15 +95,23 @@
             <h2 class="inline-block">
               Imágenes Adicionales
             </h2>
-            <div id="owl-demo" class="owl-carousel owl-theme">
-              <% @investment.additional_images.each do |image| %>
-                <div class="item">
-                  <%= image_tag image.photo.url(:medium) %>
-                </div>
-              <% end %>
-          </div>
+            <div class="flexslider">
+              <ul class="slides">
+                <% @investment.additional_images.each do |image| %>
+                  <li class="item">
+                    <%= image_tag image.photo.url(:medium) %>
+                  </li>
+                <% end %>
+              </ul>
+            </div>
           <hr>
         <% end %>
+
+        <!-- Place somewhere in the <body> of your page -->
+
+
+
+
       </div>
         <% if feature?(:map) && map_location_available?(@investment.map_location) %>
           <div class="margin">
@@ -242,13 +288,12 @@
 <% end %>
 
 <script type="text/javascript">
-  $("#owl-demo").owlCarousel({
-        margin:10,
-        loop:true,
-        autoWidth:true,
-        items:5,
-        singleItem: true,
-        nav:true,
-        dots: true
+       $('.flexslider').flexslider({
+         animation: "slide",
+         animationLoop: false,
+         itemWidth: 460,
+         itemMargin: 5,
+         minItems: 2,
+         maxItems: 4
        });
 </script>
