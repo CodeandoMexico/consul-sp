@@ -13,6 +13,7 @@ module Sanitizable
   protected
 
     def sanitize_description
+      return if self.class.name == "Budget::Investment"
       self.description = WYSIWYGSanitizer.new.sanitize(description)
     end
 

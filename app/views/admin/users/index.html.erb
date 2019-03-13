@@ -3,10 +3,20 @@
 <div class="small-12 medium-6">
   <%= form_tag admin_users_path, method: :get, remote: true  do %>
     <div class="input-group">
+
       <%= text_field_tag :search, '', placeholder: t('admin.users.search.placeholder') %>
+
       <div class="input-group-button">
         <%= submit_tag t('admin.users.search.search'), class: 'button' %>
       </div>
+
+      <div class="" style="
+          margin-left: 10px;
+      ">
+          <%= link_to 'Exportar Usuarios', admin_users_path(:format => :csv) %>
+      </div>
+
+
     </div>
   <% end %>
 </div>

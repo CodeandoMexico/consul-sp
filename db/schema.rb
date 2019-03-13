@@ -11,13 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190303115046) do
+ActiveRecord::Schema.define(version: 20190311015743) do
 
   # These are extensions that must be enabled in order to support this database
-  enable_extension "unaccent"
   enable_extension "plpgsql"
   enable_extension "pg_trgm"
   enable_extension "postgis"
+  enable_extension "unaccent"
 
   create_table "activities", force: :cascade do |t|
     t.integer  "user_id"
@@ -273,6 +273,7 @@ ActiveRecord::Schema.define(version: 20190303115046) do
     t.datetime "confirmed_hide_at"
     t.datetime "ignored_flag_at"
     t.integer  "flags_count",                                 default: 0
+    t.integer  "hot_score",                        limit: 8,  default: 0
   end
 
   add_index "budget_investments", ["administrator_id"], name: "index_budget_investments_on_administrator_id", using: :btree

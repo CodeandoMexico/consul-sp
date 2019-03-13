@@ -12,6 +12,10 @@
       font-size: large;
       padding: initial
     }
+
+    .shady{
+      color: white !important;
+    }
   }
 
   img#logo-sp {
@@ -30,12 +34,15 @@
 a.nav-link {
     color: currentColor;
 }
+
+
 </style>
 
 <head>
   <!-- CSS dependencies -->
   <link rel="stylesheet" href="/portal/css/aquamarine.css">
   <link rel="stylesheet" media="(max-width: 600px)" href="/portal/css/mobile.css" />
+  <script src="/portal/js/popper.min.js"></script>
   <script src="/portal/js/bootstrap.min.js"></script>
   <!-- Script: Make my navbar transparent when the document is scrolled to top -->
   <!--script src="/portal/js/navbar-ontop.js"></script>
@@ -59,14 +66,23 @@ a.nav-link {
       <% end %>
     </div>
     <div>
-      <button class="btn rounded-0" type="button" style="font-size: 20px;background: #4dc8cc;">
-        <%= link_to 'Ver Presupuestos',
-                    budgets_path, rel: "nofollow", class: 'nav-link' %>
-      </button>
-      <button class="btn rounded-0" type="button" style="font-size: 20px;">
-        <%= link_to t("devise_views.menu.login_items.login"),
-                    new_user_session_path, rel: "nofollow", class: 'nav-link' %>
-      </button>
+      <%= link_to 'Ver presupuestos',
+                  budgets_path,
+                  { class: 'btn rounded-0',
+                    rel: 'nofollow',
+                    style:'font-size: 20px; background: #4dc8cc; font-family: HKGrotesk; color: white; padding: 0.7em 1.6em;' } %>
+
+      <%= link_to t("welcome.welcome.user_permission_debates"),
+                  investments_path,
+                  { class: 'btn rounded-0',
+                    rel: 'nofollow',
+                    style:'font-size: 20px; background: #4dc8cc; font-family: HKGrotesk; color: white; padding: 0.7em 1.6em;' } %>
+
+      <%= link_to t("devise_views.menu.login_items.login"),
+                  new_user_session_path,
+                  { class: 'btn rounded-0 shady',
+                    rel: 'nofollow',
+                    style:'font-size: 20px; font-family: HKGrotesk; color: #46c8cd; padding: 0.7em 1.6em' } %>
     </div>
   </nav>
 </body>

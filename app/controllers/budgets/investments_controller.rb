@@ -5,6 +5,7 @@ module Budgets
     include CommentableActions
     include FlagActions
 
+    before_action :load_current_budget
     before_action :authenticate_user!, except: [:index, :show, :json_data]
 
     load_and_authorize_resource :budget, except: :json_data
@@ -40,13 +41,17 @@ module Budgets
                           investments
                         end
 
-      @investments = all_investments.page(params[:page]).per(10).for_render
+      @investments = all_investments.page(params[:page])
+                                    .per(10)
+                                    .includes(:tags, :author, :image)
+                                    .for_render
 
-      @investment_ids = @investments.pluck(:id)
+      @investment_ids = @investments.ids
       @investments_map_coordinates =  MapLocation.where(investment_id: all_investments).map { |l| l.json_data }
 
       load_investment_votes(@investments)
       @tag_cloud = tag_cloud
+      @sectors = Budget::Group.sectores.headings.order(:name)
     end
 
     def new
@@ -123,6 +128,10 @@ module Budgets
     end
 
     private
+
+      def load_current_budget
+        @budget = current_budget
+      end
 
       def resource_model
         Budget::Investment

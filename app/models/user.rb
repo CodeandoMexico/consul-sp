@@ -236,6 +236,34 @@ class User < ActiveRecord::Base
     erased_at.present?
   end
 
+  def self.to_csv
+    attributes= %w{id name email colonia  sector document_number created_at user_type roles_category}
+
+    CSV.generate(headers: true) do |csv|
+      csv << attributes
+      all.each do |user|
+        csv << attributes.map{ |attr| user.send(attr) }
+      end
+    end
+  end
+
+  def roles_category
+    roles = []
+    roles << :admin if self.administrator?
+    roles << :moderator if self.moderator?
+    roles << :valuator if self.valuator?
+    roles << :manager if self.manager?
+    roles << :poll_officer if self.poll_officer?
+    roles << :official if self.official?
+    roles << :organization if self.organization?
+    roles
+  end
+
+  def colonia
+    return "" if !level_three_verified?
+    colonium.first.junta_nom
+  end
+
   def take_votes_if_erased_document(document_number, document_type)
     erased_user = User.erased.where(document_number: document_number)
                              .where(document_type: document_type).first

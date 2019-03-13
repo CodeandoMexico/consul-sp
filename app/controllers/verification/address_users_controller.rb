@@ -63,9 +63,13 @@ class Verification::AddressUsersController < ApplicationController
     latitude = params[:address_user_confirm][:address_user][:latitude]
     longitude = params[:address_user_confirm][:address_user][:longitude]
     junta_vecinal = Colonium.where("ST_DWithin(the_geom, 'POINT(#{longitude} #{latitude})',0.0000621371)").first
-    user = current_user
-    user.colonium_ids = junta_vecinal.id
-    user.save!
+    if junta_vecinal.nil?
+      redirect_to request.referrer, alert: "No Encontramos tu dirección en el mapa, intenta de nuevo"
+    else
+      user = current_user
+      user.colonium_ids = junta_vecinal.id
+      user.save!
+    end
   end
 
   def user_address_params

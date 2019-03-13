@@ -13,7 +13,7 @@ class CommentNotifier
 
   def send_comment_email
     unless @comment.commentable.is_a?(Legislation::Annotation)
-      Mailer.comment(@comment).deliver_later if email_on_comment?
+      Mailer.comment(@comment).deliver_now if email_on_comment?
     end
   end
 
@@ -23,7 +23,7 @@ class CommentNotifier
 
   def email_on_comment?
     commentable_author = @comment.commentable.author
-    commentable_author != @author && commentable_author.email_on_comment?
+    commentable_author != @author.email
   end
 
   def email_on_comment_reply?

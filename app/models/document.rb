@@ -5,6 +5,7 @@ class Document < ActiveRecord::Base
                                  hash_data: ":class/:style/:custom_hash_data",
                                  use_timestamp: false,
                                  hash_secret: Rails.application.secrets.secret_key_base
+                                 
   attr_accessor :cached_attachment, :remove, :original_filename
 
   belongs_to :user

@@ -31,6 +31,18 @@
   <%= investment.heading.name %>
 </td>
 <td class="small">
+  <%= investment.author.sector %>
+</td>
+<td class="small">
+  <% if investment.documents.present? %>
+  <ul>
+    <% investment.documents.each do |document| %>
+      <li><a href="<%= document.attachment.url %>">Descargar</a></li>
+    <% end %>
+  </ul>
+  <% end %>
+</td>
+<td class="small">
   <%= investment.created_at.strftime("%Y-%m-%d") %>
 </td>
 <td class="small">

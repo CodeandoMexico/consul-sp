@@ -14,9 +14,25 @@ class BudgetsController < ApplicationController
   end
 
   def index
+    sector_names = {
+      "K1": "K1 - Sector Obispo, Industrias y Río",
+      "K2": "K2 - Sector Centro de San Pedro",
+      "K3": "K3 - Sector Lomas",
+      "K4": "K4 - Sector Valle",
+      "K5": "K5 - Sector Montaña",
+      "K6": "K6 - Sector Valle Oriente",
+    }
+
+    into_sector_name = proc { |key| sector_names[key.to_sym] }
+
     @finished_budgets = @budgets.finished.order(created_at: :desc)
     @budgets_coordinates = current_budget_map_locations
     @banners = Banner.in_section('budgets').with_active
+    @sectores = Budget::Group.sectores
+    @sectors_with_headings = Budget::Group.colonia
+                                          .headings
+                                          .group_by(&:sector)
+                                          .transform_keys(&into_sector_name)
   end
 
 end
