@@ -73,6 +73,7 @@ gem "font-awesome-rails"
 gem 'simple_form'
 gem 'owlcarousel-rails'
 gem 'flex-slider-rails'
+gem 'sentry-raven'
 
 
 
@@ -124,7 +125,6 @@ end
 group :production do
   gem 'pg', '~> 0.21.0'
   gem 'rails_12factor'
-  gem 'sentry-raven'
 end
 
 eval_gemfile './Gemfile_custom'
