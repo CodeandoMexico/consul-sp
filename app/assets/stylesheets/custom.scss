@@ -10,6 +10,16 @@
 * Copyright 2014-2018 Pingendo (https://pingendo.com)
 */
 
+@media screen and (min-width: 320px) and (max-width:580px) {
+  li.pagination-next {
+    display: inline;
+  }
+
+  li.pagination-previous {
+    display: inline;
+  }
+}
+
 .jumbo-budget {
     background: none;
     border-bottom: 0px !important;
