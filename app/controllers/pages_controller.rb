@@ -14,6 +14,8 @@ class PagesController < ApplicationController
       render action: params[:id]
     end
   rescue ActionView::MissingTemplate
-    head 404
+    render file: "#{Rails.root}/public/404.html",
+           layout: false,
+           status: 404
   end
 end
