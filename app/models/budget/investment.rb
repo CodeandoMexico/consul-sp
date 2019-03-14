@@ -290,7 +290,7 @@ class Budget
     end
 
     def calculate_hot_score
-      self.hot_score = ScoreCalculator.hot_score(self)
+      self.hot_score = self.likes.count + self.comments.count
     end
 
     def calculate_confidence_score
