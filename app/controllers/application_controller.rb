@@ -5,7 +5,6 @@ class ApplicationController < ActionController::Base
   include HasOrders
 
   before_action :authenticate_http_basic, if: :http_basic_auth_site?
-  before_action :set_raven_context, if: Rails.env.production?
 
   before_action :ensure_signup_complete
   before_action :set_locale
@@ -127,9 +126,4 @@ class ApplicationController < ActionController::Base
     def current_budget
       @_current_budget ||= Budget.current
     end
-
-    def set_raven_context
-      Raven.user_context(id: session[:current_user_id]) # or anything else in session
-      Raven.extra_context(params: params.to_unsafe_h, url: request.url)
-  end
 end
