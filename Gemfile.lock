@@ -1185,6 +1185,8 @@ GEM
     selenium-webdriver (3.141.0)
       childprocess (~> 0.5)
       rubyzip (~> 1.2, >= 1.2.2)
+    sentry-raven (2.7.4)
+      faraday (>= 0.7.6, < 1.0)
     simple_form (3.5.1)
       actionpack (> 4, < 5.2)
       activemodel (> 4, < 5.2)
@@ -1354,6 +1356,7 @@ DEPENDENCIES
   savon (~> 2.12.0)
   scss_lint (~> 0.55.0)
   selenium-webdriver (~> 3.10)
+  sentry-raven (= 2.7.4)
   simple_form
   sitemap_generator (~> 6.0.1)
   social-share-button (~> 1.1)
