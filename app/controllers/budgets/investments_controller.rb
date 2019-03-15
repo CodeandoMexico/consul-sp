@@ -20,6 +20,7 @@ module Budgets
     before_action :set_default_budget_filter, only: :index
     before_action :set_view, only: :index
     before_action :load_content_blocks, only: :index
+    before_action :check_params, only: :create
 
     skip_authorization_check only: :json_data
 
@@ -206,6 +207,13 @@ module Budgets
 
       def load_map
         @map_location = MapLocation.load_from_heading(@heading)
+      end
+
+      def check_params
+        if params[:budget_investment][:heading_id].blank?
+          flash.now[:error] = "Tienes que elegir a que sector pertenece"
+          render :new
+        end
       end
 
   end
