@@ -1,0 +1,11 @@
+<%= form_for @user, :url => {:controller => "admin/users", :action => "update"} do |f| %>
+<%= f.label "Sector" %>
+<%= @user.colonium.first.sector %>
+
+ <%= f.select :colonium, get_coloniums,:selected => @user.colonium.first.id, include_blank: t("admin.budget_investments.edit.select_heading"),  :label => "Junta Vecinal" %>
+
+
+<div class="small-12 column margin-top">
+  <%= f.submit(class: "button", value: t("admin.budget_investments.edit.submit_button")) %>
+</div>
+<% end %>

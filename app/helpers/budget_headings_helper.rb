@@ -6,6 +6,12 @@ module BudgetHeadingsHelper
    end
   end
 
+  def get_coloniums
+    Colonium.order('junta_nom ASC').map do |colonia|
+      ["#{colonia.sector}: #{colonia.junta_nom}", colonia.id]
+    end
+  end
+
   def budget_heading_select_options(budget)
     # TODO: filtro temporal
     if !current_user.colonium.nil?
