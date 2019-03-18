@@ -116,7 +116,7 @@ namespace :admin do
     get :search, on: :collection
   end
 
-  resources :users, only: [:index, :show]
+  resources :users, only: [:index, :show, :edit, :update]
 
   scope module: :poll do
     resources :polls do
