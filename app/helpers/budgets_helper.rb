@@ -79,6 +79,11 @@ module BudgetsHelper
     MapLocation.where(investment_id: investments).map { |l| l.json_data }
   end
 
+  def all_investments_map
+    investments = current_budget.investments
+    MapLocation.where(investment_id: investments).map { |l| l.json_data }
+  end
+
   def display_calculate_winners_button?(budget)
     budget.balloting_or_later?
   end

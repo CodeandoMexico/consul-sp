@@ -117,10 +117,19 @@
           <% end %>
 
           <% unless current_budget.informing? %>
+          <% if Setting['feature.show_all_invesments'] %>
+            <div class="map">
+              <h3><%= t("budgets.index.map") %></h3>
+              <%= render_map(nil, "budgets", false, nil, @all_investments_map) %>
+            </div>
+          <% else %>
             <div class="map">
               <h3><%= t("budgets.index.map") %></h3>
               <%= render_map(nil, "budgets", false, nil, @budgets_coordinates) %>
             </div>
+          <% end %>
+
+
 
             <p>
               <% show_links = show_links_to_budget_investments(current_budget) %>
