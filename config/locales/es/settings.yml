@@ -86,6 +86,8 @@ es:
       facebook_login: "Registro con Facebook"
       facebook_login_description: "Permitir que los usuarios se registren con su cuenta de Facebook"
       google_login: "Registro con Google"
+      show_all_invesments: "Mostrar todas las Propuestas en el Mapa"
+      show_all_invesments_description: "Esto mostrara todas las propuestas en el mapa, incluyendo las no viables"
       google_login_description: "Permitir que los usuarios se registren con su cuenta de Google"
       proposals: "Propuestas"
       proposals_description: "Las propuestas ciudadanas son una oportunidad para que los vecinos y colectivos decidan directamente cómo quieren que sea su ciudad, después de conseguir los apoyos suficientes y de someterse a votación ciudadana"

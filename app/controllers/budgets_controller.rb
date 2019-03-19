@@ -27,6 +27,7 @@ class BudgetsController < ApplicationController
 
     @finished_budgets = @budgets.finished.order(created_at: :desc)
     @budgets_coordinates = current_budget_map_locations
+    @all_investments_map = all_investments_map
     @banners = Banner.in_section('budgets').with_active
     @sectores = Budget::Group.sectores
     @sectors_with_headings = Budget::Group.colonia
