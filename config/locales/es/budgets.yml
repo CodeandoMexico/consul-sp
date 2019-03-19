@@ -142,7 +142,7 @@ es:
           one: "Sólo puedes apoyar proyectos en %{count} distrito. Si sigues adelante no podrás cambiar la elección de este distrito. ¿Estás seguro?"
           other: "Sólo puedes apoyar proyectos en %{count} distritos. Si sigues adelante no podrás cambiar la elección de este distrito. ¿Estás seguro?"
         supports:
-          zero: Sin apoyos
+          zero: ''
           one: 1 apoyo
           other: "%{count} apoyos"
         give_support: Apoyar
