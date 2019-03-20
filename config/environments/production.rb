@@ -104,14 +104,14 @@ Rails.application.configure do
 
 
   ############################### ACTION MAILER ###############################
-  config.action_mailer.default_url_options = { :host => "https://consul-sanpedro.herokuapp.com" }
+  config.action_mailer.default_url_options = { :host => "https://decide.sanpedro.gob.mx" }
   config.action_mailer.raise_delivery_errors = true
   # config.action_mailer.delivery_method = :mailgun
   #   config.action_mailer.mailgun_settings = {
   #    api_key: ENV["mailgun_api_key"],
   #    domain: ENV["mail_mail_domain"],
   #   }
-  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.delivery_method = :test
   config.action_mailer.smtp_settings = {
    address:              'smtp.gmail.com',
    port:                 587,
