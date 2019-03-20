@@ -8,11 +8,13 @@
                 investments_path,
                 { class: (not params[:heading_id]) ? 'is-active' : '' } %>
   </li>
-  <% @sectors.each do |sector| %>
-    <li class="inline-block">
-      <%= link_to sector.name,
-                  budget_investments_path(@budget, heading_id: sector),
-                  { class: (params[:heading_id] == sector.id.to_s) ? 'is-active' : '' } %>
-    </li>
+  <% if @sectors.present? %>
+    <% @sectors.each do |sector| %>
+      <li class="inline-block">
+        <%= link_to sector.name,
+                    budget_investments_path(@budget, heading_id: sector),
+                    { class: (params[:heading_id] == sector.id.to_s) ? 'is-active' : '' } %>
+      </li>
+    <% end %>
   <% end %>
 </ul>
