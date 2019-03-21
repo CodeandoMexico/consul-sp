@@ -3,7 +3,7 @@ class GenerateCsvJob < ActiveJob::Base
 
   def perform(*args)
     new_file = Tempfile.new(['reporte', '.csv'])
-    file = User.all.order('created_at ASC').to_csv
+    file = User.all.to_csv
     new_file.write(file)
     report = ExportedDataCsv.new
     report.csv_file = new_file
