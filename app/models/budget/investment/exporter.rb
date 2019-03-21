@@ -62,8 +62,8 @@ class Budget::Investment::Exporter
       get_documents_url(investment.documents.first),
       get_documents_url(investment.documents.second),
       get_documents_url(investment.documents.third),
-      MapLocation.where(investment_id: investment.id).first.latitude,
-      MapLocation.where(investment_id: investment.id).first.longitude,
+      MapLocation.where(investment_id: investment.id).first.try(:latitude),
+      MapLocation.where(investment_id: investment.id).first.try(:longitude),
       ActionView::Base.full_sanitizer.sanitize(investment.description),
       investment.created_at.strftime("%d/%m/%Y"),
       investment.updated_at.strftime("%d/%m/%Y")
