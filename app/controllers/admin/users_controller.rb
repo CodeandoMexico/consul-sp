@@ -33,7 +33,7 @@ class Admin::UsersController < Admin::BaseController
     @report = ExportedDataCsv.find(params[:user_id])
     f = open("https:#{@report.csv_file.url}")
     send_file(f, :type => 'txt/csv', filename: "reporte-#{@report.id}.csv", disposition: 'attachment')
-    render :nothing => true, :status => 200, :content_type => 'text/html'
+    #render :nothing => true, :status => 200, :content_type => 'text/html'
   end
 
   def update
