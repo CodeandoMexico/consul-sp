@@ -237,7 +237,7 @@ class User < ActiveRecord::Base
   end
 
   def self.to_csv
-    attributes= %w{id name email colonia  sector document_number created_at user_type roles_category}
+    attributes= %w{id name email colonia  sector document_number created_at user_type roles_category date_of_birth}
 
     CSV.generate(headers: true) do |csv|
       csv << attributes
