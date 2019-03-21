@@ -73,7 +73,7 @@ gem "font-awesome-rails"
 gem 'simple_form'
 gem 'owlcarousel-rails'
 gem 'flex-slider-rails'
-gem 'sentry-raven', group: [:staging, :production]
+#gem 'sentry-raven', group: [:staging, :production]
 
 
 
