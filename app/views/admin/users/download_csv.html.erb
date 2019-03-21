@@ -10,7 +10,7 @@
     <th>Fecha</th>
   </tr>
 
-  <% ExportedDataCsv.order('created_at DESC').last(5).each do |report| %>
+  <% ExportedDataCsv.last(5).reverse.each do |report| %>
   <tr>
     <td><a href="<%= report.csv_file.url %>" download="file.csv" target="_blank">Descargar</a></td>
     <td><%= report.created_at %></td>
