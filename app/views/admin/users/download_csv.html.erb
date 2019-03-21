@@ -32,7 +32,7 @@
 
   <% ExportedDataCsv.last(5).reverse.each do |report| %>
   <tr>
-    <td><a href="<%= report.csv_file.url %>" download="file.csv" target="_blank">Descargar</a></td>
+    <td><%= link_to "Descargar", admin_user_donwloadreport_path(id: current_user.id, user_id: report.id) %> </td>
     <td><%= report.created_at %></td>
   </tr>
   <% end %>

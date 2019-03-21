@@ -7,6 +7,7 @@ class GenerateCsvJob < ActiveJob::Base
     new_file.write(file)
     report = ExportedDataCsv.new
     report.csv_file = new_file
+    report.csv_file_content_type = 'text/csv'
     report.save
     new_file.close
     new_file.unlink

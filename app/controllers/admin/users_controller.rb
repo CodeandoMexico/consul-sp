@@ -1,6 +1,6 @@
 class Admin::UsersController < Admin::BaseController
   load_and_authorize_resource
-  skip_authorize_resource :only => [:edit, :update, :download_csv, :generate_report]
+  skip_authorize_resource :only => [:edit, :update, :download_csv, :generate_report, :donwloadreport]
   before_action :clean_colonium, :only => :update
 
   def index
@@ -27,6 +27,13 @@ class Admin::UsersController < Admin::BaseController
   def generate_report
     GenerateCsvJob.perform_later
     redirect_to(:back, notice: "Se esta generando el Reporte, espera un par de minutos y da refresh a la pagina")
+  end
+
+  def donwloadreport
+    @report = ExportedDataCsv.find(params[:user_id])
+    f = open("https:#{@report.csv_file.url}")
+    send_file(f, :type => 'txt/csv', filename: "reporte-#{@report.id}.csv", disposition: 'attachment')
+    render :nothing => true, :status => 200, :content_type => 'text/html'
   end
 
   def update
