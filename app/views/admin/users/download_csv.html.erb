@@ -1,1 +1,20 @@
 <h1>Reportes</h1>
+
+<%= link_to "Generar Reporte", generate_report_admin_users_path, method: :post, class: "add", remote: false %>
+
+<h2>Ultimos 5 reportes generados</h2>
+
+<table>
+  <tr>
+    <th>Reporte</th>
+    <th>Fecha</th>
+  </tr>
+
+  <% ExportedDataCsv.order('created_at DESC').last(5).each do |report| %>
+  <tr>
+    <td><%= link_to "Descargar", report.csv_file.url(:original, false) %></td>
+    <td><%= report.created_at %></td>
+  </tr>
+  <% end %>
+
+</table>

@@ -1,8 +1,7 @@
 class Admin::UsersController < Admin::BaseController
   load_and_authorize_resource
-  skip_authorize_resource :only => [:edit, :update, :download_csv]
+  skip_authorize_resource :only => [:edit, :update, :download_csv, :generate_report]
   before_action :clean_colonium, :only => :update
-  after_action :generate_report, :only => :download_csv
 
   def index
     @users = User.by_username_email_or_document_number(params[:search]) if params[:search]
@@ -19,7 +18,15 @@ class Admin::UsersController < Admin::BaseController
   end
 
   def download_csv
+    if params[:new_report] == true
+      #
+      params.delete(:new_report) if params[:new_report]
+    end
+  end
+
+  def generate_report
     GenerateCsvJob.perform_later
+    redirect_to(:back, notice: "Se esta generando el Reporte, espera un par de minutos y da refresh a la pagina")
   end
 
   def update
@@ -40,10 +47,6 @@ class Admin::UsersController < Admin::BaseController
 
   private
 
-  def generate_report
-    #binding.pry
-    #ExportCsv.new(current_user.id).delay.perform
-  end
 
   def clean_colonium
     @user.colonium = []

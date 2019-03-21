@@ -118,6 +118,7 @@ namespace :admin do
 
   resources :users, only: [:index, :show, :edit, :update ] do
     get :download_csv, on: :collection
+    post :generate_report, on: :collection
   end
 
   scope module: :poll do
