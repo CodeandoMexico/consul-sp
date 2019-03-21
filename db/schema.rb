@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190311015743) do
+ActiveRecord::Schema.define(version: 20190321032548) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -515,6 +515,17 @@ ActiveRecord::Schema.define(version: 20190311015743) do
   add_index "documents", ["documentable_type", "documentable_id"], name: "index_documents_on_documentable_type_and_documentable_id", using: :btree
   add_index "documents", ["user_id", "documentable_type", "documentable_id"], name: "access_documents", using: :btree
   add_index "documents", ["user_id"], name: "index_documents_on_user_id", using: :btree
+
+  create_table "exported_data_csvs", force: :cascade do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "csv_file_file_name"
+    t.string   "csv_file_content_type"
+    t.integer  "csv_file_file_size"
+    t.datetime "csv_file_updated_at"
+    t.string   "type"
+    t.integer  "job_id"
+  end
 
   create_table "failed_census_calls", force: :cascade do |t|
     t.integer  "user_id"

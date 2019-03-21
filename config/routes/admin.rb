@@ -116,7 +116,9 @@ namespace :admin do
     get :search, on: :collection
   end
 
-  resources :users, only: [:index, :show, :edit, :update]
+  resources :users, only: [:index, :show, :edit, :update ] do
+    get :download_csv, on: :collection
+  end
 
   scope module: :poll do
     resources :polls do
