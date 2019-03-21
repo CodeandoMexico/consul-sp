@@ -12,7 +12,7 @@
 
   <% ExportedDataCsv.order('created_at DESC').last(5).each do |report| %>
   <tr>
-    <td><%= link_to "Descargar", report.csv_file.url(:original, false) %></td>
+    <td><a href="<%= report.csv_file.url %>" download="file.csv" target="_blank">Descargar</a></td>
     <td><%= report.created_at %></td>
   </tr>
   <% end %>
