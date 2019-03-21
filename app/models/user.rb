@@ -237,7 +237,7 @@ class User < ActiveRecord::Base
   end
 
   def self.to_csv
-    attributes= %w{id name email colonia  sector document_number created_at user_type roles_category date_of_birth}
+    attributes= %w{id name email colonia  sector document_number created_at user_type roles_category date_of_birth genero nivel_estudios trabajo}
 
     CSV.generate(headers: true) do |csv|
       csv << attributes
@@ -257,6 +257,31 @@ class User < ActiveRecord::Base
     roles << :official if self.official?
     roles << :organization if self.organization?
     roles
+  end
+
+  def genero
+    if self.survey.present?
+      self.survey.genre
+    else
+      "N/A"
+    end
+  end
+
+  def trabajo
+    if self.survey.present?
+      self.survey.job
+    else
+      "N/A"
+    end
+  end
+
+
+  def nivel_estudios
+    if self.survey.present?
+      self.survey.school_grade
+    else
+      "N/A"
+    end
   end
 
   def colonia
