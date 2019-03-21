@@ -237,7 +237,7 @@ class User < ActiveRecord::Base
   end
 
   def self.to_csv
-    attributes= %w{id name email colonia  sector document_number created_at user_type roles_category date_of_birth genero nivel_estudios trabajo}
+    attributes= %w{id name email colonia  sector document_number created_at user_type roles_category date_of_birth genero nivel_estudios ocupacion ingreso_mensual voto_ultimas_elecciones voluntario_doce_meses evento_doce_meses ultimo_proceso_legislativo como_descubrio promocion_espacion_publicos otro_medio}
 
     CSV.generate(headers: true) do |csv|
       csv << attributes
@@ -267,7 +267,39 @@ class User < ActiveRecord::Base
     end
   end
 
-  def trabajo
+  def ultimo_proceso_legislativo
+    if self.survey.present?
+      self.survey.participate_last_year
+    else
+      "N/A"
+    end
+  end
+
+  def como_descubrio
+    if self.survey.present?
+      self.survey.how_discover
+    else
+      "N/A"
+    end
+  end
+
+  def otro_medio
+    if self.survey.present?
+      self.survey.other_text
+    else
+      "N/A"
+    end
+  end
+
+  def promocion_espacion_publicos
+    if self.survey.present?
+      self.survey.promotion_text
+    else
+      "N/A"
+    end
+  end
+
+  def ocupacion
     if self.survey.present?
       self.survey.job
     else
@@ -275,6 +307,37 @@ class User < ActiveRecord::Base
     end
   end
 
+  def ingreso_mensual
+    if self.survey.present?
+      self.survey.salary
+    else
+      "N/A"
+    end
+  end
+
+  def voto_ultimas_elecciones
+    if self.survey.present?
+      self.survey.recently_vote
+    else
+      "N/A"
+    end
+  end
+
+  def voluntario_doce_meses
+    if self.survey.present?
+      self.survey.social_work
+    else
+      "N/A"
+    end
+  end
+
+  def evento_doce_meses
+    if self.survey.present?
+      self.survey.attend_event
+    else
+      "N/A"
+    end
+  end
 
   def nivel_estudios
     if self.survey.present?
