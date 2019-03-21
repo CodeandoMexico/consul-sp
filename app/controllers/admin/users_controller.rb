@@ -18,6 +18,7 @@ class Admin::UsersController < Admin::BaseController
   end
 
   def update
+    #release
     @colonia = Colonium.find(params[:user][:colonium])
     @user.colonium << @colonia
     @user.sector = @colonia.sector
