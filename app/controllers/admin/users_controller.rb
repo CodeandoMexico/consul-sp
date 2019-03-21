@@ -10,9 +10,9 @@ class Admin::UsersController < Admin::BaseController
     respond_to do |format|
       format.html
       format.js
-      format.csv { send_data @all_users.order('created_at DESC').to_csv, filename: "usuarios-#{Date.today}.csv"}
+      format.csv { send_data @all_users.order('created_at DESC').delay.to_csv, filename: "usuarios-#{Date.today}.csv"}
     end
-  end
+  end 
 
   def edit
   end
