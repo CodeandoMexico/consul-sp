@@ -82,18 +82,18 @@ class Budget::Investment::Exporter
     @map_location = MapLocation.where(investment_id: investment.id).first
     if @map_location.nil?
       investment.heading.latitude
-    end
-      MapLocation.where(investment_id: investment.id).first.try(:latitude)
     else
+      MapLocation.where(investment_id: investment.id).first.try(:latitude)
+    end
   end
 
   def get_longitude(investment)
     @map_location = MapLocation.where(investment_id: investment.id).first
     if @map_location.nil?
       investment.heading.longitude
-    end
-      MapLocation.where(investment_id: investment.id).first.try(:longitude)
     else
+      MapLocation.where(investment_id: investment.id).first.try(:longitude)
+    end
   end
 
   def get_documents_url(investment)
