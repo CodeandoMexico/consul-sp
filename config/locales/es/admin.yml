@@ -232,7 +232,7 @@ es:
       show:
         assigned_admin: Administrador asignado
         assigned_valuators: Evaluadores asignados
-        classification: Clasificación
+        classification: Clasificación - Administrador
         info: "%{budget_name} - Grupo: %{group_name} - Proyecto de gasto %{id}"
         edit: Editar
         edit_classification: Editar clasificación
@@ -240,7 +240,7 @@ es:
         sent: Fecha
         group: Grupo
         heading: Partida
-        dossier: Informe
+        dossier: Informe - Evaluador
         edit_dossier: Editar informe
         tags: Etiquetas
         user_tags: Etiquetas del usuario

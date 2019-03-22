@@ -21,7 +21,7 @@ ast:
         table_heading_name: Nome de la partida
       show:
         back: Volver
-        dossier: Informe
+        dossier: Informe - Evaluador
         feasibility: Viabilidá
         unfeasible: Invidable
         undefined: Ensin definir
