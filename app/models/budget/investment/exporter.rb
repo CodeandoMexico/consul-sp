@@ -63,7 +63,7 @@ class Budget::Investment::Exporter
       get_documents_url(investment.documents.second),
       get_documents_url(investment.documents.third),
       get_latitude(investment),
-      get_latitude(investment),
+      get_longitude(investment),
       ActionView::Base.full_sanitizer.sanitize(investment.description),
       investment.created_at.strftime("%d/%m/%Y"),
       investment.updated_at.strftime("%d/%m/%Y")
