@@ -62,8 +62,8 @@ class Budget::Investment::Exporter
       get_documents_url(investment.documents.first),
       get_documents_url(investment.documents.second),
       get_documents_url(investment.documents.third),
-      MapLocation.where(investment_id: investment.id).first.try(:latitude),
-      MapLocation.where(investment_id: investment.id).first.try(:longitude),
+      get_latitude(investment),
+      get_latitude(investment),
       ActionView::Base.full_sanitizer.sanitize(investment.description),
       investment.created_at.strftime("%d/%m/%Y"),
       investment.updated_at.strftime("%d/%m/%Y")
@@ -76,6 +76,24 @@ class Budget::Investment::Exporter
     else
       I18n.t("admin.budget_investments.index.no_admin_assigned")
     end
+  end
+
+  def get_latitude(investment)
+    @map_location = MapLocation.where(investment_id: investment.id).first
+    if @map_location.nil?
+      investment.heading.latitude
+    end
+      MapLocation.where(investment_id: investment.id).first.try(:latitude)
+    else
+  end
+
+  def get_longitude(investment)
+    @map_location = MapLocation.where(investment_id: investment.id).first
+    if @map_location.nil?
+      investment.heading.longitude
+    end
+      MapLocation.where(investment_id: investment.id).first.try(:longitude)
+    else
   end
 
   def get_documents_url(investment)
