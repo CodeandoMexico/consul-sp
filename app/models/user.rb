@@ -237,11 +237,11 @@ class User < ActiveRecord::Base
   end
 
   def self.to_csv
-    attributes= %w{id name email colonia  sector document_number created_at user_type roles_category}
+    attributes= %w{id name email colonia  sector document_number created_at user_type roles_category date_of_birth genero nivel_estudios ocupacion ingreso_mensual voto_ultimas_elecciones voluntario_doce_meses evento_doce_meses ultimo_proceso_legislativo como_descubrio promocion_espacion_publicos otro_medio}
 
     CSV.generate(headers: true) do |csv|
       csv << attributes
-      all.each do |user|
+      all.find_each do |user|
         csv << attributes.map{ |attr| user.send(attr) }
       end
     end
@@ -257,6 +257,94 @@ class User < ActiveRecord::Base
     roles << :official if self.official?
     roles << :organization if self.organization?
     roles
+  end
+
+  def genero
+    if self.survey.present?
+      self.survey.genre
+    else
+      "N/A"
+    end
+  end
+
+  def ultimo_proceso_legislativo
+    if self.survey.present?
+      self.survey.participate_last_year
+    else
+      "N/A"
+    end
+  end
+
+  def como_descubrio
+    if self.survey.present?
+      self.survey.how_discover
+    else
+      "N/A"
+    end
+  end
+
+  def otro_medio
+    if self.survey.present?
+      self.survey.other_text
+    else
+      "N/A"
+    end
+  end
+
+  def promocion_espacion_publicos
+    if self.survey.present?
+      self.survey.promotion_text
+    else
+      "N/A"
+    end
+  end
+
+  def ocupacion
+    if self.survey.present?
+      self.survey.job
+    else
+      "N/A"
+    end
+  end
+
+  def ingreso_mensual
+    if self.survey.present?
+      self.survey.salary
+    else
+      "N/A"
+    end
+  end
+
+  def voto_ultimas_elecciones
+    if self.survey.present?
+      self.survey.recently_vote
+    else
+      "N/A"
+    end
+  end
+
+  def voluntario_doce_meses
+    if self.survey.present?
+      self.survey.social_work
+    else
+      "N/A"
+    end
+  end
+
+  def evento_doce_meses
+    if self.survey.present?
+      self.survey.attend_event
+    else
+      "N/A"
+    end
+  end
+
+  def nivel_estudios
+    if self.survey.present?
+      self.survey.school_grade
+    else
+      "N/A"
+    end
   end
 
   def colonia

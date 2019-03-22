@@ -1,0 +1,40 @@
+
+
+<style media="screen">
+  a.add {
+      /* display: block; */
+      width: 115px;
+      height: 25px;
+      background: #4E9CAF;
+      padding: 10px;
+      text-align: center;
+      border-radius: 5px;
+      color: white;
+      font-weight: bold;
+      margin-bottom: px;
+  }
+
+  h2 {
+    padding-top: 10px;
+}
+</style>
+<h1>Reportes</h1>
+
+<%= link_to "Generar Reporte", generate_report_admin_users_path, method: :post, class: "add", remote: false %>
+</br>
+<h2>Ultimos 5 reportes generados</h2>
+
+<table>
+  <tr>
+    <th>Reporte</th>
+    <th>Fecha</th>
+  </tr>
+
+  <% ExportedDataCsv.last(5).reverse.each do |report| %>
+  <tr>
+    <td><%= link_to "Descargar", admin_user_donwloadreport_path(id: current_user.id, user_id: report.id) %> </td>
+    <td><%= report.created_at %></td>
+  </tr>
+  <% end %>
+
+</table>

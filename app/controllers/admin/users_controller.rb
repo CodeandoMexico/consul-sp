@@ -1,6 +1,6 @@
 class Admin::UsersController < Admin::BaseController
   load_and_authorize_resource
-  skip_authorize_resource :only => [:edit, :update]
+  skip_authorize_resource :only => [:edit, :update, :download_csv, :generate_report, :donwloadreport]
   before_action :clean_colonium, :only => :update
 
   def index
@@ -10,14 +10,34 @@ class Admin::UsersController < Admin::BaseController
     respond_to do |format|
       format.html
       format.js
-      format.csv { send_data @all_users.order('created_at DESC').to_csv, filename: "usuarios-#{Date.today}.csv"}
+      format.csv { send_data @all_users.order('created_at DESC').delay.to_csv, filename: "usuarios-#{Date.today}.csv"}
     end
   end
 
   def edit
   end
 
+  def download_csv
+    if params[:new_report] == true
+      #
+      params.delete(:new_report) if params[:new_report]
+    end
+  end
+
+  def generate_report
+    GenerateCsvJob.perform_later
+    redirect_to(:back, notice: "Se esta generando el Reporte, espera un par de minutos y da refresh a la pagina")
+  end
+
+  def donwloadreport
+    @report = ExportedDataCsv.find(params[:user_id])
+    f = open("https:#{@report.csv_file.url}")
+    send_file(f, :type => 'txt/csv', filename: "reporte-#{@report.id}.csv", disposition: 'attachment')
+    #render :nothing => true, :status => 200, :content_type => 'text/html'
+  end
+
   def update
+    #release
     @colonia = Colonium.find(params[:user][:colonium])
     @user.colonium << @colonia
     @user.sector = @colonia.sector
@@ -33,6 +53,7 @@ class Admin::UsersController < Admin::BaseController
   end
 
   private
+
 
   def clean_colonium
     @user.colonium = []

@@ -33,6 +33,10 @@
       <div class="small-12 medium-6">
         <%= f.select :heading_id, budget_heading_select_options_all(@budget), include_blank: t("admin.budget_investments.edit.select_heading") %>
       </div>
+
+      <div class="small-12 medium-6">
+        <%= render 'documents/nested_documents', documentable: @investment, f: f %>
+      </div>
     </div>
   </div>
 
