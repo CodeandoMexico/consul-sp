@@ -118,7 +118,7 @@ Rails.application.configure do
    domain:               'decide.sanpedro.gob.mx',
    user_name:            'decide@sanpedro.gob.mx',
    password:             'Sp3640520#',
-   authentication:       'plain',
+   authentication:       'login',
    enable_starttls_auto: true }
   ############################### paperclip ###############################
   config.paperclip_defaults = {
