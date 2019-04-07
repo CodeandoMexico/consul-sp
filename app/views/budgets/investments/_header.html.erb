@@ -1,3 +1,10 @@
+<style media="screen">
+  .color_button{
+    color: #44c1c7 !important;
+    font-size: large;
+  }
+</style>
+
 <% if @heading.present? %>
 <% if @heading.name.include?("Revoluicion") %>
   <%  @heading.name.sub! 'Revoluicion', 'Revolución' %>
@@ -13,7 +20,7 @@
           <% if can? :show, @ballot %>
             <%= link_to t("budgets.investments.header.check_ballot"),
                         budget_ballot_path(@budget),
-                        class: "button float-right" %>
+                        class: "button float-right color_button" %>
           <% end %>
         </div>
       </div>
