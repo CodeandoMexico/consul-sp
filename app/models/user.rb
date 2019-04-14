@@ -237,14 +237,64 @@ class User < ActiveRecord::Base
   end
 
   def self.to_csv
-    attributes= %w{id name email colonia  sector document_number created_at user_type roles_category date_of_birth genero nivel_estudios ocupacion ingreso_mensual voto_ultimas_elecciones voluntario_doce_meses evento_doce_meses ultimo_proceso_legislativo como_descubrio promocion_espacion_publicos otro_medio}
 
+    attributes = %w{id
+                    name
+                    email
+                    junta_vecinal
+                    sector
+                    document_number
+                    created_at
+                    user_type
+                    roles_category
+                    latitud
+                    longitud
+                    calle
+                    numero
+                    colonia
+                    date_of_birth
+                    genero
+                    nivel_estudios
+                    ocupacion
+                    ingreso_mensual
+                    voto_ultimas_elecciones
+                    voluntario_doce_meses
+                    evento_doce_meses
+                    ultimo_proceso_legislativo
+                    como_descubrio
+                    promocion_espacion_publicos
+                    otro_medio}
     CSV.generate(headers: true) do |csv|
       csv << attributes
       all.find_each do |user|
         csv << attributes.map{ |attr| user.send(attr) }
       end
     end
+  end
+
+  def latitud
+    return "" if !level_three_verified?
+    Catastral.where(exped: document_number).first.latitude
+  end
+
+  def longitud
+    return "" if !level_three_verified?
+    Catastral.where(exped: document_number).first.longitude
+  end
+
+  def calle
+    return "" if !level_three_verified?
+    Catastral.where(exped: document_number).first.ubic
+  end
+
+  def numero
+    return "" if !level_three_verified?
+    Catastral.where(exped: document_number).first.numextubi
+  end
+
+  def colonia
+    return "" if !level_three_verified?
+    Catastral.where(exped: document_number).first.colubi
   end
 
   def roles_category
@@ -347,7 +397,7 @@ class User < ActiveRecord::Base
     end
   end
 
-  def colonia
+  def junta_vecinal
     return "" if !level_three_verified?
     colonium.first.junta_nom
   end

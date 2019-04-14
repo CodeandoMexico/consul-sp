@@ -64,8 +64,9 @@
 
         <p style="
         text-transform: inherit;">
-          Recuerda que puedes editar tu propuesta hasta el 15 de marzo.
-          No olvides dar click en 'Crear Propuesta' para guardar tus cambios.</p>
+          Las secretarías del municipio estamos evaluando la factibilidad de cada propuesta.
+          Recuerda que puedes registrate para poder votar hasta el 10 de Mayo.
+        </p>
       </div>
     </div>
   </div>
@@ -131,7 +132,7 @@
 
 
 
-            <p>
+            <p style="margin-top: 50px;">
               <% show_links = show_links_to_budget_investments(current_budget) %>
               <% if show_links %>
                 <%= link_to budget_investments_path(current_budget.id) do %>
@@ -142,9 +143,6 @@
                 <small><%= t("budgets.index.unfeasible_investment_proyects") %></small>
               <% end %><br>
               <% if show_links %>
-                <%= link_to budget_investments_path(budget_id: current_budget.id, filter: 'unselected') do %>
-                  <small><%= t("budgets.index.not_selected_investment_proyects") %></small>
-                <% end %>
               <% end %>
             </p>
           <% end %>

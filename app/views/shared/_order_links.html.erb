@@ -1,5 +1,12 @@
 <% @valid_orders.delete('confidence_score') %>
+
+
+<% if current_budget.phase == "balloting" %>
+  <% @valid_orders.delete('hot_score') %>
+  <% @valid_orders.delete('random') %>
+<% end %>
 <ul class="no-bullet submenu">
+
   <% @valid_orders.each do |order| %>
     <li class="inline-block">
       <%= link_to current_path_with_query_params(order: order, page: 1), class: order == @current_order ? 'is-active' : '' do %>
@@ -9,4 +16,30 @@
       <% end %>
     </li>
   <% end %>
+<% if current_user.level_three_verified? && current_budget.phase == "balloting"%>
+  <% if 1 %>
+    <% user_sector = current_user.colonium.first.sector.downcase %>
+    <% sector_id = Budget::Heading.where(slug: user_sector).first.id %>
+
+    <% user_colonia = current_user.colonium.first.junta_nom.parameterize %>
+    <% colonia_id = Budget::Heading.where(slug: user_colonia).first.id %>
+
+    <li class="inline-block" >
+      <a class="" href="/presupuestos/<%= current_budget.id %>/investments?heading_id=<%= sector_id %>">
+        <h2>
+          Mi Sector
+        </h2>
+      </a>
+    </li>
+
+    <li class="inline-block" >
+      <a class="" href="/presupuestos/<%= current_budget.id %>/investments?heading_id=<%= colonia_id %>">
+        <h2>
+          Mi Junta de Vecinos(as)
+        </h2>
+      </a>
+    </li>
+  <% end %>
+<% end %>
+
 </ul>
