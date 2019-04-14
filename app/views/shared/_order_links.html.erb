@@ -16,7 +16,7 @@
       <% end %>
     </li>
   <% end %>
-<% if current_user.level_three_verified? && current_budget.phase == "balloting"%>
+<% if current_user.present? && current_user.level_three_verified? && current_budget.phase == "balloting"%>
   <% if 1 %>
     <% user_sector = current_user.colonium.first.sector.downcase %>
     <% sector_id = Budget::Heading.where(slug: user_sector).first.id %>
