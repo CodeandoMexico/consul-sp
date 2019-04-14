@@ -27,10 +27,13 @@
         <%= investment.formatted_price %>
 
         <!-- Filter for votes -->
-        <% if investment.group.name == "Juntas Vecinales" %>
-          <% @result = investment.heading.name == current_user.colonium.try(:first).try(:junta_nom) %>
-        <% elsif investment.group.name == "Sectores" %>
-          <% @result = investment.heading.slug == current_user.colonium.try(:first).try(:sector).try(:downcase) %>
+      
+        <% if current_user.present? %>
+          <% if investment.group.name == "Juntas Vecinales" %>
+            <% @result = investment.heading.name == current_user.colonium.try(:first).try(:junta_nom) %>
+          <% elsif investment.group.name == "Sectores" %>
+            <% @result = investment.heading.slug == current_user.colonium.try(:first).try(:sector).try(:downcase) %>
+          <% end %>
         <% end %>
         <!-- Filter FOR VOTES -->
       </p>
