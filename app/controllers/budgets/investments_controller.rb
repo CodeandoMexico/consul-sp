@@ -39,7 +39,11 @@ module Budgets
       all_investments = if @budget.finished?
                           investments.winners
                         else
-                          investments
+                          if current_budget.phase == 'balloting'
+                            investments.valuation_finished_feasible
+                          else
+                            investments
+                          end
                         end
 
       @investments = all_investments.page(params[:page])
