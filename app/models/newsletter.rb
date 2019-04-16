@@ -38,7 +38,7 @@ class Newsletter < ActiveRecord::Base
   end
 
   def batch_size
-    10000
+    1
   end
 
   def batch_interval
