@@ -16,30 +16,5 @@
       <% end %>
     </li>
   <% end %>
-<% if current_user.present? && current_user.level_three_verified? && current_budget.phase == "balloting"%>
-  <% if 1 %>
-    <% user_sector = current_user.colonium.first.sector.downcase %>
-    <% sector_id = Budget::Heading.where(slug: user_sector).first.id %>
-
-    <% user_colonia = current_user.colonium.first.junta_nom.parameterize %>
-    <% colonia_id = Budget::Heading.where(slug: user_colonia).first.id %>
-
-    <li class="inline-block" >
-      <a class="" href="/presupuestos/<%= current_budget.id %>/investments?heading_id=<%= sector_id %>">
-        <h2>
-          Mi Sector
-        </h2>
-      </a>
-    </li>
-
-    <li class="inline-block" >
-      <a class="" href="/presupuestos/<%= current_budget.id %>/investments?heading_id=<%= colonia_id %>">
-        <h2>
-          Mi Junta de Vecinos(as)
-        </h2>
-      </a>
-    </li>
-  <% end %>
-<% end %>
 
 </ul>
