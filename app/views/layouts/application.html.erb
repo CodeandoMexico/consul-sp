@@ -15,10 +15,6 @@
     <%= content_for :social_media_meta_tags %>
 
     <%= setting['per_page_code_head'].try(:html_safe) %>
-
-    <!-- Start of  Zendesk Widget script -->
-    <script id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key=4d903dcd-ffd3-4c63-a345-175f4ea2b7de"> </script>
-    <!-- End of  Zendesk Widget script -->
   </head>
   <body class="<%= yield (:body_class) %>">
     <%= setting['per_page_code_body'].try(:html_safe) %>
