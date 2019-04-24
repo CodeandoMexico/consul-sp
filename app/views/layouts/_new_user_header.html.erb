@@ -71,12 +71,39 @@ a.nav-link {
                   { class: 'btn rounded-0',
                     rel: 'nofollow',
                     style:'font-size: 20px; background: #4dc8cc; font-family: HKGrotesk; color: white; padding: 0.7em 1.6em;' } %>
-
-      <%= link_to t("Entra a votar"),
-                  investments_path,
-                  { class: 'btn rounded-0',
-                    rel: 'nofollow',
-                    style:'font-size: 20px; background: #4dc8cc; font-family: HKGrotesk; color: white; padding: 0.7em 1.6em;' } %>
+      <!-- Issue 261, flujo depende de muchas cosas -->
+       <%# si la fase es votacion, se hace el boton dinamico, sino, tiene la configuracion anterior %>
+      <% if current_budget.phase == 'balloting' %>
+         <%# Si existe un usuario logeado %>
+          <% if current_user.present? %>
+            <%# Si el usuario esta verificado %>
+            <% if current_user.level_three_verified? %>
+              <%= link_to 'Entra a votar',
+                          budget_ballot_path(current_budget),
+                          { class: 'btn rounded-0',
+                            rel: 'nofollow',
+                            style:'font-size: 20px; background: #4dc8cc; font-family: HKGrotesk; color: white; padding: 0.7em 1.6em;' } %>
+            <% else %>
+              <%= link_to 'Verificar mi cuenta',
+                          verification_path(current_user),
+                          { class: 'btn rounded-0',
+                            rel: 'nofollow',
+                            style:'font-size: 20px; background: #4dc8cc; font-family: HKGrotesk; color: white; padding: 0.7em 1.6em;' } %>
+            <% end %>
+          <% else %>
+            <%= link_to 'Ver Propuestas',
+                        investments_path,
+                        { class: 'btn rounded-0',
+                          rel: 'nofollow',
+                          style:'font-size: 20px; background: #4dc8cc; font-family: HKGrotesk; color: white; padding: 0.7em 1.6em;' } %>
+          <% end %>
+      <% else %>
+        <%= link_to 'Ver Propuestas',
+                    investments_path,
+                    { class: 'btn rounded-0',
+                      rel: 'nofollow',
+                      style:'font-size: 20px; background: #4dc8cc; font-family: HKGrotesk; color: white; padding: 0.7em 1.6em;' } %>
+      <% end %>
 
       <%= link_to t("devise_views.menu.login_items.login"),
                   new_user_session_path,
