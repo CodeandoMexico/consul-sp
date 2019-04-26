@@ -62,6 +62,12 @@
             class: "button margin-top expanded" %>
         <% end %>
 
+        <% if current_budget.balloting? %>
+          <%= link_to 'Entra a votar',
+            budget_ballot_path(current_budget),,
+            class: "button margin-top expanded" %>
+        <% end %>
+
         <p style="
         text-transform: inherit;">
           Las secretarías del municipio estamos evaluando la factibilidad de cada propuesta.
