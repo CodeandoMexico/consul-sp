@@ -654,7 +654,7 @@ es:
     index:
       title: Presupuestos participativos
       unfeasible: Propuestas de inversión no viables
-      by_geozone: "Propuestas de inversión con ámbito: %{geozone}"
+      by_geozone: "Propuestas de: %{geozone}"
       search_form:
         button: Buscar
         placeholder: Propuestas de inversión...

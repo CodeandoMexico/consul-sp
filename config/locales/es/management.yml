@@ -116,7 +116,7 @@ es:
       create: Crear propuesta de inversión
       filters:
         unfeasible: Propuestas de inversión no viables
-        by_geozone: "Propuestas de inversión con ámbito: %{geozone}"
+        by_geozone: "Propuestas de: %{geozone}"
       print:
         print_button: Imprimir
       search_results:

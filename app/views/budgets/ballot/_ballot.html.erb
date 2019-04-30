@@ -25,11 +25,12 @@
       <div class="margin-top ballot-content">
         <div class="subtitle">
           <h3>
+            <!-- AQUI VA EL LINK A MI SECTOR -->
             <%= group.name %> - <%= @ballot.heading_for_group(group).name %>
           </h3>
           <%= link_to t("budgets.ballots.show.remaining",
                       amount: @ballot.formatted_amount_available(@ballot.heading_for_group(group))).html_safe,
-                      budget_group_path(@budget, group) %>
+                      budget_investments_path(@budget,heading_id: @ballot.heading_for_group(group).id) %>
         </div>
         <% if @ballot.has_lines_in_group?(group) %>
           <h4 class="amount-spent text-right">
@@ -55,12 +56,23 @@
   <% no_balloted_groups = @budget.groups.order(name: :asc) - ballot_groups %>
   <% no_balloted_groups.each do |group| %>
     <div id="<%= dom_id(group) %>" class="small-12 medium-6 column end">
+      <% user_sector = current_user.colonium.first.sector.downcase %>
+      <% sector_id = Budget::Heading.where(slug: user_sector).first.id %>
+      <% user_colonia = current_user.colonium.first.junta_nom.parameterize %>
+      <% colonia_id = Budget::Heading.where(slug: user_colonia).first.id %>
+
       <div class="margin-top ballot-content">
         <div class="subtitle">
           <h3>
             <%= group.name %>
           </h3>
-          <%= link_to t("budgets.ballots.show.no_balloted_group_yet"), budget_group_path(@budget, group) %>
+          <% if group.name == "Juntas Vecinales" %>
+            <%= link_to t("budgets.ballots.show.no_balloted_group_yet"), budget_investments_path(@budget, heading_id: colonia_id ) %>
+          <% elsif group.name == "Sectores" %>
+            <%= link_to t("budgets.ballots.show.no_balloted_group_yet"), budget_investments_path(@budget, heading_id: sector_id ) %>
+          <% else %>
+            <%= link_to t("budgets.ballots.show.no_balloted_group_yet"), budget_group_path(@budget, group) %>
+          <% end %>
         </div>
       </div>
     </div>

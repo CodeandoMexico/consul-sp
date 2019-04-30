@@ -40,12 +40,15 @@ module Budgets
                           investments.winners
                         else
                           if current_budget.phase == 'balloting'
-                            investments.valuation_finished_feasible
+                            if params[:filter] == "unfeasible"
+                              investments.unfeasible
+                            else
+                              investments.valuation_finished_feasible
+                            end
                           else
                             investments
                           end
                         end
-
       @investments = all_investments.page(params[:page])
                                     .per(10)
                                     .includes(:tags, :author, :image)
