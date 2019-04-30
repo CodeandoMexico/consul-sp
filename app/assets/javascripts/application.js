@@ -18,7 +18,6 @@
 //= require jquery-ui/widgets/sortable
 //= require jquery-fileupload/basic
 //= require foundation
-//= require turbolinks
 //= require ckeditor/loader
 //= require_directory ./ckeditor
 //= require social-share-button
@@ -81,7 +80,7 @@
 //= require managers
 //= require globalize
 //= require owl.carousel
-//= require jquery.flexslider-min    
+//= require jquery.flexslider-min
 //= require send_admin_notification_alert
 
 var initialize_modules = function() {
@@ -132,7 +131,7 @@ var initialize_modules = function() {
 };
 
 $(function(){
-  Turbolinks.enableProgressBar();
+  //Turbolinks.enableProgressBar();
 
   $(document).ready(initialize_modules);
   $(document).on('page:load', initialize_modules);
