@@ -13,10 +13,7 @@
 
 <% if params[:filter] == 'winners' %>
   <% if display_calculate_winners_button?(@budget) %>
-    <%= link_to calculate_winner_button_text(@budget),
-                calculate_winners_admin_budget_path(@budget),
-                method: :put,
-                class: "button hollow float-right clear" %>
+    =)
   <% else %>
     <span class="button hollow disabled float-right clear">
     </span>
