@@ -280,7 +280,7 @@ class User < ActiveRecord::Base
 
   def ine
     return "" if !level_three_verified?
-    url = self.ine.url
+    url = self.ife.url
     "https:#{url}"
   end
 
