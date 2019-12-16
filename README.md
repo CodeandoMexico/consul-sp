@@ -1,5 +1,17 @@
 ![CONSUL logo](https://raw.githubusercontent.com/consul/consul/master/public/consul_logo.png)
 
+# Cargar Presupuesto 2020 
+prerequisitos:
+  - Archivo `junta_vecinal_2020.csv` que la gente del municipio proporcina una vez listo
+  - El archivo debe de estar en `db/junta_vecinal_2020.csv` 
+  - el elemento Budget con nombre `Presupuesto Participativo 2020` debe existir en la base de datos, se puede crear desde el admin de la aplicacion
+  - Una vez que se tenga los presupuestos para cada sector (K1..K6) actualizar el archivo `db/seeds/presupuesto_2020.seeds.rb` 
+  - Correr el script en la consola `rake db:seed:single SEED=presupuesto_2020` 
+ - Si todo corrio correctamente deberia verse algo similar a esto
+![Resultado de Script](https://i.imgur.com/FqILoqg.png?1)
+
+
+
 # CONSUL
 
 Citizen Participation and Open Government Application
