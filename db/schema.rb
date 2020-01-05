@@ -11,13 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190321032548) do
+ActiveRecord::Schema.define(version: 20200105002853) do
 
   # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-  enable_extension "postgis"
-  enable_extension "pg_trgm"
   enable_extension "unaccent"
+  enable_extension "plpgsql"
+  enable_extension "pg_trgm"
+  enable_extension "postgis"
 
   create_table "activities", force: :cascade do |t|
     t.integer  "user_id"
@@ -515,6 +515,24 @@ ActiveRecord::Schema.define(version: 20190321032548) do
   add_index "documents", ["documentable_type", "documentable_id"], name: "index_documents_on_documentable_type_and_documentable_id", using: :btree
   add_index "documents", ["user_id", "documentable_type", "documentable_id"], name: "access_documents", using: :btree
   add_index "documents", ["user_id"], name: "index_documents_on_user_id", using: :btree
+
+  create_table "electoral_rolls", force: :cascade do |t|
+    t.string  "entity"
+    t.integer "constituency_id"
+    t.integer "municipality_id"
+    t.integer "electoral_section_id"
+    t.integer "locality_id"
+    t.integer "block_id"
+    t.integer "ocr_number"
+    t.integer "cic_number"
+    t.integer "credential_issuance_number"
+    t.string  "municipality_name"
+    t.string  "sex"
+    t.integer "year_of_registry"
+    t.string  "paternal_last_name_initial"
+    t.string  "maternal_last_name_initial"
+    t.string  "name_initial"
+  end
 
   create_table "exported_data_csvs", force: :cascade do |t|
     t.datetime "created_at"
@@ -1626,46 +1644,31 @@ ActiveRecord::Schema.define(version: 20190321032548) do
     t.datetime "updated_at",             null: false
   end
 
-  add_foreign_key "address_users", "users"
-  add_foreign_key "administrators", "users"
   add_foreign_key "annotations", "legacy_legislations"
   add_foreign_key "annotations", "users"
   add_foreign_key "budget_investments", "communities"
-  add_foreign_key "documents", "users"
   add_foreign_key "failed_census_calls", "poll_officers"
   add_foreign_key "failed_census_calls", "users"
-  add_foreign_key "flags", "users"
-  add_foreign_key "follows", "users"
   add_foreign_key "geozones_polls", "geozones"
   add_foreign_key "geozones_polls", "polls"
   add_foreign_key "identities", "users"
-  add_foreign_key "images", "users"
   add_foreign_key "legislation_draft_versions", "legislation_processes"
   add_foreign_key "legislation_proposals", "legislation_processes"
-  add_foreign_key "locks", "users"
-  add_foreign_key "managers", "users"
-  add_foreign_key "moderators", "users"
-  add_foreign_key "notifications", "users"
-  add_foreign_key "organizations", "users"
   add_foreign_key "poll_answers", "poll_questions", column: "question_id"
   add_foreign_key "poll_booth_assignments", "polls"
   add_foreign_key "poll_officer_assignments", "poll_booth_assignments", column: "booth_assignment_id"
   add_foreign_key "poll_partial_results", "poll_booth_assignments", column: "booth_assignment_id"
   add_foreign_key "poll_partial_results", "poll_officer_assignments", column: "officer_assignment_id"
   add_foreign_key "poll_partial_results", "poll_questions", column: "question_id"
-  add_foreign_key "poll_partial_results", "users", column: "author_id"
   add_foreign_key "poll_question_answer_videos", "poll_question_answers", column: "answer_id"
   add_foreign_key "poll_question_answers", "poll_questions", column: "question_id"
   add_foreign_key "poll_questions", "polls"
   add_foreign_key "poll_questions", "proposals"
-  add_foreign_key "poll_questions", "users", column: "author_id"
   add_foreign_key "poll_recounts", "poll_booth_assignments", column: "booth_assignment_id"
   add_foreign_key "poll_recounts", "poll_officer_assignments", column: "officer_assignment_id"
   add_foreign_key "poll_voters", "polls"
   add_foreign_key "proposals", "communities"
   add_foreign_key "related_content_scores", "related_contents"
   add_foreign_key "related_content_scores", "users"
-  add_foreign_key "surveys", "users"
   add_foreign_key "users", "geozones"
-  add_foreign_key "valuators", "users"
 end
