@@ -86,7 +86,6 @@ source 'https://rails-assets.org' do
 end
 
 group :development, :test do
-  gem 'meta_request'
   gem 'bullet', '~> 5.7.0'
   gem 'byebug', '~> 10.0.0'
   gem 'factory_bot_rails', '~> 4.8.2'
@@ -94,6 +93,9 @@ group :development, :test do
   gem 'knapsack_pro', '~> 1.1.0'
   gem 'launchy', '~> 2.4.3'
   gem 'letter_opener_web', '~> 1.3.4'
+  gem 'meta_request'
+  gem 'pry-byebug'
+  gem 'pry-rails'
   gem 'quiet_assets', '~> 1.1.0'
   gem 'spring', '~> 2.0.1'
   gem 'spring-commands-rspec', '~> 1.0.4'
@@ -109,8 +111,6 @@ end
 
 group :development do
   gem 'awesome_print', require:"ap"
-  gem 'pry-rails'
-  gem 'pry-byebug'
   gem 'capistrano', '~> 3.10.1', require: false
   gem 'capistrano-bundler', '~> 1.2', require: false
   gem 'capistrano-rails', '~> 1.4.0', require: false
