@@ -6,7 +6,7 @@ class Budget
     include Measurable
     include Sanitizable
     include Taggable
-    include Searchable
+    # include Searchable
     include Reclassification
     include Followable
     include Communitable
