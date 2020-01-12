@@ -5,7 +5,7 @@ class Legislation::Proposal < ActiveRecord::Base
   include Conflictable
   include Measurable
   include Sanitizable
-  include Searchable
+  # include Searchable
   include Filterable
   include Followable
   include Communitable
