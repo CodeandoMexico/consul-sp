@@ -2,7 +2,7 @@ class SpendingProposal < ActiveRecord::Base
   include Measurable
   include Sanitizable
   include Taggable
-  include Searchable
+  # include Searchable
 
   acts_as_votable
 
