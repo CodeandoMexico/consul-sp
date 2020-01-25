@@ -6,7 +6,7 @@ class Verification::AddressUsersController < ApplicationController
   before_action :authenticate_user!
   before_action :verify_resident!
   before_action :verify_verified!
-  before_action :set_polygon, only: %i[create]
+  # before_action :set_polygon, only: %i[create]
   before_action :set_junta_vecinal, only: %i[create]
   before_action :verify_lock, only: %i[new create]
   skip_authorization_check
@@ -62,7 +62,7 @@ class Verification::AddressUsersController < ApplicationController
   def set_junta_vecinal
     latitude = params[:address_user_confirm][:address_user][:latitude]
     longitude = params[:address_user_confirm][:address_user][:longitude]
-    junta_vecinal = Colonium.where("ST_DWithin(the_geom, 'POINT(#{longitude} #{latitude})',0.0000621371)").first
+    junta_vecinal = Colonium.first
     if junta_vecinal.nil?
       redirect_to request.referrer, alert: "No Encontramos tu dirección en el mapa, intenta de nuevo"
     else

@@ -36,7 +36,7 @@ class Verification::Residence
                 document_type:         '1', #document_type
                 geozone:               geozone,
                 date_of_birth:         date_of_birth.in_time_zone.to_datetime,
-                sector:                district_code,
+                sector:                "K1",
                 residence_verified_at: Time.current)
   end
 
