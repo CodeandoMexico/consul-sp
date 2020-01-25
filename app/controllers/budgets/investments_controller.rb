@@ -37,7 +37,11 @@ module Budgets
 
     def index
       all_investments = if @budget.finished?
-                          investments.winners
+                          if params[:filter] == "unfeasible"
+                            investments.unfeasible
+                          else
+                            investments.winners
+                          end
                         else
                           if current_budget.phase == 'balloting'
                             if params[:filter] == "unfeasible"

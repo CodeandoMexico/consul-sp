@@ -111,13 +111,13 @@ Rails.application.configure do
   #    api_key: ENV["mailgun_api_key"],
   #    domain: ENV["mail_mail_domain"],
   #   }
-  config.action_mailer.delivery_method = :test
+  config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-   address:              'smtp.gmail.com',
+   address:              "email-smtp.us-east-1.amazonaws.com",
    port:                 587,
    domain:               'decide.sanpedro.gob.mx',
-   user_name:            'decide@sanpedro.gob.mx',
-   password:             'Sp3640520#',
+   user_name:            'AKIA3FWONBO2YXO2MQRG',
+   password:             'BBXeoQmzdPHyW+WC3s87AOzAAQW7yK+QMUdnAcGQstPx',
    authentication:       'plain',
    enable_starttls_auto: true }
   ############################### paperclip ###############################

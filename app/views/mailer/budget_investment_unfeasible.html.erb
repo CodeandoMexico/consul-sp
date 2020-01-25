@@ -1,24 +1,35 @@
 <td style="padding-bottom: 20px; padding-left: 10px;">
-
   <p style="font-family: 'Open Sans','Helvetica Neue',arial,sans-serif;font-size: 14px;font-weight: normal;line-height: 24px;">
-    <%= t("mailers.budget_investment_unfeasible.hi") %>
+      Muy apreciable vecino(a),
   </p>
 
+  <p style="font-family: 'Open Sans','Helvetica Neue',arial,sans-serif;font-size: 14px;font-weight: normal;line-height: 24px;">
+    Por parte de todo el equipo de Innovación y Participación Ciudadana y del Municipio de San Pedro, queremos agradecerte por haberte tomado el tiempo de subir tu propuesta.
+  </p>
+  <p style="font-family: 'Open Sans','Helvetica Neue',arial,sans-serif;font-size: 14px;font-weight: normal;line-height: 24px;">
+    Tras un proceso exhaustivo de evaluación de los parámetros de tu propuesta, la Secretaría correspondiente nos ha comunicado que tu propuesta no cumple con los parámetros de factibilidad establecidos en el artículo 354 y 355 del Reglamento de Participación y Atención Ciudadana del Municipio.
+  </p>
+  <p style="font-family: 'Open Sans','Helvetica Neue',arial,sans-serif;font-size: 14px;font-weight: normal;line-height: 24px;">
+    Para conocer las razones específicas de esta determinación, aquí el informe de no factibilidad:
+  </p>
   <p style="font-family: 'Open Sans','Helvetica Neue',arial,sans-serif;font-size: 14px;font-weight: normal;line-height: 24px; padding-left: 12px; border-left: 2px solid #ccc;">
     <%= @investment.unfeasibility_explanation %>
   </p>
-
   <p style="font-family: 'Open Sans','Helvetica Neue',arial,sans-serif;font-size: 14px;font-weight: normal;line-height: 24px;">
-  <%= t("mailers.budget_investment_unfeasible.new_html",
-      url: link_to(t("mailers.budget_investment_unfeasible.new_href"),
-      new_budget_investment_url(@investment.budget), style: "color: #2895F1; text-decoration: underline;")) %>
+    Por último, es importante mencionar que aunque este año no es posible someter a votación tu propuesta, la misma nos ha presentado una valiosa oportunidad para conocer, no sólo la problemática que buscas resolver, sino una gran alternativa para solucionarla.
+  </p>
+  <p style="font-family: 'Open Sans','Helvetica Neue',arial,sans-serif;font-size: 14px;font-weight: normal;line-height: 24px;">
+    No dudes en que buscaremos ponerla a consideración de futuras acciones y programas del Gobierno Municipal.
+  </p>
+  <p style="font-family: 'Open Sans','Helvetica Neue',arial,sans-serif;font-size: 14px;font-weight: normal;line-height: 24px;">
+    Nuevamente agradecemos tu generosidad de tiempo y atención.
+  </p>
+  <p style="font-family: 'Open Sans','Helvetica Neue',arial,sans-serif;font-size: 14px;font-weight: normal;line-height: 24px;">
+    Esperamos contar con tu participación en la votación de propuestas de este año, y escuchar más de tus propuestas en las futuras iteraciones de Decide San Pedro.
+  </p>
+  <p style="font-family: 'Open Sans','Helvetica Neue',arial,sans-serif;font-size: 14px;font-weight: normal;line-height: 24px;">
+    Atentamente,</br>
+    El equipo de Innovación y Participación Ciudadana
   </p>
 
-  <p style="font-family: 'Open Sans','Helvetica Neue',arial,sans-serif;font-size: 14px;font-weight: normal;line-height: 24px;">
-    <%= t("mailers.budget_investment_unfeasible.sorry") %>
-  </p>
-
-  <p style="font-family: 'Open Sans','Helvetica Neue',arial,sans-serif;font-size: 14px;font-weight: normal;line-height: 24px;">
-    <%= t("mailers.budget_investment_unfeasible.sincerely") %>
-  </p>
 </td>

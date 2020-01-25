@@ -36,7 +36,7 @@ class Verification::Residence
                 document_type:         '1', #document_type
                 geozone:               geozone,
                 date_of_birth:         date_of_birth.in_time_zone.to_datetime,
-                sector:                district_code,
+                sector:                "K1",
                 residence_verified_at: Time.current)
   end
 
@@ -68,7 +68,7 @@ class Verification::Residence
   end
 
   def district_code
-    @census_data.district_code
+    @census_data.electoral_section_id
   end
 
   def exped_exist
@@ -84,7 +84,7 @@ class Verification::Residence
   private
 
     def retrieve_census_data
-      @census_data = Catastral.where(exped: document_number).first
+      @census_data = ElectoralRoll.find_by cic_number: document_number
     end
 
     def residency_valid?

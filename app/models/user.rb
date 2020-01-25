@@ -246,6 +246,7 @@ class User < ActiveRecord::Base
                     document_number
                     created_at
                     user_type
+                    ine
                     roles_category
                     latitud
                     longitud
@@ -275,6 +276,12 @@ class User < ActiveRecord::Base
   def latitud
     return "" if !level_three_verified?
     Catastral.where(exped: document_number).first.latitude
+  end
+
+  def ine
+    return "" if !level_three_verified?
+    url = self.ife.url
+    "https:#{url}"
   end
 
   def longitud
