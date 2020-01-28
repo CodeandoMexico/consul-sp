@@ -24,8 +24,3 @@ class Geozone < ActiveRecord::Base
     end
   end
 end
-
-
-user = User.where(email: 'user2@consul.dev').first
-
-["user2@consul.dev", "user11@consul.dev", "user18@consul.dev", "user19@consul.dev", "user23@consul.dev"]

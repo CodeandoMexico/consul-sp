@@ -1,4 +1,8 @@
 file = File.open("db/election_roll_san_pedro.txt")
+coordinates = File.read("db/centroides_manzanas_converted.geojson")
+data = JSON.parse(coordinates)["features"]["features"]
+
+ElectoralRoll.all.each(&:destroy)
 
 file.readlines.map(&:chomp).each do |line|
   attr_hash = line.split("|")
@@ -19,6 +23,18 @@ file.readlines.map(&:chomp).each do |line|
     paternal_last_name_initial: attr_hash[12],
     maternal_last_name_initial: attr_hash[13],
     name_initial: attr_hash[14],
+  )
+end
+
+ElectoralRoll.all.each do |record|
+  location_entry = data.find do |entry| 
+    entry["properties"]["MANZANA"] == record.block_id &&
+      entry["properties"]["SECCION"] == record.electoral_section_id
+  end
+
+  record.update(
+    latitude: location_entry["geometry"]["coordinates"].first,
+    longitude: location_entry["geometry"]["coordinates"].last
   )
 end
 
