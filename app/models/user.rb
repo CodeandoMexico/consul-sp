@@ -30,6 +30,7 @@ class User < ActiveRecord::Base
   has_one :lock
   has_one :survey
   has_one :address_user
+  has_one :electoral_roll
   has_many :flags
   has_many :likes
   has_many :identities, dependent: :destroy

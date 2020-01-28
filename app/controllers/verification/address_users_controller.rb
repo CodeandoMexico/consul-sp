@@ -12,7 +12,17 @@ class Verification::AddressUsersController < ApplicationController
   skip_authorization_check
 
   def new
-    @address_user = AddressUser.new
+    if params[:address_user] && params[:address_user][:full_address]
+      search = params[:address_user][:full_address]
+      geokit_search = Geokit::Geocoders::GoogleGeocoder.geocode search
+      @address_user = AddressUser.new latitude: geokit_search.latitude, longitude: geokit_search.longitude
+    else
+      @address_user = AddressUser.new latitude: current_user.electoral_roll.latitude, longitude: current_user.electoral_roll.longitude
+    end
+    @map_location = MapLocation.new(
+      latitude: @address_user.latitude,
+      longitude: @address_user.longitude
+    )
   end
 
   def create
