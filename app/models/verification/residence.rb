@@ -85,6 +85,9 @@ class Verification::Residence
 
     def retrieve_census_data
       @census_data = ElectoralRoll.find_by cic_number: document_number
+      if @census_data.present?
+        self.user.update electoral_roll: @census_data
+      end
     end
 
     def residency_valid?
