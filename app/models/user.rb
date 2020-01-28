@@ -89,6 +89,8 @@ class User < ActiveRecord::Base
   end
 
   before_validation :clean_document_number
+  after_validation :assign_sector, on: [:update, :create]
+  after_validation :assign_geozone, on: [:update, :create]
 
   # Get the existing user by email if the provider gives us a verified email.
   def self.first_or_initialize_for_oauth(auth)
@@ -537,6 +539,17 @@ class User < ActiveRecord::Base
     def clean_document_number
       return unless document_number.present?
       self.document_number = document_number.gsub(/[^a-z0-9]+/i, "").upcase
+    end
+
+    def assign_sector
+      return if colonium.blank? || sector == colonium.first.sector
+      self.sector = self.colonium.first.sector
+    end
+
+    def assign_geozone
+      expected_geozone = Geozone.find_by(sector: sector)
+      return if sector.blank? || geozone == expected_geozone
+      self.geozone = expected_geozone
     end
 
     def validate_username_length

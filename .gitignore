@@ -35,3 +35,4 @@ public/system/
 
 # Ignore application configuration
 /config/application.yml
+/config/initializers/dev_environment.rb
