@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200128032210) do
+ActiveRecord::Schema.define(version: 20200105002853) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "unaccent"
@@ -532,12 +532,7 @@ ActiveRecord::Schema.define(version: 20200128032210) do
     t.string  "paternal_last_name_initial"
     t.string  "maternal_last_name_initial"
     t.string  "name_initial"
-    t.float   "latitude"
-    t.float   "longitude"
-    t.integer "user_id"
   end
-
-  add_index "electoral_rolls", ["user_id"], name: "index_electoral_rolls_on_user_id", using: :btree
 
   create_table "exported_data_csvs", force: :cascade do |t|
     t.datetime "created_at"
@@ -1655,7 +1650,6 @@ ActiveRecord::Schema.define(version: 20200128032210) do
   add_foreign_key "annotations", "users"
   add_foreign_key "budget_investments", "communities"
   add_foreign_key "documents", "users"
-  add_foreign_key "electoral_rolls", "users"
   add_foreign_key "failed_census_calls", "poll_officers"
   add_foreign_key "failed_census_calls", "users"
   add_foreign_key "flags", "users"

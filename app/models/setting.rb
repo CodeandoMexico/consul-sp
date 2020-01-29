@@ -35,7 +35,7 @@ class Setting < ActiveRecord::Base
 
   class << self
     def [](key)
-      where(key: key).pluck(:value).first.presence
+      # where(key: key).pluck(:value).first.presence
     end
 
     def []=(key, value)
