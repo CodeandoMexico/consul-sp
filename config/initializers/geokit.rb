@@ -1,1 +1,1 @@
-Geokit::Geocoders::GoogleGeocoder.api_key = Rails.application.secrets.geokit_api_key
+Geokit::Geocoders::GoogleGeocoder.api_key = ENV['GEOKIT_KEY']
