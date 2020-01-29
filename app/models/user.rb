@@ -547,8 +547,8 @@ class User < ActiveRecord::Base
     end
 
     def assign_geozone
-      expected_geozone = Geozone.find_by(sector: sector)
-      return if sector.blank? || geozone == expected_geozone
+      expected_geozone = Geozone.find_by(census_code: sector)
+      return if sector.blank? || geozone == expected_geozone || expected_geozone.blank?
       self.geozone = expected_geozone
     end
 
