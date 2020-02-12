@@ -16,6 +16,7 @@ class Verification::Residence
   validate :document_number_uniqueness
   validate  :exped_exist
 
+
   def initialize(attrs = {})
     self.date_of_birth = parse_date('date_of_birth', attrs)
     attrs = remove_date('date_of_birth', attrs)

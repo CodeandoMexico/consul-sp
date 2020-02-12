@@ -5,7 +5,8 @@ module ActiveModel::Dates
                        attrs["#{field}(2i)"],
                        attrs["#{field}(3i)"]
 
-    return nil unless day.present? && month.present? && year.present?
+    default_date = "1/Jan/2000".to_datetime
+    return default_date unless day.present? && month.present? && year.present?
     Date.new(day.to_i, month.to_i, year.to_i)
   end
 
