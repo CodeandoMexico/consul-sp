@@ -120,37 +120,11 @@ div#ine-exist {
       <div class="row">
         <div class="small-12 medium-8">
           <div class="small-12 medium-5 column end">
-
-          <div class="inline-block">
-            <H3> Agrega tu INE </H3>
-          </div>
-
-          <div class="inline-block" data-toggle="info-document-ife">
-            <span class="show-for-sr">Sube una foto de tu credencial para votar.</span>
-          </div>
-
-          <div class="dropdown-pane" id="info-document-ife" data-dropdown
-               data-hover="true" data-hover-pane="true">
-               Sube una foto de tu credencial para votar.
-          </div>
-
-            <div class="file-input">
-              <%= file_field_tag :image,  accept: 'image/png,image/gif,image/jpeg,application/pdf' %>
-              <span class='button'>Subir</span>
-              <span class='label' data-js-label>No hay archivo seleccionado</label>
-
-            </div>
               <% if @residence.errors.messages[:base].present? %>
                 <div id="error-mensaje">
                   <%= @residence.errors.messages[:base].first %></div>
               <% end %>
               <div class="progress"></div>
-
-              <p style="font-size: small;line-height: unset;font-weight: bold;">
-                  Sube una foto del frente de tu credencial de elector. No es necesario que el domicilio de tu credencial esté en San Pedro.
-              </p>
-
-
           </div>
         </div>
       </div>
@@ -191,11 +165,6 @@ div#ine-exist {
       </div>
 
       <div class="small-12 medium-5 clear">
-        <%= f.label t("verification.residence.new.postal_code") %>
-        <p class="help-text" id="postal-code-help-text"><%= t("verification.residence.new.postal_code_note") %></p>
-        <div class="medium-6">
-          <%= f.text_field :postal_code, label: false, aria: {describedby: "postal-code-help-text"} %>
-        </div>
       </div>
 
       <div class="small-12">
