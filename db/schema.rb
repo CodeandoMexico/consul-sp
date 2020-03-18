@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200128032210) do
+ActiveRecord::Schema.define(version: 20200311230631) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "unaccent"
@@ -523,8 +523,8 @@ ActiveRecord::Schema.define(version: 20200128032210) do
     t.integer "electoral_section_id"
     t.integer "locality_id"
     t.integer "block_id"
-    t.integer "ocr_number"
-    t.integer "cic_number"
+    t.integer "ocr_number",                 limit: 8
+    t.integer "cic_number",                 limit: 8
     t.integer "credential_issuance_number"
     t.string  "municipality_name"
     t.string  "sex"
