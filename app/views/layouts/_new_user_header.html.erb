@@ -73,7 +73,7 @@ a.nav-link {
                     style:'font-size: 20px; background: #4dc8cc; font-family: HKGrotesk; color: white; padding: 0.7em 1.6em;' } %>
       <!-- Issue 261, flujo depende de muchas cosas -->
        <%# si la fase es votacion, se hace el boton dinamico, sino, tiene la configuracion anterior %>
-      <% if current_budget.phase == 'balloting' %>
+      <% if current_budget&.phase == 'balloting' %>
          <%# Si existe un usuario logeado %>
           <% if current_user.present? %>
             <%# Si el usuario esta verificado %>
