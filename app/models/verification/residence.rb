@@ -75,9 +75,16 @@ class Verification::Residence
   private
 
     def retrieve_census_data
-      @census_data = ElectoralRoll.find_by cic_number: document_number
+      @census_data = ElectoralRoll.find_by(
+        "cic_number = ? or ocr_number = ?",
+        document_number,
+        document_number
+      )
+
       if @census_data.present?
-        self.user.update electoral_roll: @census_data
+        self.user.update(electoral_roll: @census_data)
+      else
+        errors.add(:cic_or_ocr_not_valid, "CIC or OCR not valid")
       end
     end
 

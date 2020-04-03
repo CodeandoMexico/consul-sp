@@ -50,7 +50,7 @@ es:
         accept_terms_text: Tus datos estarán protegidos conforme a la Ley General de Protección de Datos Personales en Posesión de los Sujetos Obligados. Acepto %{terms_url}
         accept_terms_text_title: Acepto los términos de acceso al Padrón
         date_of_birth: Fecha de nacimiento (Opcional)
-        document_number: Si autorizas que se realice la verificación automática de tu credencial para votar, favor de ingresar tu Código CIC para proceder a la verificación de tu usuario.
+        document_number: Si autorizas que se realice la verificación automática de tu credencial para votar, favor de ingresar tu Código OCR o CIC para proceder a la verificación de tu usuario.
         document_number_help_title: Ayuda
         document_number_help_text_html: Se encuentra el el reverso de tu credencial de Elector.
         document_type:

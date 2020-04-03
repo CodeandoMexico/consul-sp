@@ -43,6 +43,38 @@ describe Verification::Residence do
       expect(residence.errors[:document_number]).to include("has already been taken")
     end
 
+    context "validations for document_number" do
+      let(:residence) { described_class.new(document_number: "123") }
+
+      it "validates ElectoralRoll exists by cic_number" do
+        residence.save
+
+        expect(residence.errors[:cic_or_ocr_not_valid]).to include "CIC or OCR not valid"
+      end
+
+      context "when ElectoralRoll exists by cic_number" do
+        before do
+          ElectoralRoll.create(cic_number: "123")
+          user = create(:user)
+          residence.user = user
+          residence.save
+        end
+
+        it { expect(residence.errors[:cic_or_ocr_not_valid]).to be_empty }
+      end
+
+      context "when ElectoralRoll exists by ocr_number" do
+        before do
+          ElectoralRoll.create(ocr_number: "123")
+          user = create(:user)
+          residence.user = user
+          residence.save
+        end
+
+        it { expect(residence.errors[:cic_or_ocr_not_valid]).to be_empty }
+      end
+    end
+
     it "validates census terms" do
       residence.terms_of_service = nil
       expect(residence).not_to be_valid
