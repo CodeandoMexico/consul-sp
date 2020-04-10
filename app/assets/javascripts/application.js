@@ -38,6 +38,7 @@
 //= require gettext
 //= require annotator
 //= require tags
+//= require investment_tags
 //= require users
 //= require votes
 //= require allow_participation
@@ -89,6 +90,7 @@ var initialize_modules = function() {
   App.Votes.initialize();
   App.AllowParticipation.initialize();
   App.Tags.initialize();
+  App.InvestmentTags.initialize();
   App.Dropdown.initialize();
   App.LocationChanger.initialize();
   App.CheckAllNone.initialize();
