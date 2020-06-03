@@ -123,7 +123,7 @@ es:
           username_note: Nombre público que aparecerá en tus publicaciones
         success:
           back_to_index: Entendido, volver a la página principal
-          instructions_1_html: Por favor <b>revisa tu correo electrónico</b> - para confirmar tu cuenta y agregar tus datos de credencial para votar y número de catastro.
-          instructions_2_html: Una vez confirmada, podrás empezar a participar.
-          thank_you_html: Gracias por registrarte en Decide San Pedro. Ahora debes <b>confirmar tu correo</b>.
+          instructions_1_html: Por favor revisa tu correo electrónico para <b>verificar tu identidad</b> y añadir tus datos de credencial para votar actualizada en San Pedro Garza García.
+          instructions_2_html: Una vez confirmada tu cuenta, podrás empezar a participar.
+          thank_you_html: Gracias por registrarte en Decide San Pedro. Ahora debes confirmar tu correo
           title: Revisa tu correo
