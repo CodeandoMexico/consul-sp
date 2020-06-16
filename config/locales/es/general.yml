@@ -11,7 +11,7 @@ es:
       organization_responsible_name_placeholder: Representante de la asociación/colectivo
       personal: Datos personales
       phone_number_label: Teléfono
-      public_activity_label: Mostrar públicamente mi lista de actividades
+      public_activity_label: "Mostrar públicamente mi lista de actividades en esta plataforma<br>(si registré un proyecto, o mis comentarios sobre otros proyectos) "
       public_interests_label: Mostrar públicamente las etiquetas de los elementos que sigo
       public_interests_my_title_list: Etiquetas de los elementos que sigues
       public_interests_user_title_list: Etiquetas de los elementos que sigue este usuario
