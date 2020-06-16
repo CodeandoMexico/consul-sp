@@ -821,7 +821,7 @@ es:
       user_permission_support_proposal: Apoyar propuestas*
       user_permission_verify: Para poder realizar todas las acciones, verifica tu cuenta.
       user_permission_verify_info: "* Sólo usuarios empadronados."
-      user_permission_verify_my_account: Verificar mi cuenta
+      user_permission_verify_my_account: Verifica tu identidad
       user_permission_votes: Votar por propuestas*
   invisible_captcha:
     sentence_for_humans: "Si eres humano, por favor ignora este campo"
