@@ -71,6 +71,7 @@ class Budget
     scope :sort_by_supports,            -> { order("cached_votes_up DESC") }
     scope :sort_by_flags,               -> { order(flags_count: :desc, updated_at: :desc) }
     scope :sort_by_created_at,          -> { reorder(created_at: :desc) }
+    scope :sort_by_most_commented,      -> { reorder(comments_count: :desc) }
 
     scope :valuation_open,              -> { where(valuation_finished: false) }
     scope :without_admin,               -> { valuation_open.where(administrator_id: nil) }
