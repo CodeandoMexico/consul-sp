@@ -53,6 +53,8 @@ Rails.application.routes.draw do
   resources :documents, only: [:destroy]
   resources :follows, only: [:create, :destroy]
 
+  get '/mis_votos', to: 'my_votes#index'
+
   # More info pages
   get 'ayuda',             to: 'pages#show', id: 'help/index',             as: 'help'
   get 'help/how-to-use',  to: 'pages#show', id: 'help/how_to_use/index',  as: 'how_to_use'
