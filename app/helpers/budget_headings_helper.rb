@@ -22,7 +22,7 @@ module BudgetHeadingsHelper
           group&.headings.find_by(slug: current_user.sector.parameterize)
       end
 
-      headings.map { |heading|  [heading.name, heading.id] }
+      headings.map { |heading|  [heading&.name, heading&.id] }
     else
       budget.headings.order_by_group_name.map do |heading|
         [heading.name_scoped_by_group, heading.id]
