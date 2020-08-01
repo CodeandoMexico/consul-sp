@@ -1,12 +1,13 @@
 <% provide :title do %><%= t("devise_views.sessions.new.title") %><% end %>
-<h2><%= t("devise_views.sessions.new.title") %></h2>
+<h1><%= t("devise_views.sessions.new.title") %></h1>
 
 <%= render 'devise/omniauth_form' %>
 
-<h5>
-  <%= t("devise_views.shared.links.signup",
-      signup_link: link_to(t("devise_views.shared.links.signup_link"), new_user_registration_path)).html_safe %>
-</h5>
+<h3>
+  <%= link_to t("devise_views.shared.links.signup",
+                signup_link: t("devise_views.shared.links.signup_link")),
+              new_user_registration_path %>
+</h3>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="row">
@@ -23,7 +24,7 @@
       <div class="small-12 column">
         <%= f.label :remember_me do %>
           <%= f.check_box :remember_me, title: t('devise_views.sessions.new.remember_me'), label: false %>
-          <span class="checkbox"><%= t("devise_views.sessions.new.remember_me") %></span>
+          <span><%= t("devise_views.sessions.new.remember_me") %></span>
         <% end %>
       </div>
     <% end -%>

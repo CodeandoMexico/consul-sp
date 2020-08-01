@@ -11,13 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190321032548) do
+ActiveRecord::Schema.define(version: 20200718181641) do
 
   # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-  enable_extension "postgis"
-  enable_extension "pg_trgm"
   enable_extension "unaccent"
+  enable_extension "plpgsql"
+  enable_extension "pg_trgm"
+  enable_extension "postgis"
 
   create_table "activities", force: :cascade do |t|
     t.integer  "user_id"
@@ -515,6 +515,29 @@ ActiveRecord::Schema.define(version: 20190321032548) do
   add_index "documents", ["documentable_type", "documentable_id"], name: "index_documents_on_documentable_type_and_documentable_id", using: :btree
   add_index "documents", ["user_id", "documentable_type", "documentable_id"], name: "access_documents", using: :btree
   add_index "documents", ["user_id"], name: "index_documents_on_user_id", using: :btree
+
+  create_table "electoral_rolls", force: :cascade do |t|
+    t.string  "entity"
+    t.integer "constituency_id"
+    t.integer "municipality_id"
+    t.integer "electoral_section_id"
+    t.integer "locality_id"
+    t.integer "block_id"
+    t.integer "ocr_number",                 limit: 8
+    t.integer "cic_number",                 limit: 8
+    t.integer "credential_issuance_number"
+    t.string  "municipality_name"
+    t.string  "sex"
+    t.integer "year_of_registry"
+    t.string  "paternal_last_name_initial"
+    t.string  "maternal_last_name_initial"
+    t.string  "name_initial"
+    t.float   "latitude"
+    t.float   "longitude"
+    t.integer "user_id"
+  end
+
+  add_index "electoral_rolls", ["user_id"], name: "index_electoral_rolls_on_user_id", using: :btree
 
   create_table "exported_data_csvs", force: :cascade do |t|
     t.datetime "created_at"
@@ -1632,6 +1655,7 @@ ActiveRecord::Schema.define(version: 20190321032548) do
   add_foreign_key "annotations", "users"
   add_foreign_key "budget_investments", "communities"
   add_foreign_key "documents", "users"
+  add_foreign_key "electoral_rolls", "users"
   add_foreign_key "failed_census_calls", "poll_officers"
   add_foreign_key "failed_census_calls", "users"
   add_foreign_key "flags", "users"

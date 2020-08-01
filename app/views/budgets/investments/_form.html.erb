@@ -11,6 +11,27 @@
     <div class="small-12 column">
       <%= f.text_field :title, maxlength: SpendingProposal.title_max_length, data: { js_suggest_result: "js_suggest_result", js_suggest: "#js-suggest", js_url: suggest_budget_investments_path(@budget) }%>
     </div>
+
+    <div class="small-12 column">
+      <%= f.label :tag_list, t("budgets.investments.form.tags_label") %>
+      <p class="help-text" id="tags-list-help-text"><%= t("budgets.investments.form.tags_instructions") %></p>
+
+      <div id="category_tags" class="tags">
+        <%= f.label :category_tag_list, t("budgets.investments.form.tag_category_label") %>
+        <% @categories.each do |tag| %>
+          <a class="js-add-investment-tag-link"><%= tag.name %></a>
+        <% end %>
+      </div>
+
+      <br>
+      <%= f.text_field :tag_list, value: @investment.tag_list.to_s,
+                        label: false,
+                        placeholder: t("budgets.investments.form.tags_placeholder"),
+                        aria: {describedby: "tags-list-help-text"},
+                        class: 'js-tag-list tag-autocomplete',
+                        data: {js_url: suggest_tags_path} %>
+    </div>
+
     <div id="js-suggest"></div>
 
     <%= f.invisible_captcha :subtitle %>
@@ -71,26 +92,6 @@
     </div>
 
     <div class="block margin_top">
-
-    <div class="small-12 column">
-      <%= f.label :tag_list, t("budgets.investments.form.tags_label") %>
-      <p class="help-text" id="tags-list-help-text"><%= t("budgets.investments.form.tags_instructions") %></p>
-
-      <div id="category_tags" class="tags">
-        <%= f.label :category_tag_list, t("budgets.investments.form.tag_category_label") %>
-        <% @categories.each do |tag| %>
-          <a class="js-add-tag-link"><%= tag.name %></a>
-        <% end %>
-      </div>
-
-      <br>
-      <%= f.text_field :tag_list, value: @investment.tag_list.to_s,
-                        label: false,
-                        placeholder: t("budgets.investments.form.tags_placeholder"),
-                        aria: {describedby: "tags-list-help-text"},
-                        class: 'js-tag-list tag-autocomplete',
-                        data: {js_url: suggest_tags_path} %>
-    </div>
 
     <% unless current_user.manager? %>
 

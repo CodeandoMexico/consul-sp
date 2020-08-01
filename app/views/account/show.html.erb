@@ -35,11 +35,11 @@
             <%= f.label :public_activity do %>
               <%= f.check_box :public_activity, title: t('account.show.public_activity_label'), label: false %>
               <span class="checkbox">
-                <%= t("account.show.public_activity_label") %>
+                <%= t("account.show.public_activity_label").html_safe %>
               </span>
             <% end %>
           </div>
-
+          <br>
           <div>
             <%= f.label :public_interests do %>
               <%= f.check_box :public_interests, title: t('account.show.public_interests_label'), label: false %>
@@ -143,11 +143,20 @@
 
         <div class="user-permissions small-12 medium-5 column">
           <% if current_user.colonium.present? %>
-          <h2>Junta Vecinal</h2>
-          <p><%= current_user.colonium.first.junta_nom %></p>
-          <p><h4>Sector: </h4><%= current_user.colonium.first.sector %></p>
-          <h2><%= t("account.show.user_permission_title") %></h2>
+            <div class="card" style="padding: 40px;">
+              <h2>Mi junta de vecinos y sector</h2>
+              <p><strong>Junta de vecinos:</strong> <%= current_user.colonium.first.junta_nom%></p>
+              <p><strong>Sector: </strong><%= current_user.colonium.first.sector %></p>
+              <br>
+              <strong>¿Esta no es tu Junta de Vecinos?</strong>
+              <p>
+              Comunícate al Centro de Atención de Presupuesto Participativo al 8478-2059 o
+              envíanos un correo a <a href="mailto:decide@sanpedro.gob.mx">decide@sanpedro.gob.mx</a>
+              para ubicarte correctamente
+              </p>
+            </div>
           <% end %>
+          <h2><%= t("account.show.user_permission_title") %></h2>
           <p><%= t("account.show.user_permission_info") %></p>
 
           <ul>

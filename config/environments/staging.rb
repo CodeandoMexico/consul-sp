@@ -22,10 +22,11 @@ Rails.application.configure do
 
   # Disable serving static files from the `/public` folder by default since
   # Apache or NGINX already handles this.
-  config.serve_static_files = ENV['RAILS_SERVE_STATIC_FILES'].present?
+  config.serve_static_files = true
 
   # Compress JavaScripts and CSS.
-  config.assets.js_compressor = :uglifier
+  #config.assets.js_compressor = :uglifier
+  config.assets.js_compressor = Uglifier.new(harmony: true, compress: { unused: false })
   # config.assets.css_compressor = :sass
 
   # Do not fallback to assets pipeline if a precompiled asset is missed.
@@ -46,7 +47,7 @@ Rails.application.configure do
 
   # Use the lowest log level to ensure availability of diagnostic information
   # when problems arise.
-  config.log_level = :debug
+  config.log_level = :warn
 
   # Prepend all log lines with the following tags.
   # config.log_tags = [ :subdomain, :uuid ]
@@ -55,20 +56,27 @@ Rails.application.configure do
   # config.logger = ActiveSupport::TaggedLogging.new(SyslogLogger.new)
 
   # Use a different cache store in production.
-  config.cache_store = :dalli_store
+  config.cache_store = :dalli_store, { value_max_bytes: 2000000 }
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
   # config.action_controller.asset_host = 'http://assets.example.com'
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
-  config.action_mailer.raise_delivery_errors = true
-  config.action_mailer.delivery_method = :mailgun
-  config.action_mailer.mailgun_settings = {
-      api_key: 'b42c30ab6ed36bfd78c669a2426fc528-060550c6-ebbd27d5',
-      domain: 'sandbox5ea3bc60b2a34c7594e5fe76a27cf809.mailgun.org'
-  }
-
+  # config.action_mailer.default_url_options = {:host => 'consul-sanpedro.herokuapp.com'}
+  # config.action_mailer.raise_delivery_errors = true
+  # config.action_mailer.perform_deliveries = true
+  # #config.action_mailer.asset_host = "https://#{Rails.application.secrets.server_name}"
+  #
+  # ActionMailer::Base.smtp_settings = {
+  # :port => '587',
+  # :address => 'smtp.mailgun.org',
+  # :user_name => 'postmaster@sandbox5ea3bc60b2a34c7594e5fe76a27cf809.mailgun.org',
+  # :password => '9bbd96cfb3c670bf12f85bfe5a90666a-060550c6-7048017f',
+  # :domain => 'consul-sanpedro.herokuapp.com',
+  # :authentication => :plain,
+  # }
+  # ActionMailer::Base.delivery_method = :smtp
   # SMTP configuration to deliver emails
   # Uncomment the following block of code and add your SMTP service credentials
   # config.action_mailer.delivery_method = :smtp
@@ -93,4 +101,41 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+
+  ############################### ACTION MAILER ###############################
+  config.action_mailer.default_url_options = { :host => "https://peaceful-reef-74225.herokuapp.com" }
+  config.action_mailer.raise_delivery_errors = true
+  # config.action_mailer.delivery_method = :mailgun
+  #   config.action_mailer.mailgun_settings = {
+  #    api_key: ENV["mailgun_api_key"],
+  #    domain: ENV["mail_mail_domain"],
+  #   }
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+   address:              "email-smtp.us-east-1.amazonaws.com",
+   port:                 587,
+   domain:               'https://peaceful-reef-74225.herokuapp.com',
+   user_name:            'AKIA3FWONBO2YXO2MQRG',
+   password:             'BBXeoQmzdPHyW+WC3s87AOzAAQW7yK+QMUdnAcGQstPx',
+   authentication:       'plain',
+   enable_starttls_auto: true }
+  ############################### paperclip ###############################
+  config.paperclip_defaults = {
+      storage: :s3,
+      s3_credentials: {
+        bucket: 'consulsppp',
+        access_key_id: ENV['AWS_ACCESS_KEY_ID'],
+        secret_access_key: ENV['AWS_SECRET_ACCESS_KEY'],
+        s3_region: ENV['S3_REGION'],
+        s3_host_name: ENV['S3_HOST_NAME']
+      }
+  }
+
+  ########## CONECTOR DE LA BASE DE DATOS
+  def config.database_configuration
+    parsed = super
+    parsed.each_value { |config| config['adapter'] = 'postgis' }
+  end
 end
+
