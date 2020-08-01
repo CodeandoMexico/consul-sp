@@ -72,6 +72,8 @@ class Budget
     scope :sort_by_flags,               -> { order(flags_count: :desc, updated_at: :desc) }
     scope :sort_by_created_at,          -> { reorder(created_at: :desc) }
     scope :sort_by_most_commented,      -> { reorder(comments_count: :desc) }
+    scope :sort_by_winners,             -> { winners }
+    scope :sort_by_no_winners,          -> { no_winners }
 
     scope :valuation_open,              -> { where(valuation_finished: false) }
     scope :without_admin,               -> { valuation_open.where(administrator_id: nil) }
@@ -91,6 +93,7 @@ class Budget
     scope :compatible,                  -> { where(incompatible: false) }
     scope :incompatible,                -> { where(incompatible: true) }
     scope :winners,                     -> { selected.compatible.where(winner: true) }
+    scope :no_winners,                  -> { selected.compatible.where(winner: false) }
     scope :unselected,                  -> { not_unfeasible.where(selected: false) }
     scope :last_week,                   -> { where("created_at >= ?", 7.days.ago)}
 
