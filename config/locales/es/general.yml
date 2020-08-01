@@ -728,6 +728,9 @@ es:
       debates: Debates
       budget_investments: Proyectos de presupuestos participativos
       comments: Comentarios
+      votes: Votos
+      votes_created_at: Fecha del voto
+      proposal_votes: Votos en propuestas
       actions: Acciones
       filters:
         comments:
@@ -745,6 +748,9 @@ es:
         follows:
           one: 1 Siguiendo
           other: "%{count} Siguiendo"
+        votes:
+          one: 1 Voto
+          other: "%{count} Votos"
       no_activity: Usuario sin actividad pública
       no_private_messages: "Este usuario no acepta mensajes privados."
       private_activity: Este usuario ha decidido mantener en privado su lista de actividades.
