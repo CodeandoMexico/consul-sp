@@ -109,6 +109,7 @@ es:
           confidence_score: Mejor valorados
           price: Por costo
           hot_score: Más activas
+          most_commented: Más comentadas
       share:
         message: "He presentado el proyecto %{title} en %{org}. ¡Presenta un proyecto tú también!"
         message_mobile: "He presentado el proyecto %{title} en %{handle}. ¡Presenta un proyecto tú también!"
