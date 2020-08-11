@@ -162,7 +162,10 @@ div#ine-exist {
                         start_year: 16.years.ago.year, end_year: 1900,
                         label: false %>
       </div>
-
+      <div class="small-12 medium-6 clear">
+        <%= f.label t("verification.residence.new.phone_number")%>
+        <%= f.text_field :phone_number, label: false, required: true%>
+      </div>
       <div class="small-12 medium-5 clear">
       </div>
 

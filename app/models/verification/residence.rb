@@ -3,13 +3,14 @@ class Verification::Residence
   include ActiveModel::Dates
   include ActiveModel::Validations::Callbacks
 
-  attr_accessor :user, :document_number, :document_type, :date_of_birth, :terms_of_service
+  attr_accessor :user, :document_number, :document_type, :date_of_birth, :terms_of_service, :phone_number
 
   before_validation :retrieve_census_data
 
   validates :document_number, presence: true
   #validates :document_type, presence: true
   validates :date_of_birth, presence: true
+  validates :phone_number, presence: true
   validates :terms_of_service, acceptance: { allow_nil: false }
 
   validate :allowed_age
@@ -34,6 +35,7 @@ class Verification::Residence
                 document_type:         '1', #document_type
                 geozone:               geozone,
                 date_of_birth:         date_of_birth.in_time_zone.to_datetime,
+                phone_number:          phone_number,
                 sector:                "K1",
                 residence_verified_at: Time.current)
   end
