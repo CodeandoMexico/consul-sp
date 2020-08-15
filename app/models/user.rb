@@ -45,6 +45,7 @@ class User < ActiveRecord::Base
   has_many :direct_messages_received, class_name: 'DirectMessage', foreign_key: :receiver_id
   has_many :legislation_answers, class_name: 'Legislation::Answer', dependent: :destroy, inverse_of: :user
   has_many :follows
+  has_many :ballots, class_name: 'Budget::Ballot'
   has_and_belongs_to_many :colonium
   belongs_to :geozone
   has_attached_file :ife, styles: { medium: "300x300>" }, default_url: "/images/:style/missing.png"

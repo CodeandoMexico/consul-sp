@@ -1,8 +1,8 @@
 <% votes.each do |vote| %>
-  <% proposal = vote.votable%>
+  <% budget = vote.budget %>
   <tr>
     <td>
-      <%= link_to proposal.title, proposal%>
+      <%= link_to budget.name, vote%>
     </td>
     <td>
       <%= vote.created_at  %>

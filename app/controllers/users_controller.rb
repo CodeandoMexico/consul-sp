@@ -18,7 +18,7 @@ class UsersController < ApplicationController
         budget_investments: (Setting['feature.budgets'] ? Budget::Investment.where(author_id: @user.id).count : 0),
         comments: only_active_commentables.count,
         follows: @user.follows.map(&:followable).compact.count,
-        votes: @user.votes.where(votable_type: "Proposal").size,
+        votes: @user.ballots.size
       )
     end
 
@@ -75,7 +75,7 @@ class UsersController < ApplicationController
     end
 
     def load_votes
-      @grouped_votes = @user.votes.where(votable_type: "Proposal").group_by(&:votable_type)
+      @grouped_votes = @user.ballots.group_by(&:budget)
     end
 
     def valid_access?

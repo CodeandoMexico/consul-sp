@@ -1,15 +1,11 @@
 <table class="margin-top">
   <tbody>
-    <% @grouped_votes.each do |type, group| %>
-      <thead id="vote_type_<%= type.downcase %>">
+    <% @grouped_votes.each do |budget, votes| %>
+      <thead id="budget-<%= budget.slug %>">
         <th scope="col">
-          <%= t("users.show.#{type.downcase}_votes")%>
-        </th>
-        <th scope="col">
-          <%= t("users.show.votes_created_at")%>
+          <%= link_to "Votos en: #{ budget.name }", budget_ballot_path(budget) %>
         </th>
       </thead>
-      <%= render "users/votes/#{type.downcase.pluralize}", votes: group %>
     <% end %>
   </tbody>
 </table>
