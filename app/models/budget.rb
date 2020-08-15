@@ -145,7 +145,7 @@ class Budget < ActiveRecord::Base
     defaults = %w{random hot_score most_commented}
 
     case phase
-    when 'accepting', 'reviewing', 'finished'
+    when 'accepting', 'reviewing'
       defaults
     when 'publishing_prices', 'balloting', 'reviewing_ballots'
       defaults + %w{price}
