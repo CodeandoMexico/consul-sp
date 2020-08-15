@@ -150,7 +150,7 @@ class Budget < ActiveRecord::Base
     when 'publishing_prices', 'balloting', 'reviewing_ballots'
       defaults + %w{price}
     when 'finished'
-      defaults + %w{ winners no_winners }
+      defaults + %w{ winners no_winners unfeasible}
     else
       defaults + %w{confidence_score}
     end

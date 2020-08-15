@@ -74,6 +74,7 @@ class Budget
     scope :sort_by_most_commented,      -> { reorder(comments_count: :desc) }
     scope :sort_by_winners,             -> { winners }
     scope :sort_by_no_winners,          -> { no_winners }
+    scope :sort_by_unfeasible,          -> { unfeasible }
 
     scope :valuation_open,              -> { where(valuation_finished: false) }
     scope :without_admin,               -> { valuation_open.where(administrator_id: nil) }
