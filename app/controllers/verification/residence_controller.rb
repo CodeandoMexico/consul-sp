@@ -20,6 +20,13 @@ class Verification::ResidenceController < ApplicationController
   private
 
     def residence_params
-      params.require(:residence).permit(:document_number, :document_type, :date_of_birth, :postal_code, :terms_of_service)
+      params.require(:residence).permit(
+        :date_of_birth,
+        :document_number,
+        :document_type,
+        :phone_number,
+        :postal_code,
+        :terms_of_service
+      )
     end
 end

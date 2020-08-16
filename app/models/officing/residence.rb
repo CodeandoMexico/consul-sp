@@ -8,7 +8,6 @@ class Officing::Residence
 
   validates :document_number, presence: true
   validates :document_type, presence: true
-  validates :year_of_birth, presence: true
 
   validate :allowed_age
   validate :residence_in_madrid

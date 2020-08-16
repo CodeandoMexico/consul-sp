@@ -142,13 +142,15 @@ class Budget < ActiveRecord::Base
   end
 
   def investments_orders
-    defaults = %w{random hot_score}
+    defaults = %w{random hot_score most_commented}
 
     case phase
-    when 'accepting', 'reviewing', 'finished'
+    when 'accepting', 'reviewing'
       defaults
     when 'publishing_prices', 'balloting', 'reviewing_ballots'
       defaults + %w{price}
+    when 'finished'
+      defaults + %w{ winners no_winners unfeasible}
     else
       defaults + %w{confidence_score}
     end

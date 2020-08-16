@@ -6,7 +6,6 @@ module Budgets
     after_action :store_referer, only: [:show]
 
     def show
-      authorize! :show, @ballot
       session[:ballot_referer] = request.referer
       render template: "budgets/ballot/show"
     end

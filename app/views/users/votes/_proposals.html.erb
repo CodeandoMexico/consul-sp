@@ -1,0 +1,11 @@
+<% votes.each do |vote| %>
+  <% budget = vote.budget %>
+  <tr>
+    <td>
+      <%= link_to budget.name, vote%>
+    </td>
+    <td>
+      <%= vote.created_at  %>
+    </td>
+  </tr>
+<% end %>

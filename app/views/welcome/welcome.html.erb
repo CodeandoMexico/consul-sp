@@ -3,15 +3,15 @@
 <div class="user-permissions">
   <p><%= t("welcome.welcome.user_permission_info") %></p>
   <ul>
-    <li><span class="icon-check"></span>&nbsp;Ver las propuestas que han subido tus vecinos(as)</li>
-    <li><span class="icon-check"></span>&nbsp;Comentar y compartir propuestas</li>
+    <li><span class="icon-check"></span>&nbsp;Ver las propuestas de tus vecinos(as)</li>
+    <li><span class="icon-check"></span>&nbsp;Comentar y compartir las propuestas</li>
     <li>
       <% if current_user.level_two_or_three_verified? %>
         <span class="icon-check"></span>
       <% else %>
         <span class="icon-x"></span>
       <% end %>
-      Registrar tus propuestas*
+      Subir tus propuestas
     </li>
     <li>
       <% if current_user.level_three_verified? %>
@@ -19,18 +19,16 @@
       <% else %>
         <span class="icon-x"></span>
       <% end %>
-      Votar por las propuestas que pasaron el examen de factibilidad*
+      Votar por tus propuestas favoritas, evaluadas como factibles por el municipio
     </li>
   </ul>
-
   <p>
-    <span>*Para tener acceso a estas funciones tendrás que verificar tu cuenta proporcionándonos tu credencial para votar y tu número de expediente catastral</span>
+    <span>
+      *Para subir tus propuestas y votar,
+      <strong>sólo necesitas verificar tu identidad con tu INE</strong>
+      actualizada en San Pedro Garza García.
+    </span>
   </p>
-
-  <p>
-    <%= t("welcome.welcome.user_permission_verify") %>
-  </p>
-
   <% if current_user.level_three_verified? %>
     <p class="already-verified">
       <span class="icon-check"></span>

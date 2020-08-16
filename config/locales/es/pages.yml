@@ -5,8 +5,14 @@ es:
       subtitle: AVISO LEGAL SOBRE LAS CONDICIONES DE USO, PRIVACIDAD Y PROTECCIÓN DE DATOS PERSONALES DEL PORTAL DECIDE SAN PEDRO
       description: Página de información sobre las condiciones de uso, privacidad y protección de datos personales.
     help:
-      title: "%{org} es una plataforma de participación ciudadana"
-      guide: "Esta guía explica para qué sirven y cómo funcionan cada una de las secciones de %{org}."
+      title: "%{org} es la plataforma para el presupuesto participativo municipal de San Pedro Garza García"
+      guide: "La guía práctica explica qué es y cómo funciona el programa:
+              <br>¿Qué es el presupuesto participativo?
+              <br>¿Cómo se distribuye el presupuesto?
+              <br>¿Qué es factible proponer y qué no?
+              <br>¿Cómo crear un usuario en la plataforma?
+              <br>¿Cómo hacer una propuesta?
+              <br>¿Cómo votar?"
       menu:
         debates: "Debates"
         proposals: "Propuestas"

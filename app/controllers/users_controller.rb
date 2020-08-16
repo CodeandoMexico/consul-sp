@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  has_filters %w{proposals debates budget_investments comments follows}, only: :show
+  has_filters %w{proposals debates budget_investments comments follows votes}, only: :show
 
   load_and_authorize_resource
   helper_method :author?
@@ -13,11 +13,13 @@ class UsersController < ApplicationController
 
     def set_activity_counts
       @activity_counts = HashWithIndifferentAccess.new(
-                          proposals: Proposal.where(author_id: @user.id).count,
-                          debates: (Setting['feature.debates'] ? Debate.where(author_id: @user.id).count : 0),
-                          budget_investments: (Setting['feature.budgets'] ? Budget::Investment.where(author_id: @user.id).count : 0),
-                          comments: only_active_commentables.count,
-                          follows: @user.follows.map(&:followable).compact.count)
+        proposals: Proposal.where(author_id: @user.id).count,
+        debates: (Setting['feature.debates'] ? Debate.where(author_id: @user.id).count : 0),
+        budget_investments: (Setting['feature.budgets'] ? Budget::Investment.where(author_id: @user.id).count : 0),
+        comments: only_active_commentables.count,
+        follows: @user.follows.map(&:followable).compact.count,
+        votes: @user.ballots.size
+      )
     end
 
     def load_filtered_activity
@@ -28,6 +30,7 @@ class UsersController < ApplicationController
       when "budget_investments" then load_budget_investments
       when "comments" then load_comments
       when "follows" then load_follows
+      when "votes" then load_votes
       else load_available_activity
       end
     end
@@ -69,6 +72,10 @@ class UsersController < ApplicationController
 
     def load_follows
       @follows = @user.follows.group_by(&:followable_type)
+    end
+
+    def load_votes
+      @grouped_votes = @user.ballots.group_by(&:budget)
     end
 
     def valid_access?

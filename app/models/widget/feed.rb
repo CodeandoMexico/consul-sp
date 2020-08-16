@@ -4,7 +4,7 @@ class Widget::Feed < ActiveRecord::Base
   KINDS = %w(proposals debates processes)
 
   def active?
-    setting.value.present?
+    setting&.value&.present?
   end
 
   def setting
@@ -33,5 +33,4 @@ class Widget::Feed < ActiveRecord::Base
   def processes
     Legislation::Process.open.published.limit(limit)
   end
-
 end

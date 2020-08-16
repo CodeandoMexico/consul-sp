@@ -109,7 +109,7 @@ div#ine-exist {
         <li><span class="icon-check"></span>&nbsp;Ver las propuestas que han subido tus vecinos(as)</li>
         <li><span class="icon-check"></span>&nbsp;Registrar tus propuestas </li>
         <li><span class="icon-check"></span>&nbsp;Comentar y compartir propuestas</li>
-        <li><span class="icon-x"></span>&nbsp;Votar por las propuestas que pasaron el examen de factibilidad</li>
+        <li><span class="icon-check"></span>&nbsp;Votar por las propuestas que pasaron el examen de factibilidad</li>
       </ul>
     </div>
 
@@ -120,37 +120,11 @@ div#ine-exist {
       <div class="row">
         <div class="small-12 medium-8">
           <div class="small-12 medium-5 column end">
-
-          <div class="inline-block">
-            <H3> Agrega tu INE </H3>
-          </div>
-
-          <div class="inline-block" data-toggle="info-document-ife">
-            <span class="show-for-sr">Sube una foto de tu credencial para votar.</span>
-          </div>
-
-          <div class="dropdown-pane" id="info-document-ife" data-dropdown
-               data-hover="true" data-hover-pane="true">
-               Sube una foto de tu credencial para votar.
-          </div>
-
-            <div class="file-input">
-              <%= file_field_tag :image,  accept: 'image/png,image/gif,image/jpeg,application/pdf' %>
-              <span class='button'>Subir</span>
-              <span class='label' data-js-label>No hay archivo seleccionado</label>
-
-            </div>
               <% if @residence.errors.messages[:base].present? %>
                 <div id="error-mensaje">
                   <%= @residence.errors.messages[:base].first %></div>
               <% end %>
               <div class="progress"></div>
-
-              <p style="font-size: small;line-height: unset;font-weight: bold;">
-                  Sube una foto del frente de tu credencial de elector. No es necesario que el domicilio de tu credencial esté en San Pedro.
-              </p>
-
-
           </div>
         </div>
       </div>
@@ -172,11 +146,10 @@ div#ine-exist {
             <%= t("verification.residence.new.document_number_help_text_html") %>
           </div>
 
-          <%= f.text_field :document_number, label: false, :maxlength => 8 %>
+          <%= f.text_field :document_number, label: false %>
 
-          <p style="font-size: small;line-height: unset;font-weight: bold;"> El número debe tener 7 u 8 dígitos, se encuentra en el recibo de pago del impuesto predial.
-          Si no lo tienes a la mano, envía tu comprobante de domicilio a edgar.gutierrez@sanpedro.gob.mx o llámanos al 8478-2059 y
-          te decimos cuál es. Esto es posible para renteros y propietarios.</p>
+          <p style="font-size: small;line-height: unset;font-weight: bold;"> El numero se encuentra en el reverso de tu credencial para votar.
+          </p>
 
           </div>
         </div>
@@ -189,13 +162,11 @@ div#ine-exist {
                         start_year: 16.years.ago.year, end_year: 1900,
                         label: false %>
       </div>
-
+      <div class="small-12 medium-6 clear">
+        <%= f.label t("verification.residence.new.phone_number")%>
+        <%= f.text_field :phone_number, label: false, required: true%>
+      </div>
       <div class="small-12 medium-5 clear">
-        <%= f.label t("verification.residence.new.postal_code") %>
-        <p class="help-text" id="postal-code-help-text"><%= t("verification.residence.new.postal_code_note") %></p>
-        <div class="medium-6">
-          <%= f.text_field :postal_code, label: false, aria: {describedby: "postal-code-help-text"} %>
-        </div>
       </div>
 
       <div class="small-12">

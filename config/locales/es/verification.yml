@@ -47,12 +47,13 @@ es:
         flash:
           success: Residencia verificada
       new:
-        accept_terms_text: Tus datos personales están protegidos por la Ley de Protección de Datos, del Estado de Nuevo León. Acepto %{terms_url}
+        accept_terms_text: Tus datos estarán protegidos conforme a la Ley General de Protección de Datos Personales en Posesión de los Sujetos Obligados. Acepto %{terms_url}
         accept_terms_text_title: Acepto los términos de acceso al Padrón
-        date_of_birth: Fecha de nacimiento
-        document_number: Numero de expediente catastral
+        date_of_birth: Fecha de nacimiento (Opcional)
+        phone_number: Teléfono
+        document_number: Si autorizas que se realice la verificación automática de tu credencial para votar, favor de ingresar tu Código OCR o CIC para proceder a la verificación de tu usuario.
         document_number_help_title: Ayuda
-        document_number_help_text_html: 'Se encuentra en el recibo de pago de impuesto predial. Si no lo tienes a la mano, llámanos, acredita identidad y comprobante de domicilio, y te decimos cuál es. El número debe tener 7 u 8 dígitos.'
+        document_number_help_text_html: Se encuentra el el reverso de tu credencial de Elector.
         document_type:
           passport: Pasaporte
           residence_card: Tarjeta de residencia
@@ -119,7 +120,7 @@ es:
     survey:
       new:
         title: Los datos que proporcionen serán utilizados con el fin de medir y evaluar los objetivos del proceso de presupuesto participativo. Los datos generados serán estrictamente confidenciales y en ninguna circunstancia podrán utilizarse para otro fin que no sea estadístico. Para saltar este paso da click en 'Enviar'.
-        birth_date: Fecha de Nacimiento
+        birth_date: Fecha de Nacimiento (Opcional)
         genre: Género
         school: Último grado aprobado en la escuela
         job: Ocupación

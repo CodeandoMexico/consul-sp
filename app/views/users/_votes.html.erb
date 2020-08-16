@@ -1,0 +1,11 @@
+<table class="margin-top">
+  <tbody>
+    <% @grouped_votes.each do |budget, votes| %>
+      <thead id="budget-<%= budget.slug %>">
+        <th scope="col">
+          <%= link_to "Votos en: #{ budget.name }", budget_ballot_path(budget) %>
+        </th>
+      </thead>
+    <% end %>
+  </tbody>
+</table>

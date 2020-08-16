@@ -12,6 +12,7 @@
         <th scope="col">Sector</th>
         <th scope="col">INE</th>
         <th scope="col">Fecha de Registro</th>
+        <th scope="col">Teléfono</th>
         <th scope="col"><%= t("admin.users.columns.verification_level") %></th>
         <th scope="col"></th>
       </tr>
@@ -33,6 +34,7 @@
             <td></td>
           <% end %>
           <td><%= user.created_at.strftime("%Y-%m-%d") %></td>
+          <td><%= user.phone_number %></td>
           <td><%= user.user_type %></td>
           <% if user.user_type == :level_3_user %>
             <td><%= link_to "Editar", edit_admin_user_path(user), :class => "btn btn-primary" %></td>

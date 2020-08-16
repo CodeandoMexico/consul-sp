@@ -28,30 +28,39 @@
     </div>
 
     <div class="small-12 column">
-
-      <%= form_for @address_user, as: "address_user_confirm", url: address_user_path, html: { multipart: true } do |f| %>
-            <%= render "shared/errors", resource: @address_user %>
-              <div class="row">
-                  <div class="small-12 column">
-                    <%= render 'map_address',
-                               form:     f,
-                               address_user: AddressUser.new,
-                               label:    t("proposals.form.map_location"),
-                               help:     t("proposals.form.map_location_instructions"),
-                               remove_marker_label: t("proposals.form.map_remove_marker"),
-                               parent_class: "proposal",
-                               i18n_namespace: "proposals" %>
-
-                  </div>
-
-                  <div class="actions small-12 medium-6 large-4 end column">
-                    <%= f.submit t("verification.user_address.new.submit_button"), class: "button success" %>
-                  </div>
-            </div>
-          <% end %>
-
+      <%= form_for @address_user, url: new_address_user_path, method: :get, html: {  class: "Direccion" } do |f| %>
+        <%= f.text_field :full_address %>
+        <%= f.submit "Buscar" %>
+      <% end %>
     </div>
+    <div class="small-12 column">
+        <%= form_for @address_user, as: "address_user_confirm", url: address_user_path, html: { multipart: true } do |f| %>
+          <%= render "shared/errors", resource: @address_user %>
+          <div class="row">
+            <div class="small-12 column">
+              <%= render_map(@map_location, "map", true, t("proposals.form.map_remove_marker")) %>
+              <%= f.fields_for :address_user, @address_user do |m_l_fields| %>
+                <%= m_l_fields.hidden_field :id,
+                  value: @address_user.id,
+                  id: map_location_input_id('proposal', 'id') %>
+                <%= m_l_fields.hidden_field :latitude,
+                  value: @address_user.latitude,
+                  id: map_location_input_id('proposal', 'latitude') %>
+                <%= m_l_fields.hidden_field :longitude,
+                  value: @address_user.longitude,
+                  id: map_location_input_id('proposal', 'longitude') %>
+                <%= m_l_fields.hidden_field :zoom,
+                  value: @address_user.zoom,
+                              id: map_location_input_id('proposal', 'zoom') %>
+              <% end %>
+            </div>
 
+            <div class="actions small-12 medium-6 large-4 end column">
+              <%= f.submit t("verification.user_address.new.submit_button"), class: "button success" %>
+            </div>
+          </div>
+        <% end %>
+    </div>
   </div>
 </div>
 

@@ -30,6 +30,7 @@ class User < ActiveRecord::Base
   has_one :lock
   has_one :survey
   has_one :address_user
+  has_one :electoral_roll
   has_many :flags
   has_many :likes
   has_many :identities, dependent: :destroy
@@ -44,6 +45,7 @@ class User < ActiveRecord::Base
   has_many :direct_messages_received, class_name: 'DirectMessage', foreign_key: :receiver_id
   has_many :legislation_answers, class_name: 'Legislation::Answer', dependent: :destroy, inverse_of: :user
   has_many :follows
+  has_many :ballots, class_name: 'Budget::Ballot'
   has_and_belongs_to_many :colonium
   belongs_to :geozone
   has_attached_file :ife, styles: { medium: "300x300>" }, default_url: "/images/:style/missing.png"
@@ -88,6 +90,8 @@ class User < ActiveRecord::Base
   end
 
   before_validation :clean_document_number
+  after_validation :assign_sector, on: [:update, :create]
+  after_validation :assign_geozone, on: [:update, :create]
 
   # Get the existing user by email if the provider gives us a verified email.
   def self.first_or_initialize_for_oauth(auth)
@@ -536,6 +540,17 @@ class User < ActiveRecord::Base
     def clean_document_number
       return unless document_number.present?
       self.document_number = document_number.gsub(/[^a-z0-9]+/i, "").upcase
+    end
+
+    def assign_sector
+      return if colonium.blank? || sector == colonium.first.sector
+      self.sector = self.colonium.first.sector
+    end
+
+    def assign_geozone
+      expected_geozone = Geozone.find_by(census_code: sector)
+      return if sector.blank? || geozone == expected_geozone || expected_geozone.blank?
+      self.geozone = expected_geozone
     end
 
     def validate_username_length
